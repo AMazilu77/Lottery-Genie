@@ -1,0 +1,111 @@
+<button class='btn btn-outline-primary' type="button" (click)="back()"> back </button>
+<h2 class="pagination justify-content-center" layout-align="center center">Florida Cash For Life</h2>
+<hr>
+<div class="pagination justify-content-center" layout-align="center center">
+
+</div>
+
+
+
+<body id="theBody" class="pagination justify-content-center" layout-align="center center">
+
+
+
+  <div id="Number-Gen-Total-Container">
+
+
+
+    <script src='/javascripts/script.js'></script>
+    <div class="">
+      <h3>Cash For Life Number Generator</h3>
+
+    </div>
+
+
+    <div class="" id="Rules">
+      <h4>Rules </h4>
+      <p>1. Select five numbers from 1 through 60 and one cash ball number from 1 through 4 </p>
+      <p> Click the save number button save the numbers you wish to play to your profile to gain statistical DATA on
+        how your numbers perform. Save number button will save a list of numbers you wish you save, then click post
+        once you've bought a ticket. </p>
+      <!-- <button class="btn btn-outline-info" (click)="FLPick2RulesOdds()"> I wish to know more</button> -->
+    </div>
+
+
+
+
+
+    <div class="pagination justify-content-center" id="CardContainer">
+
+      <div id="NumberCard1">
+        <h1 class="generatedNumber" id="firstNumber"> {{numberGenService.cashForLifeGeneratedNumber1}} </h1>
+      </div>
+      <div id="NumberCard2">
+        <h1 class="generatedNumber" id="2ndNumber"> {{numberGenService.cashForLifeGeneratedNumber2}} </h1>
+      </div>
+      <div id="NumberCard3">
+        <h1 class="generatedNumber" id="3ndNumber"> {{numberGenService.cashForLifeGeneratedNumber3}} </h1>
+      </div>
+      <div id="NumberCard4">
+        <h1 class="generatedNumber" id="4thNumber"> {{numberGenService.cashForLifeGeneratedNumber4}} </h1>
+      </div>
+      <div id="NumberCard5">
+        <h1 class="generatedNumber" id="5thNumber"> {{numberGenService.cashForLifeGeneratedNumber5}} </h1>
+      </div>
+      <div id="NumberCard6">
+        <h1 class="generatedNumber" id="6thNumber"> {{numberGenService.cashForLifeGeneratedCashBall}} </h1>
+      </div>
+
+    </div>
+
+
+
+    <br>
+    <br>
+    <div class="pagination justify-content-center " id="genieDiv">
+      <br>
+      <img class="pagination justify-content-center" id="Genie" src='./assets/public/images/MainGenie.jpg'>
+      <br>
+
+
+    </div>
+    <div class="pagination justify-content-center">
+      <p> "{{numberGenService.Phrase}} "</p>
+    </div>
+
+    <hr>
+
+    <h2>Click save numbers to save a list</h2>
+    <div class="pagination justify-content-center" id='gameArea'>
+      <button class="btn btn-outline-primary" (click)='GenerateCashForLife();numberGenService.randomPhraseGen()'> Give
+        me a
+        number!
+      </button>
+      <button class="btn btn-outline-success" (click)="saveCashForLifeNumber()"> I will play this Number,
+        save it
+      </button>
+      <button class="btn btn-outline-danger"> I don't like this
+        number</button>
+      <button class="btn btn-outline-info"> Show me numbers that have won </button>
+    </div>
+
+    <h2> Saved Numbers</h2>
+
+    <div class="pagination justify-content-center" id='SavedNumbers'>
+
+      <h3>
+        {{cashForLifeSavedNumbers}}
+        {{ numberGenService.cashForLifeGeneratedNumber1}}{{ numberGenService.cashForLifeGeneratedNumber2}}
+        {{ numberGenService.cashForLifeGeneratedNumber3}},{{ numberGenService.cashForLifeGeneratedNumber4}},{{ numberGenService.cashForLifeGeneratedNumber5}}
+        {{ numberGenService.cashForLifeGeneratedCashBall}}
+      </h3>
+    </div>
+    <button class="btn btn-outline-primary" type="submit" method="POST">Post it</button>
+
+
+
+
+
+  </div>
+
+</body>

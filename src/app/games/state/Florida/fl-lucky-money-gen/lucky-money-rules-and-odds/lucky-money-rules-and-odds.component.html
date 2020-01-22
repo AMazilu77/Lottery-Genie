@@ -1,0 +1,38 @@
+<button class='btn btn-outline-primary' type="button" (click)="back()"> back </button>
+<h2 class="pagination justify-content-center" layout-align="center center">Florida Lucky Money</h2>
+<hr>
+<div class="pagination justify-content-center" layout-align="center center">
+
+</div>
+
+<h2> Florida Lucky Money Rules & Odds</h2>
+
+
+<div *ngIf="show; else elseBlock" class="pagination justify-content-center" [hidden]="hidden">
+  <app-pick5-rules></app-pick5-rules>
+</div>
+
+<div *ngIf="show1; else elseBlock" class="pagination justify-content-center" [hidden]="hidden">
+  <app-pick5-odds></app-pick5-odds>
+</div>
+
+
+<div *ngIf="show2; else elseBlock" class="pagination justify-content-center" [hidden]="hidden">
+  <app-pick5-game-theory></app-pick5-game-theory>
+</div>
+
+<div class="pagination justify-content-center " id="genieDiv">
+  <br>
+  <img class="pagination justify-content-center" id="Genie" src='./assets/public/images/MainGenie.jpg'>
+  <br>
+
+
+</div>
+<div class="pagination justify-content-center">
+  <p>"What arcane knowledge dost thou seek, mortal?"</p>
+</div>
+<div class="pagination justify-content-center">
+  <button (click)="show = !show" class="btn btn-outline-info"> Tell me about the rules for this game </button>
+  <button (click)="show1 = !show1" class="btn btn-outline-info"> Tell me about the odds and probability</button>
+  <button (click)="show2 = !show2" class="btn btn-outline-info"> Tell me about the game theory involved with this game </button>
+</div>

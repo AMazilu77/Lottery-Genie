@@ -1,0 +1,32 @@
+.button-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+
+
+}
+
+.genietext {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+#genie-dashboard-render{
+  height: 300px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.btn {
+  padding: 1%;
+  margin: 1%;
+  border: 1%;
+  border-style: solid;
+  border-color: black;
+}
