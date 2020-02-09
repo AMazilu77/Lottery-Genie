@@ -369,10 +369,10 @@ export class NumberGenService {
     'This number seems to come up often', '',
     'This number has a good chance of winning', '',
     'Dost thou wish to live lavishly??', '',
-    'It pays to dream!', '',
+    'It pays to dream!', 'Ha!',
     'These numbers could change your life!', '',
     'This is the number I think will win', '',
-    'It pays to dream!', 'You shall be wealthy', '',];
+    'It pays to dream! ... Keep Dreaming!', 'You shall be wealthy', '',];
 
   randomPhraseGen() {
     this.phraseNumber = Math.floor(Math.random() * this.randomPhrase.length);

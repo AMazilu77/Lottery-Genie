@@ -73,6 +73,15 @@ import { PowerBallRulesAndOddsComponent } from './games/state/Florida/power-ball
 import { PowerBallRulesComponent } from './games/state/Florida/power-ball-gen/power-ball-rules/power-ball-rules.component';
 import { PowerBallOddsComponent } from './games/state/Florida/power-ball-gen/power-ball-odds/power-ball-odds.component';
 import { PowerBallGameTheoryComponent } from './games/state/Florida/power-ball-gen/power-ball-game-theory/power-ball-game-theory.component';
+import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLucky/create-lucky-number/create-lucky-number.component';
+import { LuckyListComponent } from './my-profile/LuckyNumbers/listLucky/lucky-list/lucky-list.component';
+
+// Modules
+import { FormsModule } from '@angular/forms';
+
+// Angular Inputs
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule, MatCardModule, MatButtonModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -135,10 +144,20 @@ import { PowerBallGameTheoryComponent } from './games/state/Florida/power-ball-g
     PowerBallRulesAndOddsComponent,
     PowerBallRulesComponent,
     PowerBallOddsComponent,
-    PowerBallGameTheoryComponent
+    PowerBallGameTheoryComponent,
+    CreateLuckyNumberComponent,
+    LuckyListComponent,
+
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  imports: [BrowserModule,
+            AppRoutingModule,
+            FormsModule,
+            BrowserAnimationsModule,
+            MatInputModule,
+            MatCardModule,
+            MatButtonModule],
+
+            providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

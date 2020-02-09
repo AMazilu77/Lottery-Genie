@@ -19,7 +19,13 @@ export class Flpick4GenComponent implements OnInit {
   }
 
   savePick4Number() {
-    this.pick4SavedNumbers.push(this.numberGenService.pick4num1, this.numberGenService.pick4num2, this.numberGenService.pick4num3, this.numberGenService.pick4num4);
+
+    this.pick4SavedNumbers.push(
+      this.numberGenService.pick4num1,
+      this.numberGenService.pick4num2,
+      this.numberGenService.pick4num3,
+      this.numberGenService.pick4num4);
+
     console.log(this.pick4SavedNumbers);
   }
 
