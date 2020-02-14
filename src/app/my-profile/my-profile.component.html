@@ -1,3 +1,8 @@
 <h2> Profile </h2>
+<button (click)="back()"> Back </button>
 
-<app-create-lucky-number></app-create-lucky-number>
+<main>
+  <app-player-stats></app-player-stats>
+  <app-create-lucky-number (postCreated)="onPostsAdded($event)"></app-create-lucky-number>
+  <app-lucky-list [posts]="luckyNumberPosts"></app-lucky-list>
+</main>

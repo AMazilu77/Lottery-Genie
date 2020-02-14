@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-lucky-list',
   templateUrl: './lucky-list.component.html',
-  styleUrls: ['./lucky-list.component.sass']
+  styleUrls: ['./lucky-list.component.scss']
 })
 export class LuckyListComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  @Input() posts = [];
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

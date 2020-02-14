@@ -81,7 +81,8 @@ import { FormsModule } from '@angular/forms';
 
 // Angular Inputs
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule, MatCardModule, MatButtonModule } from '@angular/material';
+import { MatInputModule, MatCardModule, MatButtonModule, MatExpansionModule } from '@angular/material';
+import { PlayerStatsComponent } from './my-profile/Stats/player-stats/player-stats.component';
 
 @NgModule({
   declarations: [
@@ -147,6 +148,7 @@ import { MatInputModule, MatCardModule, MatButtonModule } from '@angular/materia
     PowerBallGameTheoryComponent,
     CreateLuckyNumberComponent,
     LuckyListComponent,
+    PlayerStatsComponent,
 
   ],
   imports: [BrowserModule,
@@ -155,7 +157,9 @@ import { MatInputModule, MatCardModule, MatButtonModule } from '@angular/materia
             BrowserAnimationsModule,
             MatInputModule,
             MatCardModule,
-            MatButtonModule],
+            MatButtonModule,
+            MatExpansionModule],
+
 
             providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,12 @@
-<p>lucky-list works!</p>
+
+
+  <mat-accordion *ngIf="posts.length > 0">
+    <mat-expansion-panel  *ngFor="let post of posts">
+      <mat-expansion-panel-header>
+        {{post.NumberSelected}}
+      </mat-expansion-panel-header>
+       {{post.reasoning}}
+    </mat-expansion-panel>
+  </mat-accordion>
+  <p class="info-text mat-body-1" *ngIf="posts.length <= 0"> No lucky numbers saved yet! </p>
+

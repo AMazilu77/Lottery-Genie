@@ -1,17 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-create-lucky-number',
   templateUrl: './create-lucky-number.component.html',
-  styleUrls: ['./create-lucky-number.component.css']
+  styleUrls: ['./create-lucky-number.component.scss']
 })
 export class CreateLuckyNumberComponent implements OnInit {
   constructor() {}
+
   enteredValue = '';
-  newPost = ' no content';
+  enteredReason = '';
+  @Output() postCreated = new EventEmitter();
 
   onAddLuck() {
-    this.newPost = this.enteredValue;
+    const post = {NumberSelected: this.enteredValue,
+                  reasoning: this.enteredReason
+                };
+    // this is where the event emitter emits the post to the parent component, my profile
+    this.postCreated.emit(post);
   }
 
   ngOnInit() {}

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { NumberGenService } from '../../../../services/number-gen.service';
 
 
 @Component({
@@ -9,14 +8,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./my-profile.component.scss']
 })
 export class MyProfileComponent implements OnInit {
+  constructor(private router: Router) { }
+
+  luckyNumberPosts = [];
 
 
   back() {
     this.router.navigate(['/dashBoard']);
   }
-  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  // recieving the post from create lucky number component event emitter
+  onPostsAdded(post) {
+    this.luckyNumberPosts.push(post);
+    console.log('recieved posted', post);
+  }
 }
