@@ -7,6 +7,9 @@ import { GenieLampHomeComponent } from './genie-lamp-home/genie-lamp-home.compon
 import { MyAboutComponent } from './my-about/my-about.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 
+// Services
+import { LuckyNumberPostService } from './services/luckyNumberPost.service';
+
 // Game specific lottery game number generator components
 import { LotteryNumberGenMainPageComponent } from './games/lottery-number-gen-main-page/lottery-number-gen-main-page.component';
 import { FLGamePickComponent } from './games/state/Florida/flgame-pick/flgame-pick.component';
@@ -161,7 +164,7 @@ import { PlayerStatsComponent } from './my-profile/Stats/player-stats/player-sta
             MatExpansionModule],
 
 
-            providers: [],
+            providers: [LuckyNumberPostService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
