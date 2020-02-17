@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { LuckyNumberModel } from '../../luckNumbers.model';
 
 @Component({
   selector: 'app-lucky-list',
@@ -8,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LuckyListComponent implements OnInit {
   constructor() {}
 
-  @Input() posts = [];
+  @Input() posts: LuckyNumberModel[] = [];
 
   ngOnInit() {}
 }

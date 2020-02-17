@@ -1,11 +1,23 @@
-<mat-card>
-  <mat-form-field>
-    <input matInput type='text'  [(ngModel)]="enteredValue">
-  </mat-form-field>
 
-  <mat-form-field>
-    <textarea matInput rows='6'  [(ngModel)]="enteredReason" ></textarea>
-  </mat-form-field>
-  <button mat-button color='primary' (click)="onAddLuck()"> Save </button>
+
+<mat-card>
+<form (submit)="onAddLuck(luckForm)" #luckForm='ngForm'>
+    <mat-form-field>
+      <input matInput type='text'
+      ngModel
+      required
+      name='numberSelected'
+      #LuckyNumberInputForm="ngModel">
+        <mat-error *ngIf="LuckyNumberInputForm.invalid"> Please Enter Your Lucky Number </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <textarea matInput rows='6'
+       ngModel
+       name='reasoning'></textarea>
+    </mat-form-field>
+    <button mat-button color='primary' type="submit"> Save </button>
+  </form>
 </mat-card>
 

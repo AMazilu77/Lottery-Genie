@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { LuckyNumberModel } from './LuckyNumbers/luckNumbers.model';
 
 @Component({
   selector: 'app-my-profile',
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class MyProfileComponent implements OnInit {
   constructor(private router: Router) { }
 
-  luckyNumberPosts = [];
+  luckyNumberPosts: LuckyNumberModel[] = [];
 
 
   back() {

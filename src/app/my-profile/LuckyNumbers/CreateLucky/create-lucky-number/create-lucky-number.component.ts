@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-
+import { LuckyNumberModel } from '../../luckNumbers.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-lucky-number',
@@ -9,13 +10,16 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class CreateLuckyNumberComponent implements OnInit {
   constructor() {}
 
-  enteredValue = '';
+  enteredValue;
   enteredReason = '';
-  @Output() postCreated = new EventEmitter();
+  @Output() postCreated = new EventEmitter<LuckyNumberModel>();
 
-  onAddLuck() {
-    const post = {NumberSelected: this.enteredValue,
-                  reasoning: this.enteredReason
+  onAddLuck(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+    const post: LuckyNumberModel = {NumberSelected: form.value.numberSelected,
+                  reasoning: form.value.reasoning
                 };
     // this is where the event emitter emits the post to the parent component, my profile
     this.postCreated.emit(post);
