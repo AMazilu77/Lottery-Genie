@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LuckyNumberModel } from '../../luckNumbers.model';
 import { LuckyNumberPostService } from '../../../../services/luckyNumberPost.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-lucky-list',
   templateUrl: './lucky-list.component.html',
@@ -12,8 +13,16 @@ export class LuckyListComponent implements OnInit {
   }
 
 posts: LuckyNumberModel[] = [];
+private postsSubscription: Subscription;
 
   ngOnInit() {
     this.posts = this.luckyNumberService.getPosts();
+    this.postsSubscription = this.luckyNumberService.getPostUpdateListener().subscribe((posts: LuckyNumberModel[]) => {
+    this.posts = posts;
+    });
+  }
+
+  OnDestroy() {
+    this.postsSubscription.unsubscribe();
   }
 }
