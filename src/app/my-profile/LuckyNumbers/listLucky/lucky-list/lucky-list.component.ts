@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LuckyNumberModel } from '../../luckNumbers.model';
 import { LuckyNumberPostService } from '../../../../services/luckyNumberPost.service';
 @Component({
@@ -11,7 +11,9 @@ export class LuckyListComponent implements OnInit {
   constructor(public luckyNumberService: LuckyNumberPostService ) {
   }
 
-  @Input() posts: LuckyNumberModel[] = [];
+posts: LuckyNumberModel[] = [];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.posts = this.luckyNumberService.getPosts();
+  }
 }

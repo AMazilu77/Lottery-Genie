@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LuckyNumberModel } from './LuckyNumbers/luckNumbers.model';
 
 @Component({
   selector: 'app-my-profile',
@@ -10,7 +9,6 @@ import { LuckyNumberModel } from './LuckyNumbers/luckNumbers.model';
 export class MyProfileComponent implements OnInit {
   constructor(private router: Router) { }
 
-  luckyNumberPosts: LuckyNumberModel[] = [];
 
 
   back() {
@@ -18,11 +16,5 @@ export class MyProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  // recieving the post from create lucky number component event emitter
-  onPostsAdded(post) {
-    this.luckyNumberPosts.push(post);
-    console.log('recieved posted', post);
   }
 }

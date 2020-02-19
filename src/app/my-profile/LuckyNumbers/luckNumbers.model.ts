@@ -1,4 +1,4 @@
 export interface LuckyNumberModel {
-  NumberSelected: number;
+  numberSelected: number;
   reasoning: string;
 }

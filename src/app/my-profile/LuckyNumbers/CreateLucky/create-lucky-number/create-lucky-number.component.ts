@@ -1,6 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LuckyNumberModel } from '../../luckNumbers.model';
 import { NgForm } from '@angular/forms';
+import { LuckyNumberPostService } from '../../../../services/luckyNumberPost.service';
+
 
 @Component({
   selector: 'app-create-lucky-number',
@@ -8,21 +10,18 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./create-lucky-number.component.scss']
 })
 export class CreateLuckyNumberComponent implements OnInit {
-  constructor() {}
+  constructor(public luckyNumberService: LuckyNumberPostService) {}
 
   enteredValue;
   enteredReason = '';
-  @Output() postCreated = new EventEmitter<LuckyNumberModel>();
+  // postCreated = new EventEmitter<LuckyNumberModel>();
 
   onAddLuck(form: NgForm) {
     if (form.invalid) {
       return;
     }
-    const post: LuckyNumberModel = {NumberSelected: form.value.numberSelected,
-                  reasoning: form.value.reasoning
-                };
-    // this is where the event emitter emits the post to the parent component, my profile
-    this.postCreated.emit(post);
+    this.luckyNumberService.addPost(form.value.numberSelected,
+     form.value.reasoning);
   }
 
   ngOnInit() {}

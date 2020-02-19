@@ -6,11 +6,11 @@ export class LuckyNumberPostService {
  private LuckyPosts: LuckyNumberModel[] = [];
 
  getPosts() {
-   return [...this.LuckyPosts];
+   return this.LuckyPosts;
  }
 
- addPost(NumberSelected: number, reasoning: string) {
-   const post: LuckyNumberModel =  { NumberSelected, reasoning};
+ addPost(numberSelected: number, reasoning: string) {
+   const post: LuckyNumberModel =  { numberSelected, reasoning};
    this.LuckyPosts.push(post);
  }
 }
