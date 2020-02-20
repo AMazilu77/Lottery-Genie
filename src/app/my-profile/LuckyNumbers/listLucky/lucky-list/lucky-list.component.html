@@ -8,7 +8,12 @@
         {{post.numberSelected}}
       </mat-expansion-panel-header>
        {{post.reasoning}}
+       <mat-action-row>
+        <button mat-button color='accent'>Edit </button>
+        <button mat-button color='warn'>Delete </button>
+        </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
+  
   <p class="info-text mat-body-1" *ngIf="posts.length <= 0"> No lucky numbers saved yet! </p>
 

@@ -78,7 +78,7 @@ import { PowerBallOddsComponent } from './games/state/Florida/power-ball-gen/pow
 import { PowerBallGameTheoryComponent } from './games/state/Florida/power-ball-gen/power-ball-game-theory/power-ball-game-theory.component';
 import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLucky/create-lucky-number/create-lucky-number.component';
 import { LuckyListComponent } from './my-profile/LuckyNumbers/listLucky/lucky-list/lucky-list.component';
-
+import { LuckyNumberModel } from './my-profile/LuckyNumbers/luckNumbers.model';
 // Modules
 import { FormsModule } from '@angular/forms';
 

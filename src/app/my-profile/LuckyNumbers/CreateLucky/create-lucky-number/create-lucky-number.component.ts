@@ -20,8 +20,10 @@ export class CreateLuckyNumberComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    this.luckyNumberService.addPost(form.value.numberSelected,
+    this.luckyNumberService.addPost(
+     form.value.numberSelected,
      form.value.reasoning);
+    form.resetForm();
   }
 
   ngOnInit() {}
