@@ -1,6 +1,9 @@
 require('dotenv').config()
 const express = require('express');
+const bodyParser = require('body-parser')
 const app = express();
+
+app.use(bodyParser.json());
 
 app.use((req, res, next) => {
   // allows which domains are allowed to access our resources
@@ -20,7 +23,15 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api/posts', (req, res, next) => { 
+app.post('/api/posts', (req, res, next) => {
+  const post = req.body;
+  console.log(post);
+  res.status(201).json({
+    message: 'Post added'
+  })
+})
+
+app.get('/api/posts', (req, res, next) => {
   const LuckyNumbersDefaultPost = [
     { id: '637841', numberSelected: 5, reasoning: '5 is the pentagram yo, coming from the server'},
     { id: '374101', numberSelected: 6, reasoning: '6 is the hexagram yo'},

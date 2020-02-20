@@ -25,6 +25,10 @@ export class LuckyNumberPostService {
 
  addPost(numberSelected: number, reasoning: string) {
    const post: LuckyNumberModel =  { id: null, numberSelected, reasoning};
+   this.http.post<{message: string}>('http://localhost:3000/api/posts', post ).subscribe((responseData) => {
+    console.log(responseData.message);
+   });
+
    this.LuckyPosts.push(post);
    this.postsUpdated.next([...this.LuckyPosts]);
  }
