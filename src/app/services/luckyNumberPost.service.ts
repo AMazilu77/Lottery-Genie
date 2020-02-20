@@ -1,6 +1,8 @@
 import { LuckyNumberModel } from '../my-profile/LuckyNumbers/luckNumbers.model';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({providedIn: 'root'})
 export class LuckyNumberPostService {
@@ -8,8 +10,13 @@ export class LuckyNumberPostService {
  private LuckyPosts: LuckyNumberModel[] = [];
  private postsUpdated = new Subject<LuckyNumberModel[]>();
 
+ constructor(private http: HttpClient ) {}
  getPosts() {
-   return this.LuckyPosts;
+  this.http.get<{message: string, LuckyNumbersDefaultPost: LuckyNumberModel[] }>('http://localhost:3000/api/posts')
+  .subscribe((postData) => {
+    this.LuckyPosts = postData.LuckyNumbersDefaultPost;
+    this.postsUpdated.next([...this.LuckyPosts]);
+  });
  }
 
  getPostUpdateListener() {
@@ -17,7 +24,7 @@ export class LuckyNumberPostService {
  }
 
  addPost(numberSelected: number, reasoning: string) {
-   const post: LuckyNumberModel =  { numberSelected, reasoning};
+   const post: LuckyNumberModel =  { id: null, numberSelected, reasoning};
    this.LuckyPosts.push(post);
    this.postsUpdated.next([...this.LuckyPosts]);
  }
