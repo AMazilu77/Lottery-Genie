@@ -38,7 +38,7 @@
     "handlebars": "^4.7.2",
     "hbs": "^4.1.0",
     "jquery": "^3.4.1",
-    "mongoose": "^5.8.10",
+    "mongoose": "^5.9.2",
     "path": "^0.12.7",
     "popper.js": "^1.16.1",
     "rxjs": "^6.5.4",

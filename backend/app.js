@@ -1,7 +1,8 @@
 require('dotenv').config()
 const express = require('express');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const app = express();
+const LuckPostSchema = require('../models/Luckpost');
 
 app.use(bodyParser.json());
 
@@ -24,7 +25,10 @@ app.use((req, res, next) => {
 });
 
 app.post('/api/posts', (req, res, next) => {
-  const post = req.body;
+  const post = new LuckPostSchema({
+    numberSelected: req.body.numberSelected,
+    reasoning: req.body.reasoning
+  });
   console.log(post);
   res.status(201).json({
     message: 'Post added'
