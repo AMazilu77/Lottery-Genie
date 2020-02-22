@@ -2,9 +2,18 @@ require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const mongoose = require('mongoose');
 const LuckPostSchema = require('../models/Luckpost');
+const chalk = require('chalk')
+
+mongoose.connect(process.env.AWSONLINE).then(() => {
+  console.log(chalk.magenta('Djinn has connected to the AWS database'));
+}).catch(() => {
+  console.log('Connection to AWS - Mongo database failed! The Djinn Summoning has failed! NOW ITS FREE!! FIX THIS!!!')
+});
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
   // allows which domains are allowed to access our resources
@@ -29,11 +38,12 @@ app.post('/api/posts', (req, res, next) => {
     numberSelected: req.body.numberSelected,
     reasoning: req.body.reasoning
   });
+  post.save();
   console.log(post);
   res.status(201).json({
     message: 'Post added'
-  })
-})
+  });
+});
 
 app.get('/api/posts', (req, res, next) => {
   const LuckyNumbersDefaultPost = [
@@ -47,7 +57,7 @@ app.get('/api/posts', (req, res, next) => {
     LuckyNumbersDefaultPost: LuckyNumbersDefaultPost
   });
 
-})
+});
 
 
 // exports the express app and all the midddleware logic
