@@ -43,7 +43,7 @@ app.post('/api/posts', (req, res, next) => {
   post.save();
   console.log(post);
   res.status(201).json({
-    message: 'Post added'
+    message: 'Post added dude'
   });
 });
 
@@ -52,7 +52,7 @@ app.get('/api/posts', (req, res, next) => {
     .then(documents => {
       res.status(200).json({
         message: "Lucky Number Posts Fetched !",
-        LuckyNumbersDefaultPost: documents
+        posts: documents
       });
     });
 });

@@ -2,20 +2,31 @@ import { LuckyNumberModel } from '../my-profile/LuckyNumbers/luckNumbers.model';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({providedIn: 'root'})
 export class LuckyNumberPostService {
 
- private LuckyPosts: LuckyNumberModel[] = [];
+ private posts: LuckyNumberModel[] = [];
  private postsUpdated = new Subject<LuckyNumberModel[]>();
 
  constructor(private http: HttpClient ) {}
+
  getPosts() {
-  this.http.get<{message: string, LuckyNumbersDefaultPost: LuckyNumberModel[] }>('http://localhost:3000/api/posts')
-  .subscribe((postData) => {
-    this.LuckyPosts = postData.LuckyNumbersDefaultPost;
-    this.postsUpdated.next([...this.LuckyPosts]);
+  this.http.get<{message: string, posts: any }>('http://localhost:3000/api/posts')
+  .pipe(map((postData) => {
+    return postData.posts.map(post => {
+      return {
+        numberSelected: post.numberSelected,
+        reasoning: post.reasoning,
+        id: post._id
+      };
+    });
+  }))
+  .subscribe((transformedIDPosts) => {
+    this.posts = transformedIDPosts;
+    this.postsUpdated.next([...this.posts]);
   });
  }
 
@@ -29,7 +40,7 @@ export class LuckyNumberPostService {
     console.log(responseData.message);
    });
 
-   this.LuckyPosts.push(post);
-   this.postsUpdated.next([...this.LuckyPosts]);
+   this.posts.push(post);
+   this.postsUpdated.next([...this.posts]);
  }
 }
