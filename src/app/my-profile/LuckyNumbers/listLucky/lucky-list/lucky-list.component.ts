@@ -23,7 +23,12 @@ private postsSubscription: Subscription;
     });
   }
 
+  onDelete(postId: string) {
+    this.luckyNumberService.deletePost(postId);
+  }
+
   OnDestroy() {
     this.postsSubscription.unsubscribe();
   }
+
 }
