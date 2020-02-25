@@ -55,4 +55,17 @@ export class LuckyNumberPostService {
      console.log('Lucky Number Deleted!');
    });
  }
+
+ // spread operator pulls out all the properties of an object and puts them into a new object
+ getLuckyNumberPost(id: string ) {
+   return {...this.posts.find(p => p.id === id)};
+ }
+
+//  updatePost(id: string, title: string, content: string) {
+//   const post: Post = { id: id, title: title, content: content };
+//   this.http
+//     .put("http://localhost:3000/api/posts/" + id, post)
+//     .subscribe(response => console.log(response));
+// }
+
 }

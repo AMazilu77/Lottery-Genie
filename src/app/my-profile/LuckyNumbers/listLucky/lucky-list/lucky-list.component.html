@@ -9,7 +9,7 @@
       </mat-expansion-panel-header>
        {{post.reasoning}}
        <mat-action-row>
-        <button mat-button color='accent'>Edit </button>
+        <a mat-button color='accent' [routerLink]="['/editLuck', 'post.id']">Edit </a>
         <button mat-button color='warn' (click)='onDelete(post.id)'>Delete </button>
         </mat-action-row>
     </mat-expansion-panel>
