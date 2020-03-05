@@ -11,16 +11,26 @@ export class LuckyListComponent implements OnInit {
 
   constructor(public luckyNumberService: LuckyNumberPostService ) {
   }
-
+isLoading = false;
 posts: LuckyNumberModel[] = [];
 private postsSubscription: Subscription;
 
   ngOnInit() {
+
     this.luckyNumberService.getPosts();
-    // this is where the observable is made to keep track of new lucky number posts
-    this.postsSubscription = this.luckyNumberService.getPostUpdateListener().subscribe((posts: LuckyNumberModel[]) => {
-    this.posts = posts;
-    });
+    this.postsSubscription = this.luckyNumberService.getPostUpdateListener()
+      .subscribe((posts: LuckyNumberModel[]) => {
+        this.posts = posts;
+      });
+
+    // this.isLoading = true;
+    // this.luckyNumberService.getPosts();
+    // // this is where the observable is made to keep track of new lucky number posts
+    // this.postsSubscription = this.luckyNumberService.getPostUpdateListener()
+    // .subscribe((posts: LuckyNumberModel[]) => {
+    // this.isLoading = false;
+    // this.posts = posts;
+    // });
   }
 
   onDelete(postId: string) {

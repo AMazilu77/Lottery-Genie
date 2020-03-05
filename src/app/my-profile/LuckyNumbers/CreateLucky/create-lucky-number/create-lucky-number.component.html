@@ -1,12 +1,13 @@
 
 
 <mat-card>
-<form (submit)="onAddLuck(luckForm)" #luckForm='ngForm'>
+<form (submit)="onSaveLuck(luckForm)" #luckForm='ngForm' *ngIf="!isLoading">
 
     <mat-form-field>
-      <input matInput type='number'
-         placeholder="Enter only Numbers here"
-        ngModel
+      <input matInput
+        type='number'
+        placeholder="Enter only Numbers here"
+        [ngModel]='post?.numberSelected'
         required
         name='numberSelected'
         #numberSelected="ngModel">
@@ -16,10 +17,11 @@
 
     <mat-form-field>
       <textarea matInput rows='6'
-        ngModel
+        [ngModel]='post?.reasoning'
         placeholder="What is the significance of this number?"
         name='reasoning'
-        #reasoning="ngModel"></textarea>
+        #reasoning="ngModel">
+        </textarea>
     </mat-form-field>
     <button mat-button color='primary' type="submit"> Save </button>
   </form>

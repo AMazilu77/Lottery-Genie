@@ -38,8 +38,8 @@ const routes: Routes = [
   { path: 'about', component: MyAboutComponent },
   { path: 'dashBoard', component: DashBoardComponent },
   { path: 'profile', component: MyProfileComponent },
-  // { path: 'createLuck', component: CreateLuckyNumberComponent },
-  { path: 'editLuck/:postId', component: CreateLuckyNumberComponent },
+  { path: 'create', component: CreateLuckyNumberComponent },
+  { path: 'edit/:postId', component: CreateLuckyNumberComponent },
 
   // where to pick state
   { path: 'LotteryNumberGenMainPage', component: LotteryNumberGenMainPageComponent },
