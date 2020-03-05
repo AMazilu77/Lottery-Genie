@@ -1,0 +1,29 @@
+
+
+<mat-card>
+<form (submit)="onSaveLuck(luckForm)" #luckForm='ngForm' *ngIf="!isLoading">
+
+    <mat-form-field>
+      <input matInput
+        type='number'
+        placeholder="Enter only Numbers here"
+        [ngModel]='post?.numberSelected'
+        required
+        name='numberSelected'
+        #numberSelected="ngModel">
+          <mat-error *ngIf="numberSelected.invalid"> Please Enter Your Lucky Number </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <textarea matInput rows='6'
+        [ngModel]='post?.reasoning'
+        placeholder="What is the significance of this number?"
+        name='reasoning'
+        #reasoning="ngModel">
+        </textarea>
+    </mat-form-field>
+    <button mat-button color='primary' type="submit"> Save </button>
+  </form>
+</mat-card>
+

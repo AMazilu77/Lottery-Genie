@@ -45,6 +45,6 @@ export class DashBoardComponent implements OnInit {
   // }
 
   gotoProfile() {
-    this.theRouter.navigate(['/userProfile']);
+    this.theRouter.navigate(['/profile']);
   }
 }

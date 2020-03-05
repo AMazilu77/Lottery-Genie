@@ -29,6 +29,7 @@ import { Pick5RulesAndOddsComponent } from './games/state/Florida/flpick5-gen/pi
 // tslint:disable-next-line: max-line-length
 import { LuckyMoneyRulesAndOddsComponent } from './games/state/Florida/fl-lucky-money-gen/lucky-money-rules-and-odds/lucky-money-rules-and-odds.component';
 
+import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLucky/create-lucky-number/create-lucky-number.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -37,11 +38,11 @@ const routes: Routes = [
   { path: 'about', component: MyAboutComponent },
   { path: 'dashBoard', component: DashBoardComponent },
   { path: 'profile', component: MyProfileComponent },
+  { path: 'create', component: CreateLuckyNumberComponent },
+  { path: 'edit/:postId', component: CreateLuckyNumberComponent },
+
   // where to pick state
-  {
-    path: 'LotteryNumberGenMainPage',
-    component: LotteryNumberGenMainPageComponent
-  },
+  { path: 'LotteryNumberGenMainPage', component: LotteryNumberGenMainPageComponent },
   // Florida Lottery Games Number Generators
   { path: 'FLGamePick', component: FLGamePickComponent },
   { path: 'FLPick2', component: FLPick2GenComponent },

@@ -1,11 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GenieLampHomeComponent } from './genie-lamp-home/genie-lamp-home.component';
 import { MyAboutComponent } from './my-about/my-about.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
+
+// Services
+import { LuckyNumberPostService } from './services/luckyNumberPost.service';
 
 // Game specific lottery game number generator components
 import { LotteryNumberGenMainPageComponent } from './games/lottery-number-gen-main-page/lottery-number-gen-main-page.component';
@@ -73,6 +77,16 @@ import { PowerBallRulesAndOddsComponent } from './games/state/Florida/power-ball
 import { PowerBallRulesComponent } from './games/state/Florida/power-ball-gen/power-ball-rules/power-ball-rules.component';
 import { PowerBallOddsComponent } from './games/state/Florida/power-ball-gen/power-ball-odds/power-ball-odds.component';
 import { PowerBallGameTheoryComponent } from './games/state/Florida/power-ball-gen/power-ball-game-theory/power-ball-game-theory.component';
+import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLucky/create-lucky-number/create-lucky-number.component';
+import { LuckyListComponent } from './my-profile/LuckyNumbers/listLucky/lucky-list/lucky-list.component';
+import { LuckyNumberModel } from './my-profile/LuckyNumbers/luckNumbers.model';
+// Modules
+import { FormsModule } from '@angular/forms';
+
+// Angular Inputs
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule, MatCardModule, MatButtonModule, MatExpansionModule } from '@angular/material';
+import { PlayerStatsComponent } from './my-profile/Stats/player-stats/player-stats.component';
 
 @NgModule({
   declarations: [
@@ -135,10 +149,25 @@ import { PowerBallGameTheoryComponent } from './games/state/Florida/power-ball-g
     PowerBallRulesAndOddsComponent,
     PowerBallRulesComponent,
     PowerBallOddsComponent,
-    PowerBallGameTheoryComponent
+    PowerBallGameTheoryComponent,
+    CreateLuckyNumberComponent,
+    LuckyListComponent,
+    PlayerStatsComponent,
+
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  imports: [BrowserModule,
+            AppRoutingModule,
+            FormsModule,
+            BrowserAnimationsModule,
+            MatInputModule,
+            MatCardModule,
+            MatButtonModule,
+            MatExpansionModule,
+            HttpClientModule
+          ],
+
+
+            providers: [LuckyNumberPostService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

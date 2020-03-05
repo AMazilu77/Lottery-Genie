@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { NumberGenService } from '../../../../services/number-gen.service';
-
 
 @Component({
   selector: 'app-my-profile',
@@ -9,14 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./my-profile.component.scss']
 })
 export class MyProfileComponent implements OnInit {
+  constructor(private router: Router) { }
+
 
 
   back() {
     this.router.navigate(['/dashBoard']);
   }
-  constructor(private router: Router) { }
 
   ngOnInit() {
   }
-
 }

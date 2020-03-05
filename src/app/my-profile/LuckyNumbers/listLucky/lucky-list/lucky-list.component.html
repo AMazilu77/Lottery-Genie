@@ -1,0 +1,19 @@
+
+
+  <br>
+  <br>
+  <mat-accordion *ngIf="posts.length > 0">
+    <mat-expansion-panel  *ngFor="let post of posts">
+      <mat-expansion-panel-header>
+        {{post.numberSelected}}
+      </mat-expansion-panel-header>
+       {{post.reasoning}}
+       <mat-action-row>
+       <a hidden mat-button color='accent' [routerLink]="['/edit', 'post.id']">Edit </a>
+        <button mat-button color='warn' (click)='onDelete(post.id)'>Delete </button>
+        </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <p class="info-text mat-body-1" *ngIf="posts.length <= 0"> No lucky numbers saved yet! </p>
+
