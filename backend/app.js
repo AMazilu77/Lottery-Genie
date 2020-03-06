@@ -6,11 +6,11 @@ const mongoose = require('mongoose');
 const LuckPostSchema = require('../models/Luckpost');
 const chalk = require('chalk')
 
-mongoose.connect(process.env.AWSONLINE).then(() => {
-  console.log(chalk.magenta('Djinn has connected to the AWS database'));
-}).catch(() => {
-  console.log('Connection to AWS - Mongo database failed! The Djinn Summoning has failed! NOW ITS FREE!! FIX THIS!!!')
-});
+// mongoose.connect(process.env.AWSONLINE).then(() => {
+//   console.log(chalk.magenta('Djinn has connected to the AWS database'));
+// }).catch(() => {
+//   console.log('Connection to AWS - Mongo database failed! The Djinn Summoning has failed! NOW ITS FREE!! FIX THIS!!!')
+// });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
