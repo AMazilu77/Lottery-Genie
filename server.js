@@ -7,12 +7,12 @@ const cors = require('cors');
 const http = require('http');
 const app = require('./backend/app');
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 const server = http.createServer(app)
 
 app.set('port,', port);
 
-server.listen(port)
+// server.listen(port)
 
 mongoose.connect(process.env.AWSONLINE).then(() => {
   console.log(chalk.magenta('Djinn has connected to the AWS database'));
