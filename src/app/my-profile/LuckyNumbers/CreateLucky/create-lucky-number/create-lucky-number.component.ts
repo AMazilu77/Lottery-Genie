@@ -11,18 +11,22 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./create-lucky-number.component.scss']
 })
 export class CreateLuckyNumberComponent implements OnInit {
+
+  enteredValue = '';
+  enteredReason = '';
+  post: LuckyNumberModel;
+  isLoading = false;
+  private mode = 'create';
+  private postId: string;
+
   constructor(
     public luckyNumberService: LuckyNumberPostService,
     public route: ActivatedRoute
   ) {}
 
-  enteredValue = '';
-  enteredReason = '';
-  post: LuckyNumberModel;
 
-  isLoading = false;
-  private mode = 'create';
-  private postId: string;
+
+
   // postCreated = new EventEmitter<LuckyNumberModel>();
 
   ngOnInit() {
@@ -31,11 +35,13 @@ export class CreateLuckyNumberComponent implements OnInit {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       // check to see if the URL has a post ID
       if (paramMap.has('postId')) {
+        console.log('paramMap has found the postID');
         this.mode = 'edit';
         // extract post ID
         this.postId = paramMap.get('postId');
-        this.isLoading = true;
+        // this.isLoading = true;
         this.post = this.luckyNumberService.getPost(this.postId);
+        console.log('the post id from ng on in it is:', this.postId);
         // fetch information about the post we are editing from the post service
         // this.luckyNumberService.getPost(this.postId).subscribe(postData => {
         //   this.isLoading = false;
@@ -43,6 +49,7 @@ export class CreateLuckyNumberComponent implements OnInit {
         // });
       } else {
         this.mode = 'create';
+        console.log('paramMap has NOT found the postID');
         this.postId = null;
       }
     });

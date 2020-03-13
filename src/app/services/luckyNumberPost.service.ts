@@ -60,6 +60,7 @@ export class LuckyNumberPostService {
   getPost(id: string) {
     // return a new object clone of the object returning
     return {...this.posts.find(p => p.id === id)};
+
     // return this.http.get<{ _id: string; numberSelected: number; reasoning: string }>(
     //   'http://localhost:3000/api/posts/' + id
     // );
@@ -68,7 +69,7 @@ export class LuckyNumberPostService {
 
 
   addPost(numberSelected: number, reasoning: string) {
-    const post: LuckyNumberModel = { id: null, numberSelected, reasoning };
+    const post: LuckyNumberModel = { id: null, numberSelected: numberSelected, reasoning: reasoning };
     this.http
       .post<{ message: string; postId: string }>(
         'http://localhost:3000/api/posts',
@@ -77,6 +78,7 @@ export class LuckyNumberPostService {
       .subscribe(responseData => {
         const id = responseData.postId;
         post.id = id;
+        console.log('post id is: ', id);
         this.posts.push(post);
         this.postsUpdated.next([...this.posts]);
         this.router.navigate(['/profile']);
@@ -86,7 +88,7 @@ export class LuckyNumberPostService {
 
   updatePost(id: string, numberSelected: number, reasoning: string) {
 
-    const post: LuckyNumberModel = { id, numberSelected, reasoning };
+    const post: LuckyNumberModel = { id: id, numberSelected: numberSelected, reasoning: reasoning };
     this.http
       .put('http://localhost:3000/api/posts/' + id, post)
       .subscribe(response => console.log(response));
@@ -116,9 +118,9 @@ export class LuckyNumberPostService {
   }
 
   // spread operator pulls out all the properties of an object and puts them into a new object
-  getLuckyNumberPost(id: string) {
-    return { ...this.posts.find(p => p.id === id) };
-  }
+  // getLuckyNumberPost(id: string) {
+  //   return { ...this.posts.find(p => p.id === id) };
+  // }
 
 }
 

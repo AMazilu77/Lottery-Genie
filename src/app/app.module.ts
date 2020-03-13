@@ -87,6 +87,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule, MatCardModule, MatButtonModule, MatExpansionModule } from '@angular/material';
 import { PlayerStatsComponent } from './my-profile/Stats/player-stats/player-stats.component';
+import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit-luck/edit-luck.component';
 
 @NgModule({
   declarations: [
@@ -153,6 +154,7 @@ import { PlayerStatsComponent } from './my-profile/Stats/player-stats/player-sta
     CreateLuckyNumberComponent,
     LuckyListComponent,
     PlayerStatsComponent,
+    EditLuckComponent,
 
   ],
   imports: [BrowserModule,
