@@ -69,6 +69,7 @@ export class LuckyNumberPostService {
 
 
   addPost(numberSelected: number, reasoning: string) {
+    // tslint:disable-next-line: object-literal-shorthand
     const post: LuckyNumberModel = { id: null, numberSelected: numberSelected, reasoning: reasoning };
     this.http
       .post<{ message: string; postId: string }>(
@@ -88,20 +89,23 @@ export class LuckyNumberPostService {
 
   updatePost(id: string, numberSelected: number, reasoning: string) {
 
+    // tslint:disable-next-line: object-literal-shorthand
     const post: LuckyNumberModel = { id: id, numberSelected: numberSelected, reasoning: reasoning };
     this.http
       .put('http://localhost:3000/api/posts/' + id, post)
-      .subscribe(response => console.log(response));
-
+      .subscribe(response => {
+        const updatedPosts = [...this.posts];
+        const oldPostIndex = updatedPosts.findIndex(p => p.id === post.id);
+        updatedPosts[oldPostIndex] = post;
+        this.posts = updatedPosts;
+        this.postsUpdated.next([...this.posts]);
+      });
+    this.router.navigate(['/profile']);
     // const post: LuckyNumberModel = { id, numberSelected, reasoning };
     // this.http
     //   .put('http://localhost:3000/api/posts/' + id, post)
     //   .subscribe(response => {
-    //     const updatedPosts = [...this.posts];
-    //     const oldPostIndex = updatedPosts.findIndex(p => p.id === post.id);
-    //     updatedPosts[oldPostIndex] = post;
-    //     this.posts = updatedPosts;
-    //     this.postsUpdated.next([...this.posts]);
+
     //     this.router.navigate(['/profile']);
      // });
   }

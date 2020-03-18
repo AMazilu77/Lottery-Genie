@@ -53,19 +53,32 @@ app.get('/api/posts', (req, res, next) => {
     });
 });
 
+// app.get('/api/posts:id', (res, res, next) => {
+//   Post.findById(req.params.id).then(post => {
+//     if (post) {
+
+//     } else {
+//       res.status(404).json({message: "Post not found!!"})
+//     }
+//   })
+// })
+
 app.put("/api/posts/:id", (req, res, next) => {
+  // the new object we want to store
   const post = new LuckPostSchema({
     _id: req.body.id,
     numberSelected: req.body.numberSelected,
     reasoning: req.body.reasoning
   });
+  // update method
   LuckPostSchema.updateOne({
     _id: req.params.id
+    // this new post is the one being logged and saved
   }, post).then(result => {
     console.log(result);
     res.status(200).json({
       message: 'update sucessful Alex'
-    })
+    });
   })
 });
 
