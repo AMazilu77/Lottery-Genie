@@ -4,7 +4,6 @@ import { NgForm } from '@angular/forms';
 import { LuckyNumberPostService } from '../../../../services/luckyNumberPost.service';
 // activated route object gives us important information about the route we're on
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-lucky-number',
@@ -35,16 +34,14 @@ export class CreateLuckyNumberComponent implements OnInit {
         // extract post ID
         this.postId = paramMap.get('postId');
         this.isLoading = true;
-        this.post = this.luckyNumberService.getPost(this.postId);
-
         // fetch information about the post we are editing from the post service
-        // this.luckyNumberService.getPost(this.postId).subscribe(postData => {
-        //   this.isLoading = false;
-        //   this.post = {id: postData._id, numberSelected: postData.numberSelected, reasoning: postData.reasoning};
-        // });
+        this.luckyNumberService.getPost(this.postId).subscribe(postData => {
+          this.isLoading = false;
+         // information coming from the database
+          this.post = {id: postData._id, numberSelected: postData.numberSelected, reasoning: postData.reasoning};
+       });
       } else {
         this.mode = 'create';
-        console.log('paramMap has NOT found the postID');
         this.postId = null;
       }
     });

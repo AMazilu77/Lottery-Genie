@@ -88,15 +88,21 @@ export class NumberGenService {
   cashForLifeGeneratedCashBall;
 
   // FL Lotto variables declared
+  // tslint:disable-next-line: variable-name
   FL_Lottonum1;
+  // tslint:disable-next-line: variable-name
   FL_Lottonum2;
+  // tslint:disable-next-line: variable-name
   FL_Lottonum3;
+  // tslint:disable-next-line: variable-name
   FL_Lottonum4;
+  // tslint:disable-next-line: variable-name
   FL_Lottonum5;
   FL_Lottonum6;
 
   FL_LottoGeneratedNumber1;
   FL_LottoGeneratedNumber2;
+  // tslint:disable-next-line: variable-name
   FL_LottoGeneratedNumber3;
   FL_LottoGeneratedNumber4;
   FL_LottoGeneratedNumber5;
@@ -216,6 +222,7 @@ export class NumberGenService {
     this.luckyMoneyGeneratedNumber3 = this.luckyMoneynum3;
     this.luckyMoneyGeneratedNumber4 = this.luckyMoneynum4;
     this.luckyMoneyGeneratedLuckyBall = this.luckyMoneyLuckyBall;
+    // tslint:disable-next-line: max-line-length
     console.log(this.luckyMoneyGeneratedNumber1, this.luckyMoneyGeneratedNumber2, this.luckyMoneyGeneratedNumber3, this.luckyMoneyGeneratedNumber4);
   }
 

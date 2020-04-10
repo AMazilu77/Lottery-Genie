@@ -85,7 +85,7 @@ import { FormsModule } from '@angular/forms';
 
 // Angular Inputs
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule, MatCardModule, MatButtonModule, MatExpansionModule } from '@angular/material';
+import { MatInputModule, MatCardModule, MatButtonModule, MatExpansionModule, MatProgressSpinnerModule } from '@angular/material';
 import { PlayerStatsComponent } from './my-profile/Stats/player-stats/player-stats.component';
 import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit-luck/edit-luck.component';
 
@@ -165,6 +165,7 @@ import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit
             MatCardModule,
             MatButtonModule,
             MatExpansionModule,
+            MatProgressSpinnerModule,
             HttpClientModule
           ],
 

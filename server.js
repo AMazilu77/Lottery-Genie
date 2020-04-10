@@ -1,79 +1,52 @@
-require('dotenv').config()
+const app = require("./backend/app");
+const debug = require("debug")("node-angular");
+const http = require("http");
 
+const normalizePort = val => {
+  var port = parseInt(val, 10);
 
-const mongoose = require('mongoose')
-const chalk = require('chalk')
-const cors = require('cors');
-const http = require('http');
-const app = require('./backend/app');
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
 
-const port = process.env.PORT || 3000;
-const server = http.createServer(app)
+  if (port >= 0) {
+    // port number
+    return port;
+  }
 
-app.set('port,', port);
+  return false;
+};
 
-// server.listen(port)
+const onError = error => {
+  if (error.syscall !== "listen") {
+    throw error;
+  }
+  const bind = typeof addr === "string" ? "pipe " + addr : "port " + port;
+  switch (error.code) {
+    case "EACCES":
+      console.error(bind + " requires elevated privileges");
+      process.exit(1);
+      break;
+    case "EADDRINUSE":
+      console.error(bind + " is already in use");
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+};
 
-mongoose.connect(process.env.AWSONLINE).then(() => {
-  console.log(chalk.magenta('Djinn has connected to the AWS database'));
-}).catch(() => {
-  console.log('Connection to AWS - Mongo database failed! The Djinn Summoning has failed! NOW ITS FREE!! FIX THIS!!!')
-});
+const onListening = () => {
+  const addr = server.address();
+  const bind = typeof addr === "string" ? "pipe " + addr : "port " + port;
+  debug("Listening on " + bind);
+};
 
+const port = normalizePort(process.env.PORT || "3000");
+app.set("port", port);
 
-
-
-
-
-// old express app code that was mixed into the server.js file
-
-// const User = require('./models/User');
-// const MegaWinners = require('./models/winningNumbersModel');
-// const router = require('./routes/index');
-
-// app.use(bodyParser.urlencoded({
-//   extended: false
-// }));
-// app.use(router);
-// app.use(bodyParser.json());
-// // Serve only the static files form the dist directory
-// app.use(express.static(__dirname + '/dist/The-Lottery-Djinni'));
-// app.set('view engine', 'hbs');
-// hbs.registerPartials(__dirname + '/views/partials')
-// app.get('/*', function (req, res) {
-
-//   res.sendFile(path.join(__dirname + '/dist/The-Lottery-Djinni/index.html'));
-// });
-
-// app.use('/', router);
-
-
-
-// DB
-
-// Local DB connection code
-// mongoose.Promise = Promise;
-// mongoose
-//   .connect(process.env.LOCALDB, {
-//     useNewUrlParser: true
-//   })
-//   .then(() => {
-//     console.log(chalk.magenta('The Djinn has Connected to Mongo!'))
-//   }).catch(err => {
-//     console.error('Error connecting to mongo', err)
-//   });
-
-
-// Online Database connection
-// mongoose.Promise = Promise;
-// mongoose.connect(process.env.MONGODB_URI || 3000)
-//   .then(() => {
-//     console.log('Connected to Mongo!')
-//   }).catch(err => {
-//     console.error('Error connecting to mongo', err)
-//   });
-
-//// Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 3000, function () {
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
+const server = http.createServer(app);
+server.on("error", onError);
+server.on("listening", onListening);
+server.listen(port);
