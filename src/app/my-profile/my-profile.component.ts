@@ -15,6 +15,10 @@ export class MyProfileComponent implements OnInit {
     this.router.navigate(['/dashBoard']);
   }
 
+  // createLuck() {
+  //   this.router.navigate(['/create']);
+  // }
+
   ngOnInit() {
   }
 }

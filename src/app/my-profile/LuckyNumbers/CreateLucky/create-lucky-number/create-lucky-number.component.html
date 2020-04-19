@@ -1,6 +1,7 @@
 
 
 <mat-card>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
 <form (submit)="onSaveLuck(luckForm)" #luckForm='ngForm' *ngIf="!isLoading">
 
     <mat-form-field>
@@ -26,4 +27,6 @@
     <button mat-button color='primary' type="submit"> Save </button>
   </form>
 </mat-card>
+
+
 

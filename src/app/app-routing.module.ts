@@ -30,6 +30,7 @@ import { Pick5RulesAndOddsComponent } from './games/state/Florida/flpick5-gen/pi
 import { LuckyMoneyRulesAndOddsComponent } from './games/state/Florida/fl-lucky-money-gen/lucky-money-rules-and-odds/lucky-money-rules-and-odds.component';
 
 import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLucky/create-lucky-number/create-lucky-number.component';
+import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit-luck/edit-luck.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'profile', component: MyProfileComponent },
   { path: 'create', component: CreateLuckyNumberComponent },
   { path: 'edit/:postId', component: CreateLuckyNumberComponent },
+  { path: 'edit2/:postId', component: EditLuckComponent },
 
   // where to pick state
   { path: 'LotteryNumberGenMainPage', component: LotteryNumberGenMainPageComponent },
