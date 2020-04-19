@@ -57,16 +57,18 @@ export class CreateLuckyNumberComponent implements OnInit {
         form.value.numberSelected,
         form.value.reasoning
       );
+
     } else {
       this.luckyNumberService.updatePost(
         this.postId,
         form.value.numberSelected,
         form.value.reasoning
       );
-
+      form.resetForm();
     }
-    form.resetForm();
   }
+
+
 
   // onSaveLuck(form: NgForm) {
   //   if (form.invalid) {

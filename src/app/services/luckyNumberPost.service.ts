@@ -66,7 +66,7 @@ export class LuckyNumberPostService {
         console.log('post id is: ', id);
         this.posts.push(post);
         this.postsUpdated.next([...this.posts]);
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/dashBoard']);
       });
   }
 
