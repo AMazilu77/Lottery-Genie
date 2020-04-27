@@ -1,0 +1,60 @@
+ // A MIME type is a label used to identify a type of data.
+ // It is used so software can know how to handle the data.
+ //  It serves the same purpose on the Internet that file extensions do on Microsoft Windows.
+
+import { AbstractControl } from '@angular/forms';
+import { Observable, Observer, of } from 'rxjs';
+// get value of control from file, read it, then check for mime type of file, validator is just a function
+// square brackets here indicate dynamic property name
+export const mimeType = (
+  control: AbstractControl
+): Promise<{ [key: string]: any }> | Observable<{ [key: string]: any }> => {
+  if (typeof(control.value) === 'string') {
+    return of(null);
+  }
+  const file = control.value as File;
+  const fileReader = new FileReader();
+
+  // must subscribe to either promise or observable, here we create  our own observable from scratch, static create method
+  // observable takes function as arguement that gets an observer passed in by rxjs
+  // the observer is a tool used to control when observable emits new data
+  const frObs = Observable.create(
+    (observer: Observer<{ [key: string]: any }>) => {
+      fileReader.addEventListener('loadend', () => {
+            // creates a new array of 8 bit unsigned integers, as a way to allow us access or
+       // read certain patterns in pattern and meta data to parse mime type
+        const arr = new Uint8Array(fileReader.result as ArrayBuffer).subarray(0, 4);
+        let header = '';
+        let isValid = false;
+          // building string of hexidecimal values
+        // tslint:disable-next-line: prefer-for-of
+        for (let i = 0; i < arr.length; i++) {
+          header += arr[i].toString(16);
+        }
+        switch (header) {
+          case '89504e47':
+            isValid = true;
+            break;
+          case 'ffd8ffe0':
+          case 'ffd8ffe1':
+          case 'ffd8ffe2':
+          case 'ffd8ffe3':
+          case 'ffd8ffe8':
+            isValid = true;
+            break;
+          default:
+            isValid = false; // Or you can use the blob.type as fallback
+            break;
+        }
+        if (isValid) {
+          observer.next(null);
+        } else {
+          observer.next({ invalidMimeType: true });
+        }
+        observer.complete();
+      });
+      fileReader.readAsArrayBuffer(file);
+    }
+  );
+  return frObs;
+};
