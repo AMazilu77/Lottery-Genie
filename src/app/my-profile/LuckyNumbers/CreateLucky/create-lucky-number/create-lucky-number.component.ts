@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LuckyNumberModel } from '../../luckNumbers.model';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LuckyNumberPostService } from '../../../../services/luckyNumberPost.service';
 // activated route object gives us important information about the route we're on
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -15,6 +15,8 @@ export class CreateLuckyNumberComponent implements OnInit {
   enteredReason = '';
   post: LuckyNumberModel;
   isLoading = false;
+  // top level object for a form
+  form: FormGroup;
   private mode = 'create';
   private postId: string;
 
@@ -26,6 +28,15 @@ export class CreateLuckyNumberComponent implements OnInit {
   // postCreated = new EventEmitter<LuckyNumberModel>();
 
   ngOnInit() {
+    // initialize form group right off the bat
+    this.form = new FormGroup({
+      // validators is an array of validators we want to add, first value nulll, is starting value
+      // tslint:disable-next-line: object-literal-key-quotes
+      'numberSelected': new FormControl(null, {validators: [Validators.required, Validators.minLength(1)]
+      }),
+      // tslint:disable-next-line: object-literal-key-quotes
+      'reasoning': new FormControl(null)
+    });
     // find out if we have a postId paramater using built-in paramMap observable
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       // check to see if the URL has a post ID
@@ -38,7 +49,13 @@ export class CreateLuckyNumberComponent implements OnInit {
         this.luckyNumberService.getPost(this.postId).subscribe(postData => {
           this.isLoading = false;
          // information coming from the database
-          this.post = {id: postData._id, numberSelected: postData.numberSelected, reasoning: postData.reasoning};
+          this.post = {id: postData._id, numberSelected: postData.numberSelected, reasoning: postData.reasoning
+          };
+          this.form.setValue({
+           // tslint:disable-next-line:object-literal-key-quotes
+           'numberSelected': this.post.numberSelected,
+           // tslint:disable-next-line: object-literal-key-quotes
+           'reasoning': this.post.reasoning});
        });
       } else {
         this.mode = 'create';
@@ -47,24 +64,24 @@ export class CreateLuckyNumberComponent implements OnInit {
     });
   }
 
-  onSaveLuck(form: NgForm) {
-    if (form.invalid) {
+  onSaveLuck() {
+    if (this.form.invalid) {
       return;
     }
     this.isLoading = true;
     if (this.mode === 'create') {
       this.luckyNumberService.addPost(
-        form.value.numberSelected,
-        form.value.reasoning
+        this.form.value.numberSelected,
+        this.form.value.reasoning
       );
 
     } else {
       this.luckyNumberService.updatePost(
         this.postId,
-        form.value.numberSelected,
-        form.value.reasoning
+        this.form.value.numberSelected,
+        this.form.value.reasoning
       );
-      form.resetForm();
+      this.form.reset();
     }
   }
 

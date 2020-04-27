@@ -81,7 +81,7 @@ import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLuck
 import { LuckyListComponent } from './my-profile/LuckyNumbers/listLucky/lucky-list/lucky-list.component';
 import { LuckyNumberModel } from './my-profile/LuckyNumbers/luckNumbers.model';
 // Modules
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Angular Inputs
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -159,7 +159,7 @@ import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit
   ],
   imports: [BrowserModule,
             AppRoutingModule,
-            FormsModule,
+            ReactiveFormsModule,
             BrowserAnimationsModule,
             MatInputModule,
             MatCardModule,
