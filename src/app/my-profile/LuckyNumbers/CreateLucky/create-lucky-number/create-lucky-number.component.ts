@@ -17,6 +17,7 @@ export class CreateLuckyNumberComponent implements OnInit {
   isLoading = false;
   // top level object for a form
   form: FormGroup;
+  imagePreview: string;
   private mode = 'create';
   private postId: string;
 
@@ -72,8 +73,12 @@ export class CreateLuckyNumberComponent implements OnInit {
     this.form.patchValue({image: file});
     // informs angular the value has been changes and need to be re-evaluated and is valid
     this.form.get('image').updateValueAndValidity();
-    console.log(file);
-    console.log(this.form);
+    // convert to data url which is a data  that can be used by image tag
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
   }
 
 
