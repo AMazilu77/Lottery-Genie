@@ -35,7 +35,9 @@ export class CreateLuckyNumberComponent implements OnInit {
       'numberSelected': new FormControl(null, {validators: [Validators.required, Validators.minLength(1)]
       }),
       // tslint:disable-next-line: object-literal-key-quotes
-      'reasoning': new FormControl(null)
+      'reasoning': new FormControl(null),
+      // tslint:disable-next-line: object-literal-key-quotes
+      'image': new FormControl(null),
     });
     // find out if we have a postId paramater using built-in paramMap observable
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -63,6 +65,17 @@ export class CreateLuckyNumberComponent implements OnInit {
       }
     });
   }
+
+
+  onImagePick(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({image: file});
+    // informs angular the value has been changes and need to be re-evaluated and is valid
+    this.form.get('image').updateValueAndValidity();
+    console.log(file);
+    console.log(this.form);
+  }
+
 
   onSaveLuck() {
     if (this.form.invalid) {

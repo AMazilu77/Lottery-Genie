@@ -16,8 +16,8 @@
     </mat-form-field>
 
     <div>
-      <button mat-stroked-button type='button' (click)='pickFile.click()' >  Pick Image </button>
-      <input type='file' #pickFile>
+      <button mat-stroked-button type='button' (click)='pickFile.click()'>  Pick Image </button>
+      <input type='file' #pickFile (change)='onImagePick($event)'>
     </div>
 
     <mat-form-field>
