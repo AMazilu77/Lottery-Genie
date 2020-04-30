@@ -22,11 +22,16 @@ export const mimeType = (
     (observer: Observer<{ [key: string]: any }>) => {
       fileReader.addEventListener('loadend', () => {
             // creates a new array of 8 bit unsigned integers, as a way to allow us access or
-       // read certain patterns in pattern and meta data to parse mime type
+       // read certain patterns in pattern and meta data to parse mime type we dont just want to check extension
+       // we want to infer file type by looking into the file and Uint arrow allows us to do this,
+       // also why we wrap it in there as an array buffer because we can concert it
         const arr = new Uint8Array(fileReader.result as ArrayBuffer).subarray(0, 4);
         let header = '';
+        // asssume file is not valid here change to true if it is valid
         let isValid = false;
           // building string of hexidecimal values
+        // tslint:disable-next-line: prefer-for-of
+        // to really get the file type we need to read the pattern with a for loop
         // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < arr.length; i++) {
           header += arr[i].toString(16);
@@ -47,10 +52,13 @@ export const mimeType = (
             break;
         }
         if (isValid) {
+          // call observer next emit new value from observer of null, have to return (omit in observable)
+          // null if it is valid
           observer.next(null);
         } else {
           observer.next({ invalidMimeType: true });
         }
+        // let any subscribers know we are done
         observer.complete();
       });
       fileReader.readAsArrayBuffer(file);

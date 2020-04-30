@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { LuckyNumberModel } from '../../luckNumbers.model';
+import { LuckyNumberModels } from '../../luckyNumberPost.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LuckyNumberPostService } from '../../../../services/luckyNumberPost.service';
 // activated route object gives us important information about the route we're on
 import { ActivatedRoute, ParamMap } from '@angular/router';
-
+import { mimeType } from './mime-type.validator';
 @Component({
   selector: 'app-create-lucky-number',
   templateUrl: './create-lucky-number.component.html',
@@ -13,10 +13,12 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 export class CreateLuckyNumberComponent implements OnInit {
   enteredValue = '';
   enteredReason = '';
-  post: LuckyNumberModel;
+  post: LuckyNumberModels;
   isLoading = false;
+
   // top level object for a form
   form: FormGroup;
+
   imagePreview: string;
   private mode = 'create';
   private postId: string;
@@ -33,12 +35,15 @@ export class CreateLuckyNumberComponent implements OnInit {
     this.form = new FormGroup({
       // validators is an array of validators we want to add, first value nulll, is starting value
       // tslint:disable-next-line: object-literal-key-quotes
-      'numberSelected': new FormControl(null, {validators: [Validators.required, Validators.minLength(1)]
+      numberSelected: new FormControl(null, {validators: [Validators.required, Validators.minLength(1)]
       }),
       // tslint:disable-next-line: object-literal-key-quotes
-      'reasoning': new FormControl(null),
+      reasoning: new FormControl(null),
       // tslint:disable-next-line: object-literal-key-quotes
-      'image': new FormControl(null),
+      image: new FormControl(null, {
+        // validators: [Validators.required],
+        asyncValidators: [mimeType]
+      })
     });
     // find out if we have a postId paramater using built-in paramMap observable
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -52,7 +57,7 @@ export class CreateLuckyNumberComponent implements OnInit {
         this.luckyNumberService.getPost(this.postId).subscribe(postData => {
           this.isLoading = false;
          // information coming from the database
-          this.post = {id: postData._id, numberSelected: postData.numberSelected, reasoning: postData.reasoning
+          this.post = {id: postData._id, numberSelected: postData.numberSelected, reasoning: postData.reasoning, imagePath: null
           };
           this.form.setValue({
            // tslint:disable-next-line:object-literal-key-quotes
@@ -90,7 +95,8 @@ export class CreateLuckyNumberComponent implements OnInit {
     if (this.mode === 'create') {
       this.luckyNumberService.addPost(
         this.form.value.numberSelected,
-        this.form.value.reasoning
+        this.form.value.reasoning,
+        this.form.value.image
       );
 
     } else {
