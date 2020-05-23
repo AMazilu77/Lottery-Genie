@@ -6,7 +6,7 @@ const router = express.Router();
 
 // mime type helper, maps mimetype and which extensons they would be.
 const MIME_TYPE_MAP = {
-  'img/png': 'png',
+  'image/png': 'png',
   'image/jpeg': 'jpg',
   'image/jpg': 'jpg'
 };
@@ -28,49 +28,69 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     // formating
-    const name = file.originalname.toLowerCase().split(' ').join('-');
+    const name = file.originalname
+    .toLowerCase()
+    .split(' ')
+    .join('-');
     // extract extension
     const ext = MIME_TYPE_MAP[file.mimetype];
-    cb(null, name + '-' + Date.now() + '.' + ext );
+    cb(null, name + '-' + Date.now() + '.' + ext);
   }
 });
 
+// create post DONE
+
 // single means multer is expecting a single file, pass a javascript objefct with a property for storage,
 // which then takes the storage confirguration
-router.post("", multer({storage: storage}).single('image'),(req, res, next) => {
-  // constructs url to the server
-  const url = req.protocol + '://' + req.get('host');
-  const post = new LuckyNumberPostSchema({
-    numberSelected: req.body.numberSelected,
-    reasoning: req.body.reasoning,
-    imagePath: url + '/images/' + req.file.filename
-  });
-  post.save().then(createdPost => {
-    res.status(201).json({
-      message: "Post added successfully Alex - this is from the post.js file !",
-      post: {
-       id: createdPost._id,
-      //  numberSelected: createdPost.numberSelected,
-      //  reasoning: createdPost.reasoning,
-      //  imagePath: createdPost.imagePath
-
-       ...createdPost,
-       id: createdPost._id
-       }
+router.post("",
+  multer({storage: storage}).single('image'),
+    (req, res, next) => {
+      // constructs url to the server
+        const url = req.protocol + '://' + req.get('host');
+        const post = new LuckyNumberPostSchema({
+          numberSelected: req.body.numberSelected,
+          reasoning: req.body.reasoning,
+          imagePath: url + '/images/' + req.file.filename
+      });
+    post.save().then(createdPost => {
+      res.status(201).json({
+        message: "Post added successfully Alex - this is from the post.js file !",
+        post: {
+        // id: createdPost._id,
+        //  numberSelected: createdPost.numberSelected,
+        //  reasoning: createdPost.reasoning,
+        //  imagePath: createdPost.imagePath
+        ...createdPost,
+        id: createdPost._id
+        }
+      });
     });
-  });
-});
+  }
+);
 
-router.put("/:id", (req, res, next) => {
-  const post = new LuckyNumberPostSchema({
-    _id: req.body.id,
-    numberSelected: req.body.numberSelected,
-    reasoning: req.body.reasoning
-  });
-  LuckyNumberPostSchema.updateOne({ _id: req.params.id }, post).then(result => {
-    res.status(200).json({ message: "Update successful from the post.js file!" });
-  });
-});
+
+// Edit route Post done for adding images and editing images
+router.put("/:id",
+    multer({ storage: storage }).single("image"),
+  (req, res, next) => {
+    let imagePath = req.body.imagePath;
+    if (req.file) {
+      const url = req.protocol + "://" + req.get("host");
+      imagePath = url + "/images/" + req.file.filename
+    }
+    const post = new LuckyNumberPostSchema({
+      _id: req.body.id,
+      numberSelected: req.body.numberSelected,
+      reasoning: req.body.reasoning,
+      imagePath: imagePath
+    });
+    console.log(post);
+    LuckyNumberPostSchema.updateOne({ _id: req.params.id }, post).then(result => {
+      res.status(200).json({ message: "Update successful from the post.js file!" });
+    });
+  }
+);
+
 
 router.get("", (req, res, next) => {
   LuckyNumberPostSchema.find().then(documents => {
@@ -81,6 +101,8 @@ router.get("", (req, res, next) => {
   });
 });
 
+
+// get specific post id done
 router.get("/:id", (req, res, next) => {
   LuckyNumberPostSchema.findById(req.params.id).then(post => {
     if (post) {
@@ -91,6 +113,8 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
+
+// delete route done
 router.delete("/:id", (req, res, next) => {
   LuckyNumberPostSchema.deleteOne({ _id: req.params.id }).then(result => {
     console.log(result);

@@ -16,8 +16,8 @@ export class LuckyNumberPostService {
     this.http
       .get<{ message: string; posts: any }>('http://localhost:3000/api/posts')
       .pipe(
-        map((postData) => {
-          return postData.posts.map((post) => {
+        map(postData => {
+          return postData.posts.map(post => {
             return {
               numberSelected: post.numberSelected,
               reasoning: post.reasoning,
@@ -27,7 +27,7 @@ export class LuckyNumberPostService {
           });
         })
       )
-      .subscribe((transformedPosts) => {
+      .subscribe(transformedPosts => {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
       });
@@ -44,7 +44,9 @@ export class LuckyNumberPostService {
       _id: string;
       numberSelected: string;
       reasoning: string;
-    }>('http://localhost:3000/api/posts/' + id);
+      imagePath: string;
+    }>('http://localhost:3000/api/posts/' + id
+    );
   }
 
 
@@ -62,7 +64,7 @@ export class LuckyNumberPostService {
         'http://localhost:3000/api/posts',
         postData
       )
-      .subscribe((responseData) => {
+      .subscribe(responseData => {
         // tslint:disable-next-line: no-shadowed-variable
         // tslint:disable-next-line: no-shadowed-variable
         const post: LuckyNumberModels = {
@@ -83,26 +85,37 @@ export class LuckyNumberPostService {
 
   // **** UPDATE LUCKY NUMBER POST FUNCTION - changed number selected to string ***
 
-  updatePost(id: string, numberSelected: string, reasoning: string) {
-    // tslint:disable-next-line: object-literal-shorthand
-    const post: LuckyNumberModels = {
-      // tslint:disable-next-line: object-literal-shorthand
-      id: id,
-      // tslint:disable-next-line: object-literal-shorthand
-      numberSelected: numberSelected,
-      // tslint:disable-next-line: object-literal-shorthand
-      reasoning: reasoning,
-      imagePath: null
-    };
+  updatePost(id: string, numberSelected: string, reasoning: string,  image: File | string) {
+    let postData: LuckyNumberModels | FormData;
+    if (typeof image === "object") {
+      postData = new FormData();
+      postData.append("id", id);
+      postData.append("numberSelected", numberSelected);
+      postData.append("reasoning", reasoning);
+      postData.append("image", image, numberSelected);
+    } else {
+      postData = {
+        id: id,
+        numberSelected: numberSelected,
+        reasoning: reasoning,
+        imagePath: image
+      };
+    }
     this.http
-      .put('http://localhost:3000/api/posts/' + id, post)
-      .subscribe((response) => {
+      .put("http://localhost:3000/api/posts/" + id, postData)
+      .subscribe(response => {
         const updatedPosts = [...this.posts];
-        const oldPostIndex = updatedPosts.findIndex((p) => p.id === post.id);
+        const oldPostIndex = updatedPosts.findIndex(p => p.id === id);
+        const post: LuckyNumberModels = {
+          id: id,
+          numberSelected: numberSelected,
+          reasoning: reasoning,
+          imagePath: ""
+        };
         updatedPosts[oldPostIndex] = post;
         this.posts = updatedPosts;
         this.postsUpdated.next([...this.posts]);
-        this.router.navigate(['/profile']);
+        this.router.navigate(["/profile"]);
       });
   }
 

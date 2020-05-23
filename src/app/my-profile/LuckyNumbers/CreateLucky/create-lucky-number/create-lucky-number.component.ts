@@ -15,10 +15,8 @@ export class CreateLuckyNumberComponent implements OnInit {
   enteredReason = '';
   post: LuckyNumberModels;
   isLoading = false;
-
   // top level object for a form
   form: FormGroup;
-
   imagePreview: string;
   private mode = 'create';
   private postId: string;
@@ -35,13 +33,14 @@ export class CreateLuckyNumberComponent implements OnInit {
     this.form = new FormGroup({
       // validators is an array of validators we want to add, first value nulll, is starting value
       // tslint:disable-next-line: object-literal-key-quotes
-      numberSelected: new FormControl(null, {validators: [Validators.required, Validators.minLength(1)]
+      numberSelected: new FormControl(null, {
+        validators: [Validators.required, Validators.minLength(1)]
       }),
       // tslint:disable-next-line: object-literal-key-quotes
-      reasoning: new FormControl(null),
+      reasoning: new FormControl(null, { validators: [Validators.required] }),
       // tslint:disable-next-line: object-literal-key-quotes
       image: new FormControl(null, {
-        // validators: [Validators.required],
+        validators: [Validators.required],
         asyncValidators: [mimeType]
       })
     });
@@ -57,13 +56,17 @@ export class CreateLuckyNumberComponent implements OnInit {
         this.luckyNumberService.getPost(this.postId).subscribe(postData => {
           this.isLoading = false;
          // information coming from the database
-          this.post = {id: postData._id, numberSelected: postData.numberSelected, reasoning: postData.reasoning, imagePath: null
+          this.post = {
+            id: postData._id,
+            numberSelected: postData.numberSelected,
+            reasoning: postData.reasoning,
+            imagePath: postData.imagePath
           };
           this.form.setValue({
-           // tslint:disable-next-line:object-literal-key-quotes
-           'numberSelected': this.post.numberSelected,
-           // tslint:disable-next-line: object-literal-key-quotes
-           'reasoning': this.post.reasoning});
+            numberSelected: this.post.numberSelected,
+            reasoning: this.post.reasoning,
+            image: this.post.imagePath
+          });    
        });
       } else {
         this.mode = 'create';
@@ -103,44 +106,11 @@ export class CreateLuckyNumberComponent implements OnInit {
       this.luckyNumberService.updatePost(
         this.postId,
         this.form.value.numberSelected,
-        this.form.value.reasoning
-      );
-      this.form.reset();
+        this.form.value.reasoning,
+        this.form.value.image
+      )
     }
+      this.form.reset();
+    
   }
-
-
-
-  // onSaveLuck(form: NgForm) {
-  //   if (form.invalid) {
-  //     return;
-  //   }
-  //   if (this.mode === 'create' ) {
-  //     this.luckyNumberService.addPost(
-  //       form.value.numberSelected,
-  //       form.value.reasoning
-  //     );
-  //   } else {
-  //     this.luckyNumberService.updatePost(this.postId, form.value.numberSelected, form.value.reasoning);
-  //   }
-
-  //   form.resetForm();
-  // }
-
-  // onSavePost(form: NgForm) {
-  //   if (form.invalid) {
-  //     return;
-  //   }
-  //   this.isLoading = true;
-  //   if (this.mode === "create") {
-  //     this.postsService.addPost(form.value.title, form.value.content);
-  //   } else {
-  //     this.postsService.updatePost(
-  //       this.postId,
-  //       form.value.title,
-  //       form.value.content
-  //     );
-  //   }
-  //   form.resetForm();
-  // }
 }
