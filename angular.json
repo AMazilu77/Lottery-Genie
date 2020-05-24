@@ -144,5 +144,8 @@
       }
     }
   },
-  "defaultProject": "The-Lottery-Djinni"
+  "defaultProject": "The-Lottery-Djinni",
+  "cli": {
+    "analytics": false
+  }
 }
