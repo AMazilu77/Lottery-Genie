@@ -79,9 +79,9 @@ import { PowerBallOddsComponent } from './games/state/Florida/power-ball-gen/pow
 import { PowerBallGameTheoryComponent } from './games/state/Florida/power-ball-gen/power-ball-game-theory/power-ball-game-theory.component';
 import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLucky/create-lucky-number/create-lucky-number.component';
 import { LuckyListComponent } from './my-profile/LuckyNumbers/listLucky/lucky-list/lucky-list.component';
-import { LuckyNumberModel } from './my-profile/LuckyNumbers/luckNumbers.model';
+import { LuckyNumberModels } from './my-profile/LuckyNumbers/luckyNumberPost.model';
 // Modules
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Angular Inputs
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -163,7 +163,7 @@ import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit
   ],
   imports: [BrowserModule,
             AppRoutingModule,
-            FormsModule,
+            ReactiveFormsModule,
             BrowserAnimationsModule,
             MatInputModule,
             MatCardModule,

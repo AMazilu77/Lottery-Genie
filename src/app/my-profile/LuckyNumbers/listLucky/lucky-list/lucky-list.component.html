@@ -8,6 +8,9 @@
       <mat-expansion-panel-header>
         {{post.numberSelected}}
       </mat-expansion-panel-header>
+      <div class="post-image">
+        <img [src]='post.imagePath' [alt]='post.title'>
+      </div>
       <p> {{post.reasoning}} </p>
        <mat-action-row>
        <a mat-button color='accent' [routerLink]="['/edit', post.id]">Edit </a>
