@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LuckyNumberModels } from '../../luckyNumberPost.model';
 import { LuckyNumberPostService } from '../../../../services/luckyNumberPost.service';
 import { Subscription } from 'rxjs';
+import { PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-lucky-list',
   templateUrl: './lucky-list.component.html',
@@ -13,6 +14,9 @@ export class LuckyListComponent implements OnInit {
   }
 isLoading = false;
 posts: LuckyNumberModels[] = [];
+totalPosts = 10;
+postsPerPage = 2;
+pageSizeOptions = [1, 2, 5, 10]
 private postsSubscription: Subscription;
 
   ngOnInit() {
@@ -31,6 +35,10 @@ private postsSubscription: Subscription;
     // this.isLoading = false;
     // this.posts = posts;
     // });
+  }
+
+  onChangedPage(pageData: PageEvent) {
+    console.log(pageData)
   }
 
   onDelete(postId: string) {

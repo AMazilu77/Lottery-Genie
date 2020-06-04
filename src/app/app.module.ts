@@ -92,7 +92,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PlayerStatsComponent } from './my-profile/Stats/player-stats/player-stats.component';
 import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit-luck/edit-luck.component';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -170,7 +170,8 @@ import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit
             MatButtonModule,
             MatExpansionModule,
             MatProgressSpinnerModule,
-            HttpClientModule
+            HttpClientModule,
+            MatPaginatorModule
           ],
 
 
