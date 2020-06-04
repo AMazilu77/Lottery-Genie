@@ -11,7 +11,11 @@ mat-expansion-panel {
 }
 
 mat-paginator {
-  margin-top: 1rem;
+  margin-top: 2rem;
+  height: 10%;
+  width: 80%;
+  margin: auto;
+  background-color: rgb(107, 107, 107);
 }
 
 .post-image {

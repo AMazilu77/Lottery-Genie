@@ -17,8 +17,8 @@
         <button mat-button color='warn' (click)='onDelete(post.id)'>Delete </button>
         </mat-action-row>
     </mat-expansion-panel>
+    <mat-paginator [length]='totalPosts' [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)='onChangedPage($event)'> </mat-paginator>
   </mat-accordion>
-  <mat-paginator [legnth]='totalPosts' [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)='onChangedPage($event)'> </mat-paginator>
 
   <p class="info-text mat-body-1" *ngIf="posts.length <= 0"> No lucky numbers saved yet! </p>
 
