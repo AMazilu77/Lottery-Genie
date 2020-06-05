@@ -16,29 +16,24 @@ isLoading = false;
 posts: LuckyNumberModels[] = [];
 totalPosts = 10;
 postsPerPage = 2;
+currentPage = 1;
 pageSizeOptions = [1, 2, 5, 10]
 private postsSubscription: Subscription;
 
   ngOnInit() {
 
-    this.luckyNumberService.getPosts();
+    this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
     this.postsSubscription = this.luckyNumberService.getPostUpdateListener()
       .subscribe((posts: LuckyNumberModels[]) => {
         this.posts = posts;
       });
-
-    // this.isLoading = true;
-    // this.luckyNumberService.getPosts();
-    // // this is where the observable is made to keep track of new lucky number posts
-    // this.postsSubscription = this.luckyNumberService.getPostUpdateListener()
-    // .subscribe((posts: LuckyNumberModel[]) => {
-    // this.isLoading = false;
-    // this.posts = posts;
-    // });
   }
 
   onChangedPage(pageData: PageEvent) {
-    console.log(pageData)
+    // add one because index starts at 0 on backend
+    this.currentPage = pageData.pageIndex + 1
+    this.postsPerPage= pageData.pageSize;
+    this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
   }
 
   onDelete(postId: string) {
