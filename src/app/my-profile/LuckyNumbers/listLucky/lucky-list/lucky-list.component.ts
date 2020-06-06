@@ -12,21 +12,22 @@ export class LuckyListComponent implements OnInit {
 
   constructor(public luckyNumberService: LuckyNumberPostService ) {
   }
-isLoading = false;
 posts: LuckyNumberModels[] = [];
-totalPosts = 10;
+isLoading = false;
+totalPosts = 0;
 postsPerPage = 2;
 currentPage = 1;
 pageSizeOptions = [1, 2, 5, 10]
 private postsSubscription: Subscription;
 
   ngOnInit() {
-
+    this.isLoading = true;
     this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
     this.postsSubscription = this.luckyNumberService.getPostUpdateListener()
-      .subscribe((posts: LuckyNumberModels[]) => {
+      .subscribe((postData: {posts: LuckyNumberModels[], postCount: number}) => {
         this.isLoading = false;
-        this.posts = posts;
+        this.totalPosts = postData.postCount;
+        this.posts = postData.posts;
       });
   }
 
@@ -39,11 +40,13 @@ private postsSubscription: Subscription;
   }
 
   onDelete(postId: string) {
-    this.luckyNumberService.deletePost(postId);
+    this.isLoading = true;
+    this.luckyNumberService.deletePost(postId).subscribe(() => {
+      this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
+    });
   }
 
   OnDestroy() {
     this.postsSubscription.unsubscribe();
   }
-
 }

@@ -95,16 +95,22 @@ router.put("/:id",
 router.get("", (req, res, next) => {
   const pageSize = +req.query.pagesize;
   const currentPage = +req.query.page;
-  const postQuery = LuckyNumberPostSchema.find();  
+  const postQuery = LuckyNumberPostSchema.find();
+  let fetchedPosts;   
   if (pageSize && currentPage) {
     postQuery
       .skip(pageSize * (currentPage - 1))
       .limit(pageSize);
   }
   postQuery.then(documents => {
+    fetchedPosts = documents;
+    return LuckyNumberPostSchema.count()
+  })
+  .then(count => {
     res.status(200).json({
-      message: "Posts fetched successfully! can you believe it? this is from the posts.js file!",
-      posts: documents
+      message: "Post fetched alright!",
+      posts: fetchedPosts,
+      maxPosts: count
     });
   });
 });
