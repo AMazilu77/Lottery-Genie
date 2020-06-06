@@ -3,7 +3,7 @@
   <br>
   <br>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <mat-accordion *ngIf="posts.length > 0">
+  <mat-accordion multi='true' *ngIf="posts.length > 0 && !isLoading">
     <mat-expansion-panel  *ngFor="let post of posts">
       <mat-expansion-panel-header>
         {{post.numberSelected}}
@@ -17,8 +17,8 @@
         <button mat-button color='warn' (click)='onDelete(post.id)'>Delete </button>
         </mat-action-row>
     </mat-expansion-panel>
-    <mat-paginator [length]='totalPosts' [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)='onChangedPage($event)'> </mat-paginator>
+   
   </mat-accordion>
-
-  <p class="info-text mat-body-1" *ngIf="posts.length <= 0"> No lucky numbers saved yet! </p>
+  <mat-paginator [length]='totalPosts' [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)='onChangedPage($event)' *ngIf="posts.length > 0"> </mat-paginator>
+  <p class="info-text mat-body-1" *ngIf="posts.length <= 0 && !isLoading"> No lucky numbers saved yet! </p>
 

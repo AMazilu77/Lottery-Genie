@@ -25,11 +25,13 @@ private postsSubscription: Subscription;
     this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
     this.postsSubscription = this.luckyNumberService.getPostUpdateListener()
       .subscribe((posts: LuckyNumberModels[]) => {
+        this.isLoading = false;
         this.posts = posts;
       });
   }
 
   onChangedPage(pageData: PageEvent) {
+    this.isLoading = true;
     // add one because index starts at 0 on backend
     this.currentPage = pageData.pageIndex + 1
     this.postsPerPage= pageData.pageSize;
