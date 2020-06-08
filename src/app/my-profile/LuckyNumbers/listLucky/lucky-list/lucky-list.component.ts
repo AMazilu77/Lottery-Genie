@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LuckyNumberModels } from '../../luckyNumberPost.model';
 import { LuckyNumberPostService } from '../../../../services/luckyNumberPost.service';
 import { Subscription } from 'rxjs';
+import { PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-lucky-list',
   templateUrl: './lucky-list.component.html',
@@ -11,34 +12,41 @@ export class LuckyListComponent implements OnInit {
 
   constructor(public luckyNumberService: LuckyNumberPostService ) {
   }
-isLoading = false;
 posts: LuckyNumberModels[] = [];
+isLoading = false;
+totalPosts = 0;
+postsPerPage = 2;
+currentPage = 1;
+pageSizeOptions = [1, 2, 5, 10]
 private postsSubscription: Subscription;
 
   ngOnInit() {
-
-    this.luckyNumberService.getPosts();
+    this.isLoading = true;
+    this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
     this.postsSubscription = this.luckyNumberService.getPostUpdateListener()
-      .subscribe((posts: LuckyNumberModels[]) => {
-        this.posts = posts;
+      .subscribe((postData: {posts: LuckyNumberModels[], postCount: number}) => {
+        this.isLoading = false;
+        this.totalPosts = postData.postCount;
+        this.posts = postData.posts;
       });
+  }
 
-    // this.isLoading = true;
-    // this.luckyNumberService.getPosts();
-    // // this is where the observable is made to keep track of new lucky number posts
-    // this.postsSubscription = this.luckyNumberService.getPostUpdateListener()
-    // .subscribe((posts: LuckyNumberModel[]) => {
-    // this.isLoading = false;
-    // this.posts = posts;
-    // });
+  onChangedPage(pageData: PageEvent) {
+    this.isLoading = true;
+    // add one because index starts at 0 on backend
+    this.currentPage = pageData.pageIndex + 1
+    this.postsPerPage= pageData.pageSize;
+    this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
   }
 
   onDelete(postId: string) {
-    this.luckyNumberService.deletePost(postId);
+    this.isLoading = true;
+    this.luckyNumberService.deletePost(postId).subscribe(() => {
+      this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
+    });
   }
 
   OnDestroy() {
     this.postsSubscription.unsubscribe();
   }
-
 }
