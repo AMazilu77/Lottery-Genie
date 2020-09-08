@@ -81,7 +81,7 @@ import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLuck
 import { LuckyListComponent } from './my-profile/LuckyNumbers/listLucky/lucky-list/lucky-list.component';
 import { LuckyNumberModels } from './my-profile/LuckyNumbers/luckyNumberPost.model';
 // Modules
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // Angular Inputs
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -92,6 +92,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PlayerStatsComponent } from './my-profile/Stats/player-stats/player-stats.component';
 import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit-luck/edit-luck.component';
+import { loginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -159,11 +160,13 @@ import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit
     LuckyListComponent,
     PlayerStatsComponent,
     EditLuckComponent,
+    loginComponent
 
   ],
   imports: [BrowserModule,
             AppRoutingModule,
             ReactiveFormsModule,
+            FormsModule,
             BrowserAnimationsModule,
             MatInputModule,
             MatCardModule,
