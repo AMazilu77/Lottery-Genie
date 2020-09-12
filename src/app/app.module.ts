@@ -93,6 +93,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PlayerStatsComponent } from './my-profile/Stats/player-stats/player-stats.component';
 import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit-luck/edit-luck.component';
 import { loginComponent } from './auth/login/login.component';
+import { signupComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -160,7 +161,8 @@ import { loginComponent } from './auth/login/login.component';
     LuckyListComponent,
     PlayerStatsComponent,
     EditLuckComponent,
-    loginComponent
+    loginComponent,
+    signupComponent 
 
   ],
   imports: [BrowserModule,

@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const chalk = require('chalk')
 const postsRoutes = require("../routes/posts");
 
-mongoose.connect(process.env.AWSONLINE).then(() => {
+mongoose.connect(process.env.AWSONLINE, { useUnifiedTopology: true, useNewUrlParser: true }).then(() => {
   console.log(chalk.magenta('Djinn has connected to the AWS database'));
 }).catch(() => {
   console.log('Connection to AWS - Mongo database failed! The Djinn Summoning has failed! NOW ITS FREE!! FIX THIS!!!')
