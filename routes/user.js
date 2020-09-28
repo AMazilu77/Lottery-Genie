@@ -1,11 +1,10 @@
 const express = require("express");
-const User = require("../models/User");
+const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 
-router.post("/signup", (req, res, nest) => {
-    bcrypt.hash(req.body.password, 10)
-    .then(hash => {
+router.post("/signup", (req, res, next) => {
+    bcrypt.hash(req.body.password, 10).then(hash => {
         const user = new User({
             email: req.body.email,
             password: hash
@@ -15,17 +14,17 @@ router.post("/signup", (req, res, nest) => {
         // save user to DB
         user.save()
         .then(result => {
-            res.status(201).jason({
+            res.status(201).json({
                 message: 'User created',
                 result: result
-            })
+            });
         })
         .catch(err => {
             res.status(500).json({
                 error: err
-            })
+            });
         });
-    })
+    });
 });
 
 module.exports = router;
