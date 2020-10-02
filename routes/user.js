@@ -29,30 +29,35 @@ router.post("/signup", (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
+    let fetchedUser;
     User.findOne({ email: req.body.email }).then(user => {
         if (!user) {
             return res.status(401).json({
                 message: 'Authentication failed, The Djinn Does not Recognize you'
             });
         }
+        fetchedUser = user;
         return bcrypt.compare(req.body.password, user.password)
     })
     .then(result => {
-        if (result) {
+        if (!result) {
             return res.status(401).json({
                 message: 'Auth Failed'
             });
         }
 
         // sign method creates a new token based on input data of choice
-        const token = jsw.sign({
-            email: user.email,
-            userId: user._id
-
+        const token = jwt.sign({
+            email: fetchedUser.email,
+            userId: fetchedUser._id
+ 
             // PW used to create hash, stored on server and used to validate hash, this is what makes jWTs uncrackable
         },
          'secret_that_should_be_longer_than_this', { expiresIn: "1h"} 
         );
+        res.status(200).json({
+            token: token
+        })
     })
     .catch(err => {
         return res.status(401).json({
