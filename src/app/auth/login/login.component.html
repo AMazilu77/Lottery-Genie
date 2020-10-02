@@ -1,6 +1,7 @@
 
 
 <mat-card>
+  <button mat-button color='primary' (click)='back()' type="submit"> Back </button>
     <mat-spinner *ngIf="isLoading"></mat-spinner>
     <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
     
