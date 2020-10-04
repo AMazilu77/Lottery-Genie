@@ -3,6 +3,7 @@ const multer = require('multer');
 const LuckyNumberPostSchema = require("../models/Luckpost");
 
 const router = express.Router();
+const authChecker = require('../backend/middleware/check-auth');
 
 // mime type helper, maps mimetype and which extensons they would be.
 const MIME_TYPE_MAP = {
@@ -42,7 +43,7 @@ const storage = multer.diskStorage({
 
 // single means multer is expecting a single file, pass a javascript objefct with a property for storage,
 // which then takes the storage confirguration
-router.post("",
+router.post("", authChecker,
   multer({storage: storage}).single('image'),
     (req, res, next) => {
       // constructs url to the server
@@ -70,7 +71,7 @@ router.post("",
 
 
 // Edit route Post done for adding images and editing images
-router.put("/:id",
+router.put("/:id", authChecker,
     multer({ storage: storage }).single("image"),
   (req, res, next) => {
     let imagePath = req.body.imagePath;
@@ -93,6 +94,8 @@ router.put("/:id",
 
 
 router.get("", (req, res, next) => {
+  // const pageSize = +req.query.pagesize;
+  // const currentPage = +req.query.page;
   LuckyNumberPostSchema.find().then(documents => {
     res.status(200).json({
       message: "Posts fetched successfully! can you believe it? this is from the posts.js file!",
@@ -115,7 +118,7 @@ router.get("/:id", (req, res, next) => {
 
 
 // delete route done
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id", authChecker, (req, res, next) => {
   LuckyNumberPostSchema.deleteOne({ _id: req.params.id }).then(result => {
     console.log(result);
     res.status(200).json({ message: "Post deleted!" });

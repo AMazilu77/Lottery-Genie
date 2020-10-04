@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -79,7 +79,7 @@ import { PowerBallOddsComponent } from './games/state/Florida/power-ball-gen/pow
 import { PowerBallGameTheoryComponent } from './games/state/Florida/power-ball-gen/power-ball-game-theory/power-ball-game-theory.component';
 import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLucky/create-lucky-number/create-lucky-number.component';
 import { LuckyListComponent } from './my-profile/LuckyNumbers/listLucky/lucky-list/lucky-list.component';
-import { LuckyNumberModels } from './my-profile/LuckyNumbers/luckyNumberPost.model';
+// import { LuckyNumberModels } from './my-profile/LuckyNumbers/luckyNumberPost.model';
 // Modules
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -94,6 +94,8 @@ import { PlayerStatsComponent } from './my-profile/Stats/player-stats/player-sta
 import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit-luck/edit-luck.component';
 import { loginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
+// import { MatPaginatorModule } from '@angular/material/paginator';
+import { AuthInterceptor } from './auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -162,7 +164,8 @@ import { SignupComponent } from './auth/signup/signup.component';
     PlayerStatsComponent,
     EditLuckComponent,
     loginComponent,
-    SignupComponent 
+    SignupComponent,
+     
 
   ],
   imports: [BrowserModule,
@@ -175,11 +178,11 @@ import { SignupComponent } from './auth/signup/signup.component';
             MatButtonModule,
             MatExpansionModule,
             MatProgressSpinnerModule,
-            HttpClientModule
+            HttpClientModule,
           ],
 
 
-            providers: [LuckyNumberPostService],
+            providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, LuckyNumberPostService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

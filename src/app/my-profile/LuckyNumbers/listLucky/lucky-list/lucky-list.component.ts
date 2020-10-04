@@ -13,6 +13,9 @@ export class LuckyListComponent implements OnInit {
   }
 isLoading = false;
 posts: LuckyNumberModels[] = [];
+totalPosts = 10;
+postsPerPage = 2;
+pageSizeOptions = [1, 2, 5, 10];
 private postsSubscription: Subscription;
 
   ngOnInit() {
