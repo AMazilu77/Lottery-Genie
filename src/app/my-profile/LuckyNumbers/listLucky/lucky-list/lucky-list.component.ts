@@ -18,9 +18,11 @@ totalPosts = 10;
 postsPerPage = 2;
 currentPage = 1;
 pageSizeOptions = [1, 2, 5, 10];
+userIsAuthentic = false;
 private postsSubscription: Subscription;
 private authStatusSub: Subscription;
 
+// set up subscription in oninit runs after authentication
   ngOnInit() {
     this.isLoading = true;
    // this.postsSubscription = this.luckyNumberService
@@ -29,7 +31,10 @@ private authStatusSub: Subscription;
       .subscribe((posts: LuckyNumberModels[]) => {
         this.posts = posts;
       });
-      this.authStatusSub = this.authService.getAuthStatusListener().subscribe()
+      this.userIsAuthentic = this.authService.getIsAuth();
+      this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
+        this.userIsAuthentic = isAuthenticated;
+      })
       this.isLoading = false;
     // this.luckyNumberService.getPosts();
     // // this is where the observable is made to keep track of new lucky number posts
