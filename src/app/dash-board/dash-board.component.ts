@@ -21,7 +21,8 @@ export class DashBoardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.authListenerSubscription = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
+    this.authListenerSubscription = this.authService.getAuthStatusListener()
+    .subscribe(isAuthenticated => {
       this.userIsAuthentic = isAuthenticated;
     });
     // this._DashBoardService.getDash()

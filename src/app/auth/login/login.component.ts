@@ -18,6 +18,8 @@ export class loginComponent {
             return
         } 
         this.authService.login(form.value.email, form.value.password ) 
+        console.log('logged in')
+        this.router.navigate(['/dashBoard']);
     };
 
   back() {
