@@ -31,11 +31,12 @@ private authStatusSub: Subscription;
       .subscribe((posts: LuckyNumberModels[]) => {
         this.posts = posts;
       });
+      this.isLoading = false;
       this.userIsAuthentic = this.authService.getIsAuth();
       this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
         this.userIsAuthentic = isAuthenticated;
       })
-      this.isLoading = false;
+     
     // this.luckyNumberService.getPosts();
     // // this is where the observable is made to keep track of new lucky number posts
     // this.postsSubscription = this.luckyNumberService.getPostUpdateListener()

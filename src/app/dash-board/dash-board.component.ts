@@ -38,6 +38,10 @@ export class DashBoardComponent implements OnInit, OnDestroy {
     //   );
   }
 
+  onLogout() {
+    this.authService.logout();
+  }
+
   ngOnDestroy() {
     this.authListenerSubscription.unsubscribe();
   }
@@ -57,4 +61,5 @@ export class DashBoardComponent implements OnInit, OnDestroy {
   gotoProfile() {
     this.theRouter.navigate(['/profile']);
   }
+
 }

@@ -11,7 +11,7 @@ export class AuthService {
     // this subject will push authentication information to the components interested
     private authStatusListening = new Subject<boolean>();
     private token: string;
-    constructor(private http: HttpClient, router: Router) {}
+    constructor(private http: HttpClient, private router: Router) {}
 
     getToken() {
         return this.token;
@@ -42,7 +42,16 @@ export class AuthService {
             if (token) {
                 this.isAuthenticated = true;
                 this.authStatusListening.next(true);
+               // this.router.navigate(['/dashBoard']);
             }
         });
+    }
+
+    logout() {
+        this.token = null;
+        this.isAuthenticated = false;
+        // pass information
+        this.authStatusListening.next(false)
+        this.router.navigate(['/']);
     }
 }
