@@ -9,8 +9,8 @@ router.post("/signup", (req, res, next) => {
         const user = new User({
             email: req.body.email,
             password: hash
-            // do not ever store passwords like this use bcrypt npm package to encrypt pw data securely
-            // password: req.body.password
+            // use bcrypt npm package to encrypt pw data securely
+            // password: req.body.password  ( <--do not ever store passwords like this!)
         });
         // save user to DB
         user.save()
@@ -53,10 +53,12 @@ router.post('/login', (req, res, next) => {
  
             // PW used to create hash, stored on server and used to validate hash, this is what makes jWTs uncrackable
         },
-         'secret_that_should_be_longer_than_this', { expiresIn: "1h"} 
+         'secret_that_should_be_longer_than_this',
+          { expiresIn: "1h"} 
         );
         res.status(200).json({
-            token: token
+            token: token,
+            expiresIn: 3600
         })
     })
     .catch(err => {
