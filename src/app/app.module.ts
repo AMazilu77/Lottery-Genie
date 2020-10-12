@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -79,9 +79,9 @@ import { PowerBallOddsComponent } from './games/state/Florida/power-ball-gen/pow
 import { PowerBallGameTheoryComponent } from './games/state/Florida/power-ball-gen/power-ball-game-theory/power-ball-game-theory.component';
 import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLucky/create-lucky-number/create-lucky-number.component';
 import { LuckyListComponent } from './my-profile/LuckyNumbers/listLucky/lucky-list/lucky-list.component';
-import { LuckyNumberModels } from './my-profile/LuckyNumbers/luckyNumberPost.model';
+// import { LuckyNumberModels } from './my-profile/LuckyNumbers/luckyNumberPost.model';
 // Modules
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // Angular Inputs
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -93,6 +93,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PlayerStatsComponent } from './my-profile/Stats/player-stats/player-stats.component';
 import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit-luck/edit-luck.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { loginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { AuthInterceptor } from './auth/auth-interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -159,11 +163,15 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     LuckyListComponent,
     PlayerStatsComponent,
     EditLuckComponent,
+    loginComponent,
+    SignupComponent,
+     
 
   ],
   imports: [BrowserModule,
             AppRoutingModule,
             ReactiveFormsModule,
+            FormsModule,
             BrowserAnimationsModule,
             MatInputModule,
             MatCardModule,
@@ -175,7 +183,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
           ],
 
 
-            providers: [LuckyNumberPostService],
+            providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, LuckyNumberPostService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

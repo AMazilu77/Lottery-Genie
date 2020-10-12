@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
+import { Subscription } from 'rxjs';
 
 // import { AuthService } from '../services/auth.service';
 
@@ -9,16 +11,20 @@ import { Router } from '@angular/router';
   templateUrl: './dash-board.component.html',
   styleUrls: ['./dash-board.component.scss']
 })
-export class DashBoardComponent implements OnInit {
-
+export class DashBoardComponent implements OnInit, OnDestroy {
+  userIsAuthentic = false;
+  private authListenerSubscription: Subscription
   DashBoard = [];
 
-  constructor(
-    // injecting auth service
-    private theRouter: Router) { }
+  constructor(private authService: AuthService, private theRouter: Router) { }
 
 
   ngOnInit() {
+    this.userIsAuthentic = this.authService.getIsAuth();
+    this.authListenerSubscription = this.authService.getAuthStatusListener()
+    .subscribe(isAuthenticated => {
+      this.userIsAuthentic = isAuthenticated;
+    });
     // this._DashBoardService.getDash()
     //   .subscribe(
     //     res => this.DashBoard = res,
@@ -30,6 +36,14 @@ export class DashBoardComponent implements OnInit {
     //       }
     //     }
     //   );
+  }
+
+  onLogout() {
+    this.authService.logout();
+  }
+
+  ngOnDestroy() {
+    this.authListenerSubscription.unsubscribe();
   }
 
   gotoWinningNums() {
@@ -47,4 +61,5 @@ export class DashBoardComponent implements OnInit {
   gotoProfile() {
     this.theRouter.navigate(['/profile']);
   }
+
 }

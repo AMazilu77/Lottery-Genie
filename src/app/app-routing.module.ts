@@ -31,6 +31,9 @@ import { LuckyMoneyRulesAndOddsComponent } from './games/state/Florida/fl-lucky-
 
 import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLucky/create-lucky-number/create-lucky-number.component';
 import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit-luck/edit-luck.component';
+import { loginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { AuthGaurd } from './auth/login/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -38,10 +41,12 @@ const routes: Routes = [
   { path: 'home', component: GenieLampHomeComponent },
   { path: 'about', component: MyAboutComponent },
   { path: 'dashBoard', component: DashBoardComponent },
-  { path: 'profile', component: MyProfileComponent },
-  { path: 'create', component: CreateLuckyNumberComponent },
-  { path: 'edit/:postId', component: CreateLuckyNumberComponent },
-  { path: 'edit2/:postId', component: EditLuckComponent },
+  { path: 'profile', component: MyProfileComponent, canActivate: [AuthGaurd] },
+  { path: 'create', component: CreateLuckyNumberComponent, canActivate: [AuthGaurd] },
+  { path: 'edit/:postId', component: CreateLuckyNumberComponent, canActivate: [AuthGaurd] },
+ // { path: 'edit2/:postId', component: EditLuckComponent },
+  { path: 'login', component: loginComponent },
+  { path: 'signup', component: SignupComponent },
 
   // where to pick state
   { path: 'LotteryNumberGenMainPage', component: LotteryNumberGenMainPageComponent },
@@ -74,6 +79,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGaurd]
 })
 export class AppRoutingModule {}

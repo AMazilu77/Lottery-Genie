@@ -12,7 +12,7 @@
         <img [src]='post.imagePath' [alt]='post.title'>
       </div>
       <p> {{post.reasoning}} </p>
-       <mat-action-row>
+       <mat-action-row *ngIf='userIsAuthentic'>
        <a mat-button color='accent' [routerLink]="['/edit', post.id]">Edit </a>
         <button mat-button color='warn' (click)='onDelete(post.id)'>Delete </button>
         </mat-action-row>

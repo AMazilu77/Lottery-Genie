@@ -35,11 +35,11 @@
     <!-- <button type="button" class="btn btn-primary" (click)="gotoNumbersPlayedHistory()"> Let me see the numbers I have
       played</button> -->
     <!-- <button type="button" [disabled]="" class="btn btn-primary">Take a picture of my ticket</button> -->
-    <button type="button" class="btn btn-outline-primary" (click)="gotoWinningNums()"> Let me see the numbers
+    <button type="button" class="btn btn-outline-primary" (click)="gotoWinningNums()"> Show numbers
       that have won </button>
-    <button type="button" class="btn btn-outline-primary" (click)="gotoProfile()"> Let me see my profile </button>
-    <!-- <button type="button" class="btn btn-outline-danger" (click)="_authService.logoutUser()"> Logout</button> -->
-
+    <button  *ngIf="userIsAuthentic"  type="button" class="btn btn-outline-primary" (click)="gotoProfile()"> My profile </button>
+    <button *ngIf="userIsAuthentic" type="button" class="btn btn-outline-danger" (click)="onLogout()"> Logout</button>
+    <button  *ngIf="!userIsAuthentic"  mat-button routerLink="/login" routerLinkActive="mat-accent" type="button" class="btn btn-outline-primary"> Login </button>
   </div>
   <script src='/javascripts/script.js'></script>
 
