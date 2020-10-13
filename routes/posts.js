@@ -94,9 +94,16 @@ router.put("/:id", authChecker,
 
 
 router.get("", (req, res, next) => {
-  // const pageSize = +req.query.pagesize;
-  // const currentPage = +req.query.page;
-  LuckyNumberPostSchema.find().then(documents => {
+  
+  const pageSize = +req.query.pagesize;
+  const currentPage = +req.query.page;
+  const postQuery = LuckyNumberPostSchema.find();
+  if (pageSize && currentPage) {
+    postQuery
+    .skip(pageSize * (currentPage - 1))
+    .limit(pageSize);
+  }
+  postQuery.then(documents => {
     res.status(200).json({
       message: "Posts fetched successfully! can you believe it? this is from the posts.js file!",
       posts: documents

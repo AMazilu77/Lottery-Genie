@@ -94,7 +94,7 @@ import { PlayerStatsComponent } from './my-profile/Stats/player-stats/player-sta
 import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit-luck/edit-luck.component';
 import { loginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-// import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { AuthInterceptor } from './auth/auth-interceptor';
 
 @NgModule({
@@ -178,6 +178,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
             MatButtonModule,
             MatExpansionModule,
             MatProgressSpinnerModule,
+            MatPaginatorModule,
             HttpClientModule,
           ],
 

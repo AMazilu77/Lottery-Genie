@@ -26,24 +26,17 @@ private authStatusSub: Subscription;
   ngOnInit() {
     this.isLoading = true;
    // this.postsSubscription = this.luckyNumberService
-    this.luckyNumberService.getPosts();
+    this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
     this.postsSubscription = this.luckyNumberService.getPostUpdateListener()
       .subscribe((posts: LuckyNumberModels[]) => {
+        this.isLoading = false;
         this.posts = posts;
       });
-      this.isLoading = false;
+      
       this.userIsAuthentic = this.authService.getIsAuth();
       this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
         this.userIsAuthentic = isAuthenticated;
       })
-     
-    // this.luckyNumberService.getPosts();
-    // // this is where the observable is made to keep track of new lucky number posts
-    // this.postsSubscription = this.luckyNumberService.getPostUpdateListener()
-    // .subscribe((posts: LuckyNumberModel[]) => {
-    // this.isLoading = false;
-    // this.posts = posts;
-    // });
   }
 
   onDelete(postId: string) {
