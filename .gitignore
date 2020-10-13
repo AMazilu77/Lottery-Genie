@@ -47,6 +47,6 @@ Thumbs.db
 
 .fake
 .ionide
-backend/images/15-1591334365021.jpg
-backend/images/33-1591331550250.jpg
-backend/images/78-1591331514716.png
+
+# ignore images for github
+/Users/admin/Development/genie-2/Lottery-Genie/backend/images
