@@ -25,12 +25,12 @@ private authStatusSub: Subscription;
 // set up subscription in oninit runs after authentication
   ngOnInit() {
     this.isLoading = true;
-   // this.postsSubscription = this.luckyNumberService
     this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
     this.postsSubscription = this.luckyNumberService.getPostUpdateListener()
-      .subscribe((posts: LuckyNumberModels[]) => {
+      .subscribe((postData: {posts: LuckyNumberModels[], postCount: number}) => {
         this.isLoading = false;
-        this.posts = posts;
+        this.totalPosts = postData.postCount;
+        this.posts = postData.posts;
       });
       
       this.userIsAuthentic = this.authService.getIsAuth();
@@ -40,11 +40,13 @@ private authStatusSub: Subscription;
   }
 
   onDelete(postId: string) {
-    this.luckyNumberService.deletePost(postId);
+    this.isLoading = true;
+    this.luckyNumberService.deletePost(postId).subscribe(() => {
+      this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
+    });
   }
 
   OnDestroy() {
     this.postsSubscription.unsubscribe();
   }
-
 }

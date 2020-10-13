@@ -92,9 +92,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PlayerStatsComponent } from './my-profile/Stats/player-stats/player-stats.component';
 import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit-luck/edit-luck.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { loginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { AuthInterceptor } from './auth/auth-interceptor';
 
 @NgModule({
@@ -180,6 +180,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
             MatProgressSpinnerModule,
             MatPaginatorModule,
             HttpClientModule,
+            MatPaginatorModule
           ],
 
 

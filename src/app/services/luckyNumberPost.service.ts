@@ -8,31 +8,39 @@ import { Router } from '@angular/router';
 @Injectable({ providedIn: 'root' })
 export class LuckyNumberPostService {
   private posts: LuckyNumberModels[] = [];
-  private postsUpdated = new Subject<LuckyNumberModels[]>();
+  private postsUpdated = new Subject<{ posts: LuckyNumberModels[]; postCount: number}>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
   getPosts(postsPerPage: number, currentPage: number) {
-
-    // dynamically add values into a normal string with backticks
-    const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`
+    // js feature allows you to dynamically add values into a normal string with bacticks
+    const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
     this.http
-      .get<{ message: string; posts: any }>('http://localhost:3000/api/posts' + queryParams)
+    // updated post array and max posts
+      .get<{ message: string; posts: any, maxPosts: number }>(
+        'http://localhost:3000/api/posts' + queryParams
+        )
       .pipe(
         map(postData => {
-          return postData.posts.map(post => {
-            return {
-              numberSelected: post.numberSelected,
-              reasoning: post.reasoning,
-              id: post._id,
-              imagePath: post.imagePath
-            };
-          });
+          return { 
+            posts: postData.posts.map(post => {
+              return {
+                numberSelected: post.numberSelected,
+                reasoning: post.reasoning,
+                id: post._id,
+                imagePath: post.imagePath
+              };
+            }),
+            maxPosts: postData.maxPosts
+          };
         })
       )
-      .subscribe(transformedPosts => {
-        this.posts = transformedPosts;
-        this.postsUpdated.next([...this.posts]);
+      .subscribe(transformedPostData => {
+        this.posts = transformedPostData.posts;
+        this.postsUpdated.next({ 
+          posts: [...this.posts], 
+          postCount: transformedPostData.maxPosts
+        });
       });
   }
 
@@ -68,20 +76,6 @@ export class LuckyNumberPostService {
         postData
       )
       .subscribe(responseData => {
-        // tslint:disable-next-line: no-shadowed-variable
-        // tslint:disable-next-line: no-shadowed-variable
-        const post: LuckyNumberModels = {
-           id: responseData.post.id,
-           // tslint:disable-next-line: object-literal-shorthand
-           numberSelected: numberSelected,
-           // tslint:disable-next-line: object-literal-shorthand
-           reasoning: reasoning,
-           imagePath: responseData.post.imagePath
-          };
-        // const id = responseData.postId;
-        // post.id = id;
-        this.posts.push(post);
-        this.postsUpdated.next([...this.posts]);
         this.router.navigate(['/dashBoard']);
       });
   }
@@ -107,30 +101,14 @@ export class LuckyNumberPostService {
     this.http
       .put("http://localhost:3000/api/posts/" + id, postData)
       .subscribe(response => {
-        const updatedPosts = [...this.posts];
-        const oldPostIndex = updatedPosts.findIndex(p => p.id === id);
-        const post: LuckyNumberModels = {
-          id: id,
-          numberSelected: numberSelected,
-          reasoning: reasoning,
-          imagePath: ""
-        };
-        updatedPosts[oldPostIndex] = post;
-        this.posts = updatedPosts;
-        this.postsUpdated.next([...this.posts]);
         this.router.navigate(["/profile"]);
       });
   }
 
   deletePost(postId: string) {
-    this.http
-      .delete('http://localhost:3000/api/posts/' + postId)
-      .subscribe(() => {
-        const updatedPosts = this.posts.filter((post) => post.id !== postId);
-        this.posts = updatedPosts;
-        this.postsUpdated.next([...this.posts]);
-        console.log('Lucky Number Deleted!');
-      });
+    return this.http
+      .delete('http://localhost:3000/api/posts/' + postId);
+  
   }
 }
 
