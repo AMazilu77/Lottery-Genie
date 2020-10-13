@@ -3,6 +3,7 @@ import { LuckyNumberModels } from '../../luckyNumberPost.model';
 import { LuckyNumberPostService } from '../../../../services/luckyNumberPost.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+import { PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-lucky-list',
   templateUrl: './lucky-list.component.html',
@@ -37,6 +38,12 @@ private authStatusSub: Subscription;
       this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
         this.userIsAuthentic = isAuthenticated;
       })
+  }
+
+  onChangedPage(pageData: PageEvent ) {
+    this.currentPage = pageData.pageIndex + 1;
+    this.postsPerPage = pageData.pageSize;
+    this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
   }
 
   onDelete(postId: string) {
