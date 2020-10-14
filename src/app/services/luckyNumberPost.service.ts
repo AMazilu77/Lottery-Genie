@@ -13,7 +13,7 @@ export class LuckyNumberPostService {
   constructor(private http: HttpClient, private router: Router) {}
 
   getPosts(postsPerPage: number, currentPage: number) {
-    // js feature allows you to dynamically add values into a normal string with bacticks
+    // js feature allows you to dynamically add values into a normal string with backticks
     const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
     this.http
     // updated post array and max posts
@@ -35,6 +35,7 @@ export class LuckyNumberPostService {
           };
         })
       )
+      // has posts property which holds posts, but also has the max posts info
       .subscribe(transformedPostData => {
         this.posts = transformedPostData.posts;
         this.postsUpdated.next({ 

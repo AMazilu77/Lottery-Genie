@@ -3,8 +3,7 @@ import { LuckyNumberModels } from '../../luckyNumberPost.model';
 import { LuckyNumberPostService } from '../../../../services/luckyNumberPost.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
-import { PageEvent } from '@angular/material';
-
+import { PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-lucky-list',
   templateUrl: './lucky-list.component.html',
@@ -34,21 +33,12 @@ private authStatusSub: Subscription;
         this.totalPosts = postData.postCount;
         this.posts = postData.posts;
       });
-     // this.isLoading = false;
+      
       this.userIsAuthentic = this.authService.getIsAuth();
       this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
         this.userIsAuthentic = isAuthenticated;
       })
-     
-    // this.luckyNumberService.getPosts();
-    // // this is where the observable is made to keep track of new lucky number posts
-    // this.postsSubscription = this.luckyNumberService.getPostUpdateListener()
-    // .subscribe((posts: LuckyNumberModel[]) => {
-    // this.isLoading = false;
-    // this.posts = posts;
-    // });
   }
-
 
 
   onDelete(postId: string) {

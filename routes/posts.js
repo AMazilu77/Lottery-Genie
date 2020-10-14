@@ -41,7 +41,7 @@ const storage = multer.diskStorage({
 
 // create post DONE
 
-// single means multer is expecting a single file, pass a javascript objefct with a property for storage,
+// single means multer is expecting a single file, pass a javascript object with a property for storage,
 // which then takes the storage confirguration
 router.post("", authChecker,
   multer({storage: storage}).single('image'),
@@ -109,7 +109,7 @@ router.get("", (req, res, next) => {
   })
   .then(count => {
     res.status(200).json({
-      message: "Post fetched alright!",
+      message: "All Posts fetched alright!",
       posts: fetchedPosts,
       maxPosts: count
     });

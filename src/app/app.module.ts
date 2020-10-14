@@ -178,6 +178,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
             MatButtonModule,
             MatExpansionModule,
             MatProgressSpinnerModule,
+            MatPaginatorModule,
             HttpClientModule,
             MatPaginatorModule
           ],
