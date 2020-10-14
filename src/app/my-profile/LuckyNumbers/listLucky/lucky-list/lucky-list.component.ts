@@ -9,13 +9,13 @@ import { PageEvent } from '@angular/material/paginator';
   templateUrl: './lucky-list.component.html',
   styleUrls: ['./lucky-list.component.scss']
 })
-export class LuckyListComponent implements OnInit {
+export class LuckyListComponent implements OnInit, OnDestroy {
 
   constructor(public luckyNumberService: LuckyNumberPostService, private authService: AuthService ) {
   }
 isLoading = false;
 posts: LuckyNumberModels[] = [];
-totalPosts = 10;
+totalPosts = 0;
 postsPerPage = 2;
 currentPage = 1;
 pageSizeOptions = [1, 2, 5, 10];
@@ -40,17 +40,19 @@ private authStatusSub: Subscription;
       })
   }
 
-  onChangedPage(pageData: PageEvent ) {
-    this.currentPage = pageData.pageIndex + 1;
-    this.postsPerPage = pageData.pageSize;
-    this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
-  }
 
   onDelete(postId: string) {
     this.isLoading = true;
     this.luckyNumberService.deletePost(postId).subscribe(() => {
       this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
     });
+  }
+
+  onChangedPage(pageData: PageEvent) {
+    this.isLoading = true;
+    this.currentPage = pageData.pageIndex + 1;
+    this.postsPerPage = pageData.pageSizeOptions
+    this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
   }
 
   OnDestroy() {
