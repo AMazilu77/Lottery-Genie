@@ -51,11 +51,11 @@ private authStatusSub: Subscription;
   onChangedPage(pageData: PageEvent) {
     this.isLoading = true;
     this.currentPage = pageData.pageIndex + 1;
-    this.postsPerPage = pageData.pageSizeOptions
+    this.postsPerPage = pageData.pageSize;
     this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
   }
 
-  OnDestroy() {
+  ngOnDestroy() {
     this.postsSubscription.unsubscribe();
   }
 }
