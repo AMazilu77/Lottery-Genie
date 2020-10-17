@@ -59,6 +59,7 @@ export class LuckyNumberPostService {
       numberSelected: string;
       reasoning: string;
       imagePath: string;
+      creator: string;
     }>('http://localhost:3000/api/posts/' + id
     );
   }
@@ -98,7 +99,8 @@ export class LuckyNumberPostService {
         id: id,
         numberSelected: numberSelected,
         reasoning: reasoning,
-        imagePath: image
+        imagePath: image,
+        creator: null
       };
     }
     this.http

@@ -60,7 +60,8 @@ export class CreateLuckyNumberComponent implements OnInit {
             id: postData._id,
             numberSelected: postData.numberSelected,
             reasoning: postData.reasoning,
-            imagePath: postData.imagePath
+            imagePath: postData.imagePath,
+            creator: postData.creator
           };
           this.form.setValue({
             numberSelected: this.post.numberSelected,
