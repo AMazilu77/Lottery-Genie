@@ -28,7 +28,8 @@ export class LuckyNumberPostService {
                 numberSelected: post.numberSelected,
                 reasoning: post.reasoning,
                 id: post._id,
-                imagePath: post.imagePath
+                imagePath: post.imagePath,
+                creator: post.creator
               };
             }),
             maxPosts: postData.maxPosts
@@ -37,6 +38,7 @@ export class LuckyNumberPostService {
       )
       // has posts property which holds posts, but also has the max posts info
       .subscribe(transformedPostData => {
+        console.log(transformedPostData)
         this.posts = transformedPostData.posts;
         this.postsUpdated.next({ 
           posts: [...this.posts], 

@@ -51,7 +51,8 @@ router.post("", authChecker,
         const post = new LuckyNumberPostSchema({
           numberSelected: req.body.numberSelected,
           reasoning: req.body.reasoning,
-          imagePath: url + '/images/' + req.file.filename
+          imagePath: url + '/images/' + req.file.filename,
+          creator: req.userData.userId
       });
     post.save().then(createdPost => {
       res.status(201).json({
