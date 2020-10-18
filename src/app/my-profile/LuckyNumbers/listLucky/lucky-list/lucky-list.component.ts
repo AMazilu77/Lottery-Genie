@@ -20,6 +20,7 @@ postsPerPage = 2;
 currentPage = 1;
 pageSizeOptions = [1, 2, 5, 10];
 userIsAuthentic = false;
+userId: string;
 private postsSubscription: Subscription;
 private authStatusSub: Subscription;
 
@@ -27,6 +28,7 @@ private authStatusSub: Subscription;
   ngOnInit() {
     this.isLoading = true;
     this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
+    this.userId = this.authService.getUserId();
     this.postsSubscription = this.luckyNumberService.getPostUpdateListener()
       .subscribe((postData: {posts: LuckyNumberModels[], postCount: number}) => {
         this.isLoading = false;
@@ -37,6 +39,7 @@ private authStatusSub: Subscription;
       this.userIsAuthentic = this.authService.getIsAuth();
       this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
         this.userIsAuthentic = isAuthenticated;
+        this.userId = this.authService.getUserId();
       })
   }
 

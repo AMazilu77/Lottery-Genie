@@ -3,4 +3,5 @@ export interface LuckyNumberModels {
   numberSelected: string;
   reasoning: string;
   imagePath: string;
+  creator: string;
 }

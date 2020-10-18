@@ -51,7 +51,8 @@ router.post("", authChecker,
         const post = new LuckyNumberPostSchema({
           numberSelected: req.body.numberSelected,
           reasoning: req.body.reasoning,
-          imagePath: url + '/images/' + req.file.filename
+          imagePath: url + '/images/' + req.file.filename,
+          creator: req.userData.userId
       });
     post.save().then(createdPost => {
       res.status(201).json({
@@ -83,11 +84,16 @@ router.put("/:id", authChecker,
       _id: req.body.id,
       numberSelected: req.body.numberSelected,
       reasoning: req.body.reasoning,
-      imagePath: imagePath
+      imagePath: imagePath,
+      creator: req.userData.userId
     });
-    console.log(post);
-    LuckyNumberPostSchema.updateOne({ _id: req.params.id }, post).then(result => {
-      res.status(200).json({ message: "Update successful from the post.js file!" });
+    LuckyNumberPostSchema.updateOne({ _id: req.params.id, creator: req.userData.userId }, post).then(result => {
+      if (result.nModified > 0 ) {
+        res.status(200).json({ message: "Update successful from the post.js file!" });
+      } else {
+        res.status(401).json({ message: " no no. "})
+      }
+    
     });
   }
 );
@@ -131,9 +137,13 @@ router.get("/:id", (req, res, next) => {
 
 // delete route done
 router.delete("/:id", authChecker, (req, res, next) => {
-  LuckyNumberPostSchema.deleteOne({ _id: req.params.id }).then(result => {
+  LuckyNumberPostSchema.deleteOne({ _id: req.params.id, creator: req.userData.userId }).then(result => {
     console.log(result);
-    res.status(200).json({ message: "Post deleted!" });
+    if (result.n > 0 ) {
+      res.status(200).json({ message: "Deletion successful from the post.js file!" });
+    } else {
+      res.status(401).json({ message: "Deletion Failed! "})
+    }
   });
 });
 
