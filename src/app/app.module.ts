@@ -84,6 +84,7 @@ import { LuckyListComponent } from './my-profile/LuckyNumbers/listLucky/lucky-li
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // Angular Inputs
+import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -97,6 +98,7 @@ import { loginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorIntercept } from './error-interceptor';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -166,6 +168,7 @@ import { ErrorIntercept } from './error-interceptor';
     EditLuckComponent,
     loginComponent,
     SignupComponent,
+    ErrorComponent
      
 
   ],
@@ -181,7 +184,8 @@ import { ErrorIntercept } from './error-interceptor';
             MatProgressSpinnerModule,
             MatPaginatorModule,
             HttpClientModule,
-            MatPaginatorModule
+            MatPaginatorModule,
+            MatDialogModule
           ],
 
 
@@ -189,6 +193,9 @@ import { ErrorIntercept } from './error-interceptor';
               {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
               {provide: HTTP_INTERCEPTORS, useClass: ErrorIntercept, multi: true },
               LuckyNumberPostService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
+  // informs angular this component needs to be prepared to be used even though it cannot be seen by angular
+  entryComponents: [ErrorComponent]
 })
 export class AppModule {}
