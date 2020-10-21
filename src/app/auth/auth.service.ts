@@ -37,6 +37,7 @@ export class AuthService {
         .subscribe(response => {
             console.log(response);
         });
+        this.router.navigate(['/login'])
     }
     
     login(email: string, password: string) {

@@ -96,6 +96,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { loginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
+import { ErrorIntercept } from './error-interceptor';
 
 @NgModule({
   declarations: [
@@ -184,7 +185,10 @@ import { AuthInterceptor } from './auth/auth-interceptor';
           ],
 
 
-            providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, LuckyNumberPostService],
+            providers: [
+              {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+              {provide: HTTP_INTERCEPTORS, useClass: ErrorIntercept, multi: true },
+              LuckyNumberPostService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
