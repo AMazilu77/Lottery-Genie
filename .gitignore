@@ -49,4 +49,4 @@ Thumbs.db
 .ionide
 
 # ignore images for github
-/Users/admin/Development/genie-2/Lottery-Genie/backend/images
+/backend/images
