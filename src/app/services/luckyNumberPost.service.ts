@@ -4,6 +4,9 @@ import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment'
+
+const BACKEND_URL = environment.apiURL + '/posts/'
 
 @Injectable({ providedIn: 'root' })
 export class LuckyNumberPostService {
@@ -18,7 +21,7 @@ export class LuckyNumberPostService {
     this.http
     // updated post array and max posts
       .get<{ message: string; posts: any, maxPosts: number }>(
-        'http://localhost:3000/api/posts' + queryParams
+        BACKEND_URL + queryParams
         )
       .pipe(
         map(postData => {
@@ -60,7 +63,7 @@ export class LuckyNumberPostService {
       reasoning: string;
       imagePath: string;
       creator: string;
-    }>('http://localhost:3000/api/posts/' + id
+    }>(BACKEND_URL + id
     );
   }
 
@@ -76,7 +79,7 @@ export class LuckyNumberPostService {
     postData.append('image', image, numberSelected);
     this.http
       .post<{ message: string; post: LuckyNumberModels }>(
-        'http://localhost:3000/api/posts',
+        BACKEND_URL,
         postData
       )
       .subscribe(responseData => {
@@ -104,7 +107,7 @@ export class LuckyNumberPostService {
       };
     }
     this.http
-      .put("http://localhost:3000/api/posts/" + id, postData)
+      .put(BACKEND_URL+ id, postData)
       .subscribe(response => {
         this.router.navigate(["/profile"]);
       });
@@ -112,7 +115,7 @@ export class LuckyNumberPostService {
 
   deletePost(postId: string) {
     return this.http
-      .delete('http://localhost:3000/api/posts/' + postId);
+      .delete(BACKEND_URL + postId);
   
   }
 }

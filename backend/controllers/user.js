@@ -56,7 +56,7 @@ exports.loginUser = (req, res, next) => {
  
             // PW used to create hash, stored on server and used to validate hash, this is what makes jWTs uncrackable
         },
-         'secret_that_should_be_longer_than_this',
+         process.env.JWT_KEY,
           { expiresIn: "1h"} 
         );
         res.status(200).json({
