@@ -27,8 +27,8 @@ import { Pick5RulesAndOddsComponent } from './games/state/Florida/flpick5-gen/pi
 import { LuckyMoneyRulesAndOddsComponent } from './games/state/Florida/fl-lucky-money-gen/lucky-money-rules-and-odds/lucky-money-rules-and-odds.component';
 
 import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLucky/create-lucky-number/create-lucky-number.component';
-import { loginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
+// import { loginComponent } from './auth/login/login.component';
+// import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGaurd } from './auth/login/auth.guard';
 
 const routes: Routes = [
@@ -40,8 +40,8 @@ const routes: Routes = [
   { path: 'profile', component: MyProfileComponent, canActivate: [AuthGaurd] },
   { path: 'create', component: CreateLuckyNumberComponent, canActivate: [AuthGaurd] },
   { path: 'edit/:postId', component: CreateLuckyNumberComponent, canActivate: [AuthGaurd] },
-  { path: 'login', component: loginComponent },
-  { path: 'signup', component: SignupComponent },
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+
 
   // where to pick state
   { path: 'LotteryNumberGenMainPage', component: LotteryNumberGenMainPageComponent },
