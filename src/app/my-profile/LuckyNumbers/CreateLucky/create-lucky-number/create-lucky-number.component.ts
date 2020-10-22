@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LuckyNumberModels } from '../../luckyNumberPost.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LuckyNumberPostService } from '../../../../services/luckyNumberPost.service';
 // activated route object gives us important information about the route we're on
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { mimeType } from './mime-type.validator';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 @Component({
   selector: 'app-create-lucky-number',
   templateUrl: './create-lucky-number.component.html',
   styleUrls: ['./create-lucky-number.component.scss']
 })
-export class CreateLuckyNumberComponent implements OnInit {
+export class CreateLuckyNumberComponent implements OnInit, OnDestroy {
   enteredValue = '';
   enteredReason = '';
   post: LuckyNumberModels;
@@ -20,15 +22,24 @@ export class CreateLuckyNumberComponent implements OnInit {
   imagePreview: string;
   private mode = 'create';
   private postId: string;
+  private authStatusSub: Subscription;
 
   constructor(
     public luckyNumberService: LuckyNumberPostService,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   // postCreated = new EventEmitter<LuckyNumberModel>();
 
   ngOnInit() {
+    // set up and subscribe to listener
+    this.authStatusSub = this.authService.getAuthStatusListener()
+    .subscribe(authStatus => {
+      // whenever auth status changes, the laoder is disabled
+        this.isLoading = false;
+      });
+
     // initialize form group right off the bat
     this.form = new FormGroup({
       // validators is an array of validators we want to add, first value nulll, is starting value
@@ -113,5 +124,9 @@ export class CreateLuckyNumberComponent implements OnInit {
     }
       this.form.reset();
     
+  }
+
+  ngOnDestroy(){
+    this.authStatusSub.unsubscribe();
   }
 }

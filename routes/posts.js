@@ -56,7 +56,7 @@ router.post("", authChecker,
       });
     post.save().then(createdPost => {
       res.status(201).json({
-        message: "Post added successfully Alex - this is from the post.js file !",
+        message: "Post added successfully !",
         post: {
         // id: createdPost._id,
         //  numberSelected: createdPost.numberSelected,
@@ -66,6 +66,11 @@ router.post("", authChecker,
         id: createdPost._id
         }
       });
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: 'creating post failed!'
+      })
     });
   }
 );
@@ -91,10 +96,14 @@ router.put("/:id", authChecker,
       if (result.nModified > 0 ) {
         res.status(200).json({ message: "Update successful from the post.js file!" });
       } else {
-        res.status(401).json({ message: " no no. "})
+        res.status(401).json({ message: " Not Authorized. "})
       }
-    
-    });
+     })
+     .catch(error => {
+       res.status(500).json({
+         message: "Could not update post"
+       })
+     });
   }
 );
 
@@ -119,6 +128,11 @@ router.get("", (req, res, next) => {
       posts: fetchedPosts,
       maxPosts: count
     });
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: 'fetching posts failed!'
+    });
   });
 });
 
@@ -131,6 +145,11 @@ router.get("/:id", (req, res, next) => {
     } else {
       res.status(404).json({ message: "Post not found!" });
     }
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: 'fetching post failed!'
+    });
   });
 });
 
@@ -144,7 +163,12 @@ router.delete("/:id", authChecker, (req, res, next) => {
     } else {
       res.status(401).json({ message: "Deletion Failed! "})
     }
-  });
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: 'Deletion failed!'
+    });
+  });;
 });
 
 module.exports = router;
