@@ -40,6 +40,7 @@ private authStatusSub: Subscription;
       this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
         this.userIsAuthentic = isAuthenticated;
         this.userId = this.authService.getUserId();
+        
       })
   }
 

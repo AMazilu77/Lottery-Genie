@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
 import { AngularMaterialModule } from './angular-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -15,8 +14,7 @@ import { AppComponent } from './app.component';
 import { GenieLampHomeComponent } from './genie-lamp-home/genie-lamp-home.component';
 import { MyAboutComponent } from './my-about/my-about.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
-import { loginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
+
 
 // Services
 import { LuckyNumberPostService } from './services/luckyNumberPost.service';
@@ -34,7 +32,6 @@ import { CashForLifeComponent } from './games/state/Florida/cash-for-life/cash-f
 import { FlLottoGenComponent } from './games/state/Florida/fl-lotto-gen/fl-lotto-gen.component';
 import { MegaMillionsGenComponent } from './games/state/Florida/mega-millions-gen/mega-millions-gen.component';
 import { PowerBallGenComponent } from './games/state/Florida/power-ball-gen/power-ball-gen.component';
-// import { MyProfileComponent } from './my-profile/my-profile.component';
 import { Flpick2RulesAndOddsComponent } from './games/state/Florida/flpick2-gen/flpick2-rules-and-odds/flpick2-rules-and-odds.component';
 import { Pick2RulesComponent } from './games/state/Florida/flpick2-gen/pick2-rules/pick2-rules.component';
 import { Pick2OddsComponent } from './games/state/Florida/flpick2-gen/pick2-odds/pick2-odds.component';
@@ -78,14 +75,13 @@ import { PowerBallRulesAndOddsComponent } from './games/state/Florida/power-ball
 import { PowerBallRulesComponent } from './games/state/Florida/power-ball-gen/power-ball-rules/power-ball-rules.component';
 import { PowerBallOddsComponent } from './games/state/Florida/power-ball-gen/power-ball-odds/power-ball-odds.component';
 import { PowerBallGameTheoryComponent } from './games/state/Florida/power-ball-gen/power-ball-game-theory/power-ball-game-theory.component';
-// import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLucky/create-lucky-number/create-lucky-number.component';
-// import { LuckyListComponent } from './my-profile/LuckyNumbers/listLucky/lucky-list/lucky-list.component';
 
 
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorIntercept } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { PostsModule } from './posts.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -105,7 +101,6 @@ import { PostsModule } from './posts.module';
     FlLottoGenComponent,
     MegaMillionsGenComponent,
     PowerBallGenComponent,
-    
     Flpick2RulesAndOddsComponent,
     Pick2RulesComponent,
     Pick2OddsComponent,
@@ -149,10 +144,6 @@ import { PostsModule } from './posts.module';
     PowerBallRulesComponent,
     PowerBallOddsComponent,
     PowerBallGameTheoryComponent,
-  
-    
-    loginComponent,
-    SignupComponent,
     ErrorComponent
      
 
@@ -161,10 +152,10 @@ import { PostsModule } from './posts.module';
             BrowserModule,
             AppRoutingModule,
             PostsModule,
-            FormsModule,
             AngularMaterialModule,
             HttpClientModule,
-            BrowserAnimationsModule        
+            BrowserAnimationsModule,
+            AuthModule     
           ],
             providers: [
               {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
