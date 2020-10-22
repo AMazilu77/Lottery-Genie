@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 // Angular Inputs
 import { MatDialogModule } from '@angular/material/dialog';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -11,7 +11,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
       exports: [
-        BrowserAnimationsModule,
         MatInputModule,
         MatCardModule,
         MatButtonModule,
