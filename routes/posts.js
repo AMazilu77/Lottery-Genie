@@ -1,9 +1,10 @@
 const express = require("express");
 const multer = require('multer');
-const LuckyNumberPostSchema = require("../models/Luckpost");
+const authChecker = require('../backend/middleware/check-auth');
 
 const router = express.Router();
-const authChecker = require('../backend/middleware/check-auth');
+const postController = require('../backend/controllers/posts')
+
 
 // mime type helper, maps mimetype and which extensons they would be.
 const MIME_TYPE_MAP = {
@@ -39,136 +40,22 @@ const storage = multer.diskStorage({
   }
 });
 
-// create post DONE
-
-// single means multer is expecting a single file, pass a javascript object with a property for storage,
-// which then takes the storage confirguration
-router.post("", authChecker,
-  multer({storage: storage}).single('image'),
-    (req, res, next) => {
-      // constructs url to the server
-        const url = req.protocol + '://' + req.get('host');
-        const post = new LuckyNumberPostSchema({
-          numberSelected: req.body.numberSelected,
-          reasoning: req.body.reasoning,
-          imagePath: url + '/images/' + req.file.filename,
-          creator: req.userData.userId
-      });
-    post.save().then(createdPost => {
-      res.status(201).json({
-        message: "Post added successfully !",
-        post: {
-        // id: createdPost._id,
-        //  numberSelected: createdPost.numberSelected,
-        //  reasoning: createdPost.reasoning,
-        //  imagePath: createdPost.imagePath
-        ...createdPost,
-        id: createdPost._id
-        }
-      });
-    })
-    .catch(error => {
-      res.status(500).json({
-        message: 'creating post failed!'
-      })
-    });
-  }
-);
+// post lucky numbers route 
+router.post("", multer({storage: storage}).single('image'), authChecker, postController.userPost );
 
 
 // Edit route Post done for adding images and editing images
-router.put("/:id", authChecker,
-    multer({ storage: storage }).single("image"),
-  (req, res, next) => {
-    let imagePath = req.body.imagePath;
-    if (req.file) {
-      const url = req.protocol + "://" + req.get("host");
-      imagePath = url + "/images/" + req.file.filename
-    }
-    const post = new LuckyNumberPostSchema({
-      _id: req.body.id,
-      numberSelected: req.body.numberSelected,
-      reasoning: req.body.reasoning,
-      imagePath: imagePath,
-      creator: req.userData.userId
-    });
-    LuckyNumberPostSchema.updateOne({ _id: req.params.id, creator: req.userData.userId }, post).then(result => {
-      if (result.nModified > 0 ) {
-        res.status(200).json({ message: "Update successful from the post.js file!" });
-      } else {
-        res.status(401).json({ message: " Not Authorized. "})
-      }
-     })
-     .catch(error => {
-       res.status(500).json({
-         message: "Could not update post"
-       })
-     });
-  }
-);
+router.put("/:id", multer({ storage: storage }).single("image"), authChecker, postController.userEditPost);
 
-
-router.get("", (req, res, next) => {
-  const pageSize = +req.query.pagesize;
-  const currentPage = +req.query.page;
-  const postQuery = LuckyNumberPostSchema.find();
-  let fetchedPosts;   
-  if (pageSize && currentPage) {
-    postQuery
-      .skip(pageSize * (currentPage - 1))
-      .limit(pageSize);
-  }
-  postQuery.then(documents => {
-    fetchedPosts = documents;
-    return LuckyNumberPostSchema.count()
-  })
-  .then(count => {
-    res.status(200).json({
-      message: "All Posts fetched alright!",
-      posts: fetchedPosts,
-      maxPosts: count
-    });
-  })
-  .catch(error => {
-    res.status(500).json({
-      message: 'fetching posts failed!'
-    });
-  });
-});
+// retrieve all posts
+router.get("", authChecker, postController.userGetsAllPosts);
 
 
 // get specific post id done
-router.get("/:id", (req, res, next) => {
-  LuckyNumberPostSchema.findById(req.params.id).then(post => {
-    if (post) {
-      res.status(200).json(post);
-    } else {
-      res.status(404).json({ message: "Post not found!" });
-    }
-  })
-  .catch(error => {
-    res.status(500).json({
-      message: 'fetching post failed!'
-    });
-  });
-});
+router.get("/:id", authChecker, postController.userGetsOnePost);
 
 
 // delete route done
-router.delete("/:id", authChecker, (req, res, next) => {
-  LuckyNumberPostSchema.deleteOne({ _id: req.params.id, creator: req.userData.userId }).then(result => {
-    console.log(result);
-    if (result.n > 0 ) {
-      res.status(200).json({ message: "Deletion successful from the post.js file!" });
-    } else {
-      res.status(401).json({ message: "Deletion Failed! "})
-    }
-  })
-  .catch(error => {
-    res.status(500).json({
-      message: 'Deletion failed!'
-    });
-  });;
-});
+router.delete("/:id", authChecker, postController.userDeletesPost);
 
 module.exports = router;
