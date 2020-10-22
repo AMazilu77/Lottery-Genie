@@ -18,19 +18,15 @@ import { PowerBallGenComponent } from './games/state/Florida/power-ball-gen/powe
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { Flpick2RulesAndOddsComponent } from './games/state/Florida/flpick2-gen/flpick2-rules-and-odds/flpick2-rules-and-odds.component';
 import { WinningNumbersMainComponent } from './winningNumber/winning-numbers-main-page/winning-numbers-main/winning-numbers-main.component';
-// tslint:disable-next-line: max-line-length
 import { FloridaWinningNumbersGamePickComponent } from './winningNumber/winning-by-state/Florida/florida-winning-numbers-game-pick/florida-winning-numbers-game-pick.component';
-// tslint:disable-next-line: max-line-length
 import { Pick2WinningNumbersComponent } from './winningNumber/winning-by-state/Florida/pick2-winning-numbers/pick2-winning-numbers.component';
 import { Pick3RulesAndOddsComponent } from './games/state/Florida/flpick3-gen/pick3-rules-and-odds/pick3-rules-and-odds.component';
 import { Pick4RulesAndOddsComponent } from './games/state/Florida/flpick4-gen/pick4-rules-and-odds/pick4-rules-and-odds.component';
 import { Pick5RulesAndOddsComponent } from './games/state/Florida/flpick5-gen/pick5-rules-and-odds/pick5-rules-and-odds.component';
 
-// tslint:disable-next-line: max-line-length
 import { LuckyMoneyRulesAndOddsComponent } from './games/state/Florida/fl-lucky-money-gen/lucky-money-rules-and-odds/lucky-money-rules-and-odds.component';
 
 import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLucky/create-lucky-number/create-lucky-number.component';
-// import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit-luck/edit-luck.component';
 import { loginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGaurd } from './auth/login/auth.guard';
@@ -44,7 +40,6 @@ const routes: Routes = [
   { path: 'profile', component: MyProfileComponent, canActivate: [AuthGaurd] },
   { path: 'create', component: CreateLuckyNumberComponent, canActivate: [AuthGaurd] },
   { path: 'edit/:postId', component: CreateLuckyNumberComponent, canActivate: [AuthGaurd] },
- // { path: 'edit2/:postId', component: EditLuckComponent },
   { path: 'login', component: loginComponent },
   { path: 'signup', component: SignupComponent },
 
