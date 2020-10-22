@@ -48,6 +48,8 @@ private authStatusSub: Subscription;
     this.isLoading = true;
     this.luckyNumberService.deletePost(postId).subscribe(() => {
       this.luckyNumberService.getPosts(this.postsPerPage, this.currentPage);
+    }, () => {
+      this.isLoading = false;
     });
   }
 
