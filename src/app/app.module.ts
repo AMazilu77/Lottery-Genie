@@ -83,22 +83,16 @@ import { LuckyListComponent } from './my-profile/LuckyNumbers/listLucky/lucky-li
 // Modules
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-// Angular Inputs
-import { MatDialogModule } from '@angular/material/dialog';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatInputModule } from '@angular/material/input';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 import { PlayerStatsComponent } from './my-profile/Stats/player-stats/player-stats.component';
 import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit-luck/edit-luck.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
+
 import { loginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorIntercept } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
+import { AngularMaterialModule } from './angular-material.module';
 
 @NgModule({
   declarations: [
@@ -176,16 +170,9 @@ import { ErrorComponent } from './error/error.component';
             AppRoutingModule,
             ReactiveFormsModule,
             FormsModule,
-            BrowserAnimationsModule,
-            MatInputModule,
-            MatCardModule,
-            MatButtonModule,
-            MatExpansionModule,
-            MatProgressSpinnerModule,
-            MatPaginatorModule,
+            AngularMaterialModule,
             HttpClientModule,
-            MatPaginatorModule,
-            MatDialogModule
+          
           ],
 
 
