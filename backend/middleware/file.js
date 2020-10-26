@@ -34,5 +34,6 @@ const MIME_TYPE_MAP = {
       cb(null, name + '-' + Date.now() + '.' + ext);
     }
   });
-
+// single means multer is expecting a single file, pass a javascript object with a property for storage,
+// which then takes the storage confirguration
   module.exports = multer({storage: storage}).single('image');

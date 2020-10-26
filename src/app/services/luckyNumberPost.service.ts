@@ -61,7 +61,7 @@ export class LuckyNumberPostService {
       _id: string;
       numberSelected: string;
       reasoning: string;
-      imagePath: string;
+      imagePath: string | null;
       creator: string;
     }>(BACKEND_URL + id
     );
@@ -71,12 +71,20 @@ export class LuckyNumberPostService {
 
   // ****  addPost is the ADD LUCKY NUMBER POST FUNCTION - change to number to string ***
 
-  addPost(numberSelected: string, reasoning: string, image: File) {
+  addPost(numberSelected: string, reasoning: string, image: File | null) {
     // sending form data instead of JSON, data format to combine text and file values
     const postData = new FormData();
     postData.append('numberSelected', numberSelected);
     postData.append('reasoning', reasoning);
-    postData.append('image', image, numberSelected);
+
+    if (image === null ) {
+      postData.append('image', numberSelected);
+      console.log('no image')
+
+    } else { 
+      postData.append('image', image, numberSelected);
+    }
+   
     this.http
       .post<{ message: string; post: LuckyNumberModels }>(
         BACKEND_URL,
@@ -89,20 +97,27 @@ export class LuckyNumberPostService {
 
   // **** UPDATE LUCKY NUMBER POST FUNCTION - changed number selected to string ***
 
-  updatePost(id: string, numberSelected: string, reasoning: string,  image: File | string) {
+  updatePost(id: string, numberSelected: string, reasoning: string,  image: File | string | null) {
     let postData: LuckyNumberModels | FormData;
     if (typeof image === "object") {
       postData = new FormData();
       postData.append("id", id);
       postData.append("numberSelected", numberSelected);
       postData.append("reasoning", reasoning);
-      postData.append("image", image, numberSelected);
+      // postData.append("image", image, numberSelected);
+      if (image === null ) {
+        postData.append('image', numberSelected);
+        console.log('no image')
+  
+      } else { 
+        postData.append('image', image, numberSelected);
+      }
     } else {
       postData = {
         id: id,
         numberSelected: numberSelected,
         reasoning: reasoning,
-        imagePath: image,
+        imagePath: image || null,
         creator: null
       };
     }

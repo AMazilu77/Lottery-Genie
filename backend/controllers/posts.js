@@ -9,8 +9,8 @@ exports.userPost =
       const url = req.protocol + '://' + req.get('host');
       const post = new LuckyNumberPostSchema({
         numberSelected: req.body.numberSelected,
-        reasoning: req.body.reasoning,
-        imagePath: url + '/images/' + req.file.filename,
+        reasoning: req.body.reasoning || null,
+        imagePath: req.file ? ( url + '/images/' + req.file.filename): null,
         creator: req.userData.userId
     });
   post.save().then(createdPost => {
@@ -36,6 +36,7 @@ exports.userPost =
 exports.userEditPost = 
 (req, res, next) => {
 let imagePath = req.body.imagePath;
+console.log(imagePath)
 if (req.file) {
   const url = req.protocol + "://" + req.get("host");
   imagePath = url + "/images/" + req.file.filename
