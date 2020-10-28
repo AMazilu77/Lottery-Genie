@@ -10,6 +10,7 @@ exports.userPost =
       const post = new LuckyNumberPostSchema({
         numberSelected: req.body.numberSelected,
         reasoning: req.body.reasoning || null,
+        // using ternary operator to make image posting optional
         imagePath: req.file ? ( url + '/images/' + req.file.filename): null,
         creator: req.userData.userId
     });
@@ -36,7 +37,6 @@ exports.userPost =
 exports.userEditPost = 
 (req, res, next) => {
 let imagePath = req.body.imagePath;
-console.log(imagePath)
 if (req.file) {
   const url = req.protocol + "://" + req.get("host");
   imagePath = url + "/images/" + req.file.filename
