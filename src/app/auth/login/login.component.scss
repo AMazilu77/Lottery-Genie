@@ -1,12 +1,27 @@
 mat-card {
     width: 80%;
     margin: auto;
-    background-color: rgb(216, 235, 241);
+    margin-top: 2rem;
+    background-color: rgb(225, 233, 255);
   }
  
   mat-form-field,
   text-area {
    width: 100%;
-   color: black;
+   color: rgb(220, 11, 11);
  
+ }
+
+ .log {
+   color: rgb(29, 28, 29);
+ }
+
+ input {
+   color: white;
+ }
+
+ img {
+   height: 20%;
+   width: auto;
+   margin-left: 25%;
  }
