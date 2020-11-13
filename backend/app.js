@@ -4,7 +4,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
-
 const chalk = require('chalk')
 const postsRoutes = require("../routes/posts");
 const userRoutes = require('../routes/user');
@@ -23,7 +22,7 @@ mongoose.connect(process.env.AWSONLINE, { useUnifiedTopology: true, useNewUrlPar
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: true
 }));
 // static middleweare
 app.use('/images', express.static(path.join('backend/images')));

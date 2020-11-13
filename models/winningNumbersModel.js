@@ -1,16 +1,19 @@
 let mongoose = require('mongoose').set('debug', true);;
-let Schema = mongoose.Schema;
 
+// schema method takes a JS object which defines how winning number model should function
 const winningNumberPick2Schema = mongoose.Schema({
-  drawdate: { type: String, required: true },
+  _id: mongoose.Schema.Types.ObjectId,
+  drawDate: { type: String, required: true },
   winningNumber: { type: String, required: true },
-  midDay: { type: Boolean, reqired: true },
-  evening: {type: Boolean, required: true }
+  midDay: { type: Boolean},
+  evening: {type: Boolean}
 })
 
-// name of model export first which will be pluralized and schema to base model on
-const winningPick2numbers = mongoose.model('WinningPick2', winningNumberPick2Schema);
-module.exports = winningPick2numbers
+// export schema wrapped into a model, the model is the object itself which gives a constructor to build such objects based on schema
+// name of model export first which will be pluralized and schema to base model on, first arguement is the name you want to use internally
+// the convention is to use capital letter first, then 2nd is schema you want to use for that model
+module.exports= mongoose.model('WinningPick2', winningNumberPick2Schema);
+
 // 
 
 // let WinningPick2 = new Schema({
