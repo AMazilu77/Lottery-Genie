@@ -10,7 +10,7 @@ export class FloridaWinningNumbersGamePickComponent implements OnInit {
 
 
   back() {
-    this.theRouter.navigate(['/LotteryNumberGenMainPage']);
+    this.theRouter.navigate(['/dashBoard']);
   }
 
   constructor(private theRouter: Router) { }

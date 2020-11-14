@@ -21,7 +21,7 @@ const uniqueValidator = require("mongoose-unique-validator");
     // TotalWinnings: { type: Number },
     // TotalLosses: { type: Number },
     // AverageWinnings: { type: Number },
-    // luckyNumbers: [],
+     luckyNumbers: [],
 
 
     // experience points used for daily app usage

@@ -23,7 +23,9 @@
   <br>
   <div class="pagination justify-content-center"> <img id="genie-dashboard-render"
       src="../assets/public/images/MainGenie.jpg"></div>
+      <p> {{ Phrase }}</p>
   <hr>
+
 
   <!-- <h3>Wishes: {{user.wishes}} </h3> -->
   <div class="button-container">
@@ -39,7 +41,7 @@
       that have won </button>
     <button  *ngIf="userIsAuthentic"  type="button" class="btn btn-outline-primary" (click)="gotoProfile()"> My profile </button>
     <button *ngIf="userIsAuthentic" type="button" class="btn btn-outline-danger" (click)="onLogout()"> Logout</button>
-    <button  *ngIf="!userIsAuthentic"  mat-button routerLink="/login" routerLinkActive="mat-accent" type="button" class="btn btn-outline-primary"> Login </button>
+    <button  *ngIf="!userIsAuthentic"  mat-button routerLink="/auth/login" routerLinkActive="mat-accent" type="button" class="btn btn-outline-primary"> Login </button>
   </div>
   <script src='/javascripts/script.js'></script>
 

@@ -3,7 +3,7 @@
 <mat-card>
   <button mat-button color='primary' (click)='back()' type="submit"> Back </button>
     <mat-spinner *ngIf="isLoading"></mat-spinner>
-    <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
+    <form class='log' (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
     
         <mat-form-field>
           <input matInput name='email' ngModel type='email' placeholder="E-mail" #emailInput="ngModel" required email>
@@ -17,11 +17,12 @@
             <mat-error *ngIf="passwordInput.invalid">Please enter correct password. </mat-error>
         </mat-form-field>
         <button mat-button color='primary' type="submit"> Login </button>
-        <button mat-button color='primary' routerLink='/signup'> Register New Account </button>
+        <button mat-button color='primary' routerLink='/auth/signup'> Register New Account </button>
 
       </form>
+     
     </mat-card>
     
     
     
-    
+    <img src='../../../assets/public/images/lamplogo.png'>

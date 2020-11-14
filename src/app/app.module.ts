@@ -1,12 +1,20 @@
+
+
+// modules 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
+import { AngularMaterialModule } from './angular-material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+// app main components
 import { AppComponent } from './app.component';
 import { GenieLampHomeComponent } from './genie-lamp-home/genie-lamp-home.component';
 import { MyAboutComponent } from './my-about/my-about.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
+
 
 // Services
 import { LuckyNumberPostService } from './services/luckyNumberPost.service';
@@ -24,15 +32,12 @@ import { CashForLifeComponent } from './games/state/Florida/cash-for-life/cash-f
 import { FlLottoGenComponent } from './games/state/Florida/fl-lotto-gen/fl-lotto-gen.component';
 import { MegaMillionsGenComponent } from './games/state/Florida/mega-millions-gen/mega-millions-gen.component';
 import { PowerBallGenComponent } from './games/state/Florida/power-ball-gen/power-ball-gen.component';
-import { MyProfileComponent } from './my-profile/my-profile.component';
 import { Flpick2RulesAndOddsComponent } from './games/state/Florida/flpick2-gen/flpick2-rules-and-odds/flpick2-rules-and-odds.component';
 import { Pick2RulesComponent } from './games/state/Florida/flpick2-gen/pick2-rules/pick2-rules.component';
 import { Pick2OddsComponent } from './games/state/Florida/flpick2-gen/pick2-odds/pick2-odds.component';
 import { WinningNumbersMainComponent } from './winningNumber/winning-numbers-main-page/winning-numbers-main/winning-numbers-main.component';
-// tslint:disable-next-line: max-line-length
 import { FloridaWinningNumbersGamePickComponent } from './winningNumber/winning-by-state/Florida/florida-winning-numbers-game-pick/florida-winning-numbers-game-pick.component';
-// tslint:disable-next-line: max-line-length
-import { Pick2WinningNumbersComponent } from './winningNumber/winning-by-state/Florida/pick2-winning-numbers/pick2-winning-numbers.component';
+import { Pick2WinningNumbersComponent } from './winningNumber/winning-by-state/Florida/florida-winning-numbers-game-pick/pick2-winning-numbers/pick2-winning-numbers.component';
 import { Pick3RulesAndOddsComponent } from './games/state/Florida/flpick3-gen/pick3-rules-and-odds/pick3-rules-and-odds.component';
 import { Pick3RulesComponent } from './games/state/Florida/flpick3-gen/pick3-rules/pick3-rules.component';
 import { Pick3OddsComponent } from './games/state/Florida/flpick3-gen/pick3-odds/pick3-odds.component';
@@ -46,7 +51,6 @@ import { Pick5RulesAndOddsComponent } from './games/state/Florida/flpick5-gen/pi
 import { Pick5RulesComponent } from './games/state/Florida/flpick5-gen/pick5-rules/pick5-rules.component';
 import { Pick5OddsComponent } from './games/state/Florida/flpick5-gen/pick5-odds/pick5-odds.component';
 import { Pick5GameTheoryComponent } from './games/state/Florida/flpick5-gen/pick5-game-theory/pick5-game-theory.component';
-
 import { C4lRulesAndOddsComponent } from './games/state/Florida/cash-for-life/c4l-rules-and-odds/c4l-rules-and-odds.component';
 import { C4lRulesComponent } from './games/state/Florida/cash-for-life/c4l-rules/c4l-rules.component';
 import { C4lOddsComponent } from './games/state/Florida/cash-for-life/c4l-odds/c4l-odds.component';
@@ -55,50 +59,29 @@ import { FLLottoRulesAndOddsComponent } from './games/state/Florida/fl-lotto-gen
 import { FLLottoRulesComponent } from './games/state/Florida/fl-lotto-gen/fl-lotto-rules/fl-lotto-rules.component';
 import { FLLottoOddsComponent } from './games/state/Florida/fl-lotto-gen/fl-lotto-odds/fl-lotto-odds.component';
 import { FLLottoGameTheoryComponent } from './games/state/Florida/fl-lotto-gen/fl-lotto-game-theory/fl-lotto-game-theory.component';
-// tslint:disable-next-line: max-line-length
 import { Fantasy5RulesAndOddsComponent } from './games/state/Florida/flfantasy5-gen/fantasy5-rules-and-odds/fantasy5-rules-and-odds.component';
 import { Fantasy5RulesComponent } from './games/state/Florida/flfantasy5-gen/fantasy5-rules/fantasy5-rules.component';
 import { Fantasy5OddsComponent } from './games/state/Florida/flfantasy5-gen/fantasy5-odds/fantasy5-odds.component';
 import { Fantasy5GameTheoryComponent } from './games/state/Florida/flfantasy5-gen/fantasy5-game-theory/fantasy5-game-theory.component';
-// tslint:disable-next-line: max-line-length
 import { LuckyMoneyRulesAndOddsComponent } from './games/state/Florida/fl-lucky-money-gen/lucky-money-rules-and-odds/lucky-money-rules-and-odds.component';
 import { LuckyMoneyRulesComponent } from './games/state/Florida/fl-lucky-money-gen/lucky-money-rules/lucky-money-rules.component';
 import { LuckyMoneyOddsComponent } from './games/state/Florida/fl-lucky-money-gen/lucky-money-odds/lucky-money-odds.component';
-// tslint:disable-next-line:max-line-length
 import { LuckyMoneyGameTheoryComponent } from './games/state/Florida/fl-lucky-money-gen/lucky-money-game-theory/lucky-money-game-theory.component';
-// tslint:disable-next-line: max-line-length
 import { MegaMillionsRulesAndOddsComponent } from './games/state/Florida/mega-millions-gen/mega-millions-rules-and-odds/mega-millions-rules-and-odds.component';
 import { MegaMillionsRulesComponent } from './games/state/Florida/mega-millions-gen/mega-millions-rules/mega-millions-rules.component';
 import { MegaMillionsOddsComponent } from './games/state/Florida/mega-millions-gen/mega-millions-odds/mega-millions-odds.component';
-// tslint:disable-next-line: max-line-length
 import { MegaMillionsGameTheoryComponent } from './games/state/Florida/mega-millions-gen/mega-millions-game-theory/mega-millions-game-theory.component';
-// tslint:disable-next-line: max-line-length
 import { PowerBallRulesAndOddsComponent } from './games/state/Florida/power-ball-gen/power-ball-rules-and-odds/power-ball-rules-and-odds.component';
 import { PowerBallRulesComponent } from './games/state/Florida/power-ball-gen/power-ball-rules/power-ball-rules.component';
 import { PowerBallOddsComponent } from './games/state/Florida/power-ball-gen/power-ball-odds/power-ball-odds.component';
 import { PowerBallGameTheoryComponent } from './games/state/Florida/power-ball-gen/power-ball-game-theory/power-ball-game-theory.component';
-import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLucky/create-lucky-number/create-lucky-number.component';
-import { LuckyListComponent } from './my-profile/LuckyNumbers/listLucky/lucky-list/lucky-list.component';
-// import { LuckyNumberModels } from './my-profile/LuckyNumbers/luckyNumberPost.model';
-// Modules
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-// Angular Inputs
-import { MatDialogModule } from '@angular/material/dialog';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatInputModule } from '@angular/material/input';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { PlayerStatsComponent } from './my-profile/Stats/player-stats/player-stats.component';
-import { EditLuckComponent } from './my-profile/LuckyNumbers/listLucky/edit/edit-luck/edit-luck.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { loginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
+
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorIntercept } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
+import { PostsModule } from './posts.module';
+// import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -118,7 +101,6 @@ import { ErrorComponent } from './error/error.component';
     FlLottoGenComponent,
     MegaMillionsGenComponent,
     PowerBallGenComponent,
-    MyProfileComponent,
     Flpick2RulesAndOddsComponent,
     Pick2RulesComponent,
     Pick2OddsComponent,
@@ -162,33 +144,19 @@ import { ErrorComponent } from './error/error.component';
     PowerBallRulesComponent,
     PowerBallOddsComponent,
     PowerBallGameTheoryComponent,
-    CreateLuckyNumberComponent,
-    LuckyListComponent,
-    PlayerStatsComponent,
-    EditLuckComponent,
-    loginComponent,
-    SignupComponent,
     ErrorComponent
      
 
   ],
-  imports: [BrowserModule,
+  imports: [
+            BrowserModule,
             AppRoutingModule,
-            ReactiveFormsModule,
-            FormsModule,
-            BrowserAnimationsModule,
-            MatInputModule,
-            MatCardModule,
-            MatButtonModule,
-            MatExpansionModule,
-            MatProgressSpinnerModule,
-            MatPaginatorModule,
+            PostsModule,
+            AngularMaterialModule,
             HttpClientModule,
-            MatPaginatorModule,
-            MatDialogModule
+            BrowserAnimationsModule,
+                 
           ],
-
-
             providers: [
               {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
               {provide: HTTP_INTERCEPTORS, useClass: ErrorIntercept, multi: true },

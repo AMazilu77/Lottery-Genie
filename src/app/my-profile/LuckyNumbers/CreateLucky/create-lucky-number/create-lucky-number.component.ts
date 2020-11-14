@@ -19,7 +19,7 @@ export class CreateLuckyNumberComponent implements OnInit, OnDestroy {
   isLoading = false;
   // top level object for a form
   form: FormGroup;
-  imagePreview: string;
+  imagePreview: string | null;
   private mode = 'create';
   private postId: string;
   private authStatusSub: Subscription;
@@ -40,21 +40,20 @@ export class CreateLuckyNumberComponent implements OnInit, OnDestroy {
         this.isLoading = false;
       });
 
-    // initialize form group right off the bat
+    // initialize form group which tracks the value and validity state of a group of FormControl instances.
     this.form = new FormGroup({
-      // validators is an array of validators we want to add, first value nulll, is starting value
-      // tslint:disable-next-line: object-literal-key-quotes
+      // FormControl Tracks the value and validation status of an individual form control.
+      // validators is an array of validators we want to add, first value null, is starting value
       numberSelected: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(1)]
       }),
-      // tslint:disable-next-line: object-literal-key-quotes
-      reasoning: new FormControl(null, { validators: [Validators.required] }),
-      // tslint:disable-next-line: object-literal-key-quotes
+      reasoning: new FormControl(null, { validators: [Validators.nullValidator] }),
       image: new FormControl(null, {
-        validators: [Validators.required],
+        validators: [Validators.nullValidator],
         asyncValidators: [mimeType]
       })
     });
+    
     // find out if we have a postId paramater using built-in paramMap observable
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       // check to see if the URL has a post ID
@@ -88,7 +87,9 @@ export class CreateLuckyNumberComponent implements OnInit, OnDestroy {
   }
 
 
+  // listens for event of file picked in file picker and then creates an image preview
   onImagePick(event: Event) {
+    // performs type conversion to tell typescript the HTLM element has an array of files, the first being the one the user selected
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({image: file});
     // informs angular the value has been changes and need to be re-evaluated and is valid
@@ -111,7 +112,7 @@ export class CreateLuckyNumberComponent implements OnInit, OnDestroy {
       this.luckyNumberService.addPost(
         this.form.value.numberSelected,
         this.form.value.reasoning,
-        this.form.value.image
+        null || this.form.value.image
       );
 
     } else {
@@ -119,7 +120,7 @@ export class CreateLuckyNumberComponent implements OnInit, OnDestroy {
         this.postId,
         this.form.value.numberSelected,
         this.form.value.reasoning,
-        this.form.value.image
+        null || this.form.value.image
       )
     }
       this.form.reset();
