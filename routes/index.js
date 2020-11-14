@@ -37,6 +37,7 @@ const mongoose = require('mongoose');
     });
   
 
+    // GET route to fetch all pick 2 winning numbers
     router.get('/FLPick2Winners', (req, res, next) => {
       winningPick2.find()
       .exec()
