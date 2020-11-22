@@ -9,11 +9,15 @@
   <div class="row">
 
     <div class="col">
-      <h3> Mid Day Drawing</h3>
+      <h4> Mid Day Drawing</h4>
+      <h6> Draw Date - Winning Numbers</h6> 
+      <ul>
+        <li *ngFor='let winningPick2 of pick2MidDayWinnersDemoData'> {{winningPick2.drawDate}} - {{winningPick2.winningNumber}}</li>
+      </ul>
     </div>
 
     <div class="col">
-      <h3> Evening Drawing</h3>
+      <h4> Evening Drawing</h4>
     </div>
 
   </div>
