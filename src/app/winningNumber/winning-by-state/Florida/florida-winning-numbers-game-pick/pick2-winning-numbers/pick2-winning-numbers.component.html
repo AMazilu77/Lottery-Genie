@@ -18,6 +18,10 @@
 
     <div class="col">
       <h4> Evening Drawing</h4>
+      <h6> Draw Date - Winning Numbers</h6> 
+      <ul>
+        <li *ngFor='let winningPick2 of pick2EveningWinnersDemoData'> {{winningPick2.drawDate}} - {{winningPick2.winningNumber}}</li>
+      </ul>
     </div>
 
   </div>
