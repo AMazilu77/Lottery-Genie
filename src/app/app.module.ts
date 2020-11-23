@@ -36,8 +36,8 @@ import { Flpick2RulesAndOddsComponent } from './games/state/Florida/flpick2-gen/
 import { Pick2RulesComponent } from './games/state/Florida/flpick2-gen/pick2-rules/pick2-rules.component';
 import { Pick2OddsComponent } from './games/state/Florida/flpick2-gen/pick2-odds/pick2-odds.component';
 import { WinningNumbersMainComponent } from './winningNumber/winning-numbers-main-page/winning-numbers-main/winning-numbers-main.component';
-import { FloridaWinningNumbersGamePickComponent } from './winningNumber/winning-by-state/Florida/florida-winning-numbers-game-pick/florida-winning-numbers-game-pick.component';
-import { Pick2WinningNumbersComponent } from './winningNumber/winning-by-state/Florida/florida-winning-numbers-game-pick/pick2-winning-numbers/pick2-winning-numbers.component';
+import { FloridaWinningNumbersGamePickComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/florida-winning-numbers-game-pick.component';
+import { Pick2WinningNumbersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/pick2-winning-numbers/pick2-winning-numbers.component';
 import { Pick3RulesAndOddsComponent } from './games/state/Florida/flpick3-gen/pick3-rules-and-odds/pick3-rules-and-odds.component';
 import { Pick3RulesComponent } from './games/state/Florida/flpick3-gen/pick3-rules/pick3-rules.component';
 import { Pick3OddsComponent } from './games/state/Florida/flpick3-gen/pick3-odds/pick3-odds.component';
