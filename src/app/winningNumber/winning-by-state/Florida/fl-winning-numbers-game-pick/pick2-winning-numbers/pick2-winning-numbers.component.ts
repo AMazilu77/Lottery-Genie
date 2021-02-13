@@ -19,7 +19,7 @@ export class Pick2WinningNumbersComponent implements OnInit {
 
    pick2MidDayWinnersDemoData = [
 
-    {drawDate: 'Nov 17, 2020', winningNumber:'922', midDay: true, evening: false},
+   
     {drawDate: 'Nov 16, 2020', winningNumber:'08', midDay: true, evening: false},
     {drawDate: 'Nov 15, 2020', winningNumber:'65', midDay: true, evening: false},
     {drawDate: 'Nov 14, 2020', winningNumber:'83', midDay: true, evening: false},
