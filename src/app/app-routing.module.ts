@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { GenieLampHomeComponent } from './genie-lamp-home/genie-lamp-home.component';
 import { MyAboutComponent } from './my-about/my-about.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
@@ -19,10 +20,15 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { Flpick2RulesAndOddsComponent } from './games/state/Florida/flpick2-gen/flpick2-rules-and-odds/flpick2-rules-and-odds.component';
 import { WinningNumbersMainComponent } from './winningNumber/winning-numbers-main-page/winning-numbers-main/winning-numbers-main.component';
 import { FloridaWinningNumbersGamePickComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/florida-winning-numbers-game-pick.component';
-import { Pick2WinningNumbersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/pick2-winning-numbers/pick2-winning-numbers.component';
 import { Pick3RulesAndOddsComponent } from './games/state/Florida/flpick3-gen/pick3-rules-and-odds/pick3-rules-and-odds.component';
 import { Pick4RulesAndOddsComponent } from './games/state/Florida/flpick4-gen/pick4-rules-and-odds/pick4-rules-and-odds.component';
 import { Pick5RulesAndOddsComponent } from './games/state/Florida/flpick5-gen/pick5-rules-and-odds/pick5-rules-and-odds.component';
+
+
+//  Winng Numbers Parts
+
+import { Pick2WinningNumbersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/pick2-winning-numbers/pick2-winning-numbers.component';
+import { Pick3WinningNumbersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/pick3-winning-numbers/pick3-winning-number.component';
 
 import { LuckyMoneyRulesAndOddsComponent } from './games/state/Florida/fl-lucky-money-gen/lucky-money-rules-and-odds/lucky-money-rules-and-odds.component';
 
@@ -69,6 +75,7 @@ const routes: Routes = [
     component: FloridaWinningNumbersGamePickComponent
   },
   { path: 'FLPick2Winners', component: Pick2WinningNumbersComponent },
+  { path: 'FLPick3Winners', component: Pick3WinningNumbersComponent },
   { path: 'luckyMoneyInfo', component: LuckyMoneyRulesAndOddsComponent }
 ];
 

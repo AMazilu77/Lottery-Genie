@@ -9,10 +9,19 @@ const winningNumberPick2Schema = mongoose.Schema({
   evening: {type: Boolean}
 })
 
+const winningNumberPick3Schema = mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
+  drawDate: { type: String, required: true },
+  winningNumber: { type: String, required: true },
+  midDay: { type: Boolean},
+  evening: {type: Boolean}
+})
+
 // export schema wrapped into a model, the model is the object itself which gives a constructor to build such objects based on schema
 // name of model export first which will be pluralized and schema to base model on, first arguement is the name you want to use internally
 // the convention is to use capital letter first, then 2nd is schema you want to use for that model
 module.exports= mongoose.model('WinningPick2', winningNumberPick2Schema);
+module.exports= mongoose.model('WinningPick3', winningNumberPick3Schema);
 
 // 
 
