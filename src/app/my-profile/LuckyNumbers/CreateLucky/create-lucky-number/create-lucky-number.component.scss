@@ -1,14 +1,20 @@
 mat-card {
    width: 80%;
    margin: auto;
-   background-color: rgb(216, 235, 241);
+   background-color: rgb(105, 103, 116);
+   
  }
 
  mat-form-field,
  text-area {
   width: 100%;
   color: black;
+  
 
+}
+
+h4 {
+  color: rgb(192, 192, 192);
 }
 
 input[type="file"] {
@@ -24,4 +30,7 @@ input[type="file"] {
   height: 100%;
 }
 
+.createLuck {
+  color: black;
+}
 

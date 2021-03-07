@@ -1,12 +1,14 @@
 
 
 <mat-card>
+<h4> Save Lucky Number Post</h4>
+<p> Save your lucky numbers, or pictures of the numbers you want to play later.</p>
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <form [formGroup]='form' (submit)="onSaveLuck()" *ngIf="!isLoading">
 
     <mat-form-field>
 
-      <input matInput
+      <input class='createLuck' matInput
         formControlName='numberSelected'
         type='number'
         placeholder="Enter only Numbers here"

@@ -1,0 +1,30 @@
+<button class="btn btn-outline-primary" (click)="back()"> Back </button>
+<hr>
+<div>
+<h1> History of Pick-3 Winning Numbers</h1>
+</div>
+<br>
+<div id='totalContainer' class="container">
+
+  <div class="row">
+
+    <div class="col">
+      <h4> Mid Day Drawing</h4>
+      <h6> Draw Date - Winning Numbers</h6> 
+      <ul>
+        <li *ngFor='let winningPick3 of pick3MidDayWinnersDemoData'> {{winningPick3.drawDate}} - {{winningPick3.winningNumber}}</li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <h4> Evening Drawing</h4>
+      <h6> Draw Date - Winning Numbers</h6> 
+      <ul>
+        <li *ngFor='let winningPick3 of pick3EveningWinnersDemoData'> {{winningPick3.drawDate}} - {{winningPick3.winningNumber}}</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
