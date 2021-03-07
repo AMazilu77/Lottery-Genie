@@ -18,7 +18,12 @@ export class Pick3WinningNumbersComponent implements OnInit {
   constructor(private router: Router, public WinningService: winningNumbersServiceClass) { }
 
    pick3MidDayWinnersDemoData = [
-
+    {drawDate: 'Nov 22, 2020', winningNumber:'501', midDay: true, evening: false},
+    {drawDate: 'Nov 21, 2020', winningNumber:'814', midDay: true, evening: false},
+    {drawDate: 'Nov 20, 2020', winningNumber:'549', midDay: true, evening: false},
+    {drawDate: 'Nov 19, 2020', winningNumber:'303', midDay: true, evening: false},
+    {drawDate: 'Nov 18, 2020', winningNumber:'913', midDay: true, evening: false},
+    {drawDate: 'Nov 17, 2020', winningNumber:'922', midDay: true, evening: false},
     {drawDate: 'Nov 16, 2020', winningNumber:'741', midDay: true, evening: false},
     {drawDate: 'Nov 15, 2020', winningNumber:'698', midDay: true, evening: false},
     {drawDate: 'Nov 14, 2020', winningNumber:'899', midDay: true, evening: false},
@@ -30,7 +35,12 @@ export class Pick3WinningNumbersComponent implements OnInit {
 
   ];
    pick3EveningWinnersDemoData = [
-
+    {drawDate: 'Nov 22, 2020', winningNumber:'785', midDay: false, evening: true},
+    {drawDate: 'Nov 21, 2020', winningNumber:'351', midDay: false, evening: true},
+    {drawDate: 'Nov 20, 2020', winningNumber:'421', midDay: false, evening: true},
+    {drawDate: 'Nov 19, 2020', winningNumber:'106', midDay: false, evening: true},
+    {drawDate: 'Nov 18, 2020', winningNumber:'073', midDay: false, evening: true},
+    {drawDate: 'Nov 17, 2020', winningNumber:'874', midDay: false, evening: true},
     {drawDate: 'Nov 16, 2020', winningNumber:'206', midDay: false, evening: true},
     {drawDate: 'Nov 15, 2020', winningNumber:'541', midDay: false, evening: true},
     {drawDate: 'Nov 14, 2020', winningNumber:'268', midDay: false, evening: true},
