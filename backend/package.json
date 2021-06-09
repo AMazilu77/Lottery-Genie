@@ -1,0 +1,22 @@
+{
+  "name": "the-lottery-djinni",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "chalk": "^2.4.2",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.19",
+    "mongoose-unique-validator": "^2.0.3",
+    "multer": "^1.4.2"
+  },
+  "engines": {
+    "node": "10.16.0",
+    "npm": "6.8.0"
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.",
+  "author": "Alexander Teodor-Mazilu III",
+  "license": "ISC"
+}

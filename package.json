@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start:server": "nodemon server.js",
+    "start:server": "nodemon ./backend/server.js",
     "heroku-postbuild": "ng build --aot --prod"
   },
   "private": true,
@@ -28,6 +28,7 @@
     "@angular/router": "^10.2.4",
     "ajv": "^6.12.6",
     "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.6.0",
     "braces": "^3.0.2",
