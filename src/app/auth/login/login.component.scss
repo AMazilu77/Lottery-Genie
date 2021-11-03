@@ -17,11 +17,15 @@ mat-card {
  }
 
  input {
-   color: white;
+   color: rgb(233, 33, 126);
  }
 
  img {
    height: 20%;
    width: auto;
    margin-left: 25%;
+ }
+
+ mat-form-field{
+  color: pink;
  }

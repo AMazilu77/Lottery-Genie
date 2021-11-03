@@ -15,9 +15,9 @@ private winningFLPick2List: WinningPick2NumberModel[] = [];
 private winningFLPick3List: WinningPick3NumberModel[] = [];
 constructor(private http: HttpClient, private router: Router) {}
 
-    // getPick2Winners() {
-    // return this.http.get<{ drawDate: string; winingNumber: string, midDay: boolean, evening: boolean }>(
-    //     BACKEND_URL
-    // )}
+    getPick2Winners() {
+    return this.http.get<{ drawDate: string; winingNumber: string, midDay: boolean, evening: boolean }>(
+        BACKEND_URL
+    )}
 
 }
