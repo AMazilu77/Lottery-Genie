@@ -3,6 +3,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const cors = require('cors');
 const mongoose = require('mongoose');
 const chalk = require('chalk');
 const postsRoutes = require("../routes/posts");
@@ -19,7 +20,7 @@ mongoose.connect(process.env.AWSONLINE, { useUnifiedTopology: true, useNewUrlPar
 //   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 // });
 
-
+app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
