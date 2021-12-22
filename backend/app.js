@@ -31,18 +31,32 @@ app.use(bodyParser.urlencoded({
 // static middleweare
 app.use('/images', express.static(path.join('backend/images')));
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, PUT, DELETE, OPTIONS"
-  );
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin",
+//    "*");
+
+//   res.header("Access-Control-Allow-Credentials", true);
+   
+//   res.setHeader(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+//   );
+//   res.setHeader(
+//     "Access-Control-Allow-Methods",
+//     "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+//   );
+//   next();
+// });
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", '*');
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
   next();
 });
+
+
 
 app.use("/api/posts", postsRoutes);
 app.use("/api/user", userRoutes);
@@ -50,3 +64,4 @@ app.use("/api/winning", winningRoute);
 
 // exports the express app and all the midddleware logic
 module.exports = app;
+
