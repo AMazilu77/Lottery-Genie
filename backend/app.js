@@ -62,6 +62,6 @@ app.use("/api/posts", postsRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/winning", winningRoute);
 
-// exports the express app and all the midddleware logic
+// exports the express app and all the midddleware logic!
 module.exports = app;
 
