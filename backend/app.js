@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
-const chalk = require('chalk');
+// const chalk = require('chalk');
 const postsRoutes = require("../routes/posts");
 const userRoutes = require('../routes/user');
 const winningRoute = require('../routes/index');
@@ -14,9 +14,9 @@ mongoose.connect('mongodb+srv://Alexander:IQiq5720@jinnrecords-dt5l3.mongodb.net
   useUnifiedTopology: true,
   useNewUrlParser: true
  }).then(() => {
-  console.log(chalk.magenta('Djinn has connected to the AWS database'));
+  console.log('Djinn has connected to the AWS database');
 }).catch((err) => {
-  console.log(chalk.red(err, 'No Connection - Mongo database failed! The Djinn Summoning has failed! NOW ITS FREE!! FIX THIS!!!'))
+  console.log(err, 'No Connection - Mongo database failed! The Djinn Summoning has failed! NOW ITS FREE!! FIX THIS!!!')
 });
 
 // app.listen(process.env.PORT || 3000, function () {
