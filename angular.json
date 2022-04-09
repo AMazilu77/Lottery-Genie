@@ -15,7 +15,7 @@
       },
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/The-Lottery-Djinni",
             "index": "src/index.html",
