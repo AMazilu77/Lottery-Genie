@@ -6,9 +6,9 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 // const chalk = require('chalk');
-const postsRoutes = require("./routes/posts");
-const userRoutes = require('./routes/user');
-const winningRoute = require('./routes/index');
+const postsRoutes = require("../routes/posts");
+const userRoutes = require('../routes/user');
+const winningRoute = require('../routes/index');
 
 mongoose.connect('mongodb+srv://Alexander:IQiq5720@jinnrecords-dt5l3.mongodb.net/test' || process.env.AWSONLINE, {
   useUnifiedTopology: true,
