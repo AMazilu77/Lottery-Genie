@@ -14,7 +14,7 @@ mongoose.connect(process.env.AWSONLINE, {
   useUnifiedTopology: true,
   useNewUrlParser: true
  }).then(() => {
-  console.log('Djinn has connected to the AWS database');
+  console.log("Djinn has connected to the AWS database, Express server listening on port %d in %s mode");
 }).catch((err) => {
   console.log(err, 'No Connection - Mongo database failed! The Djinn Summoning has failed! NOW ITS FREE!! FIX THIS!!!')
 });
