@@ -16,7 +16,7 @@ mongoose.connect(process.env.AWSONLINE, {
  }).then(() => {
   console.log("Djinn has connected to the AWS database, Express server listening on port");
 }).catch((err) => {
-  console.log(err, 'No Connection - Mongo database failed! The Djinn Summoning has failed! NOW ITS FREE!! FIX THIS!!!')
+  console.log(err, 'No Connection!!  Mongo database failed! The Djinn Summoning has failed! NOW ITS FREE!! FIX THIS!!!')
 });
 
 // app.listen(process.env.PORT || 3000, function () {
