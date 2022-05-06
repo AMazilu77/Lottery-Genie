@@ -10,7 +10,7 @@ const postsRoutes = require("../routes/posts");
 const userRoutes = require('../routes/user');
 const winningRoute = require('../routes/index');
 
-mongoose.connect(process.env.AWSONLINE, {
+mongoose.connect('mongodb+srv://Alexander:zxc123@jinnrecords-dt5l3.mongodb.net/test' || process.env.AWSONLINE, {
   useUnifiedTopology: true,
   useNewUrlParser: true
  }).then(() => {
