@@ -9,8 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start:server": "nodemon server.js",
-    "heroku-postbuild": "ng build --configuration production"
+    "start:server": "nodemon server.js"
   },
   "private": true,
   "dependencies": {
