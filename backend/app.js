@@ -31,10 +31,10 @@ app.use(bodyParser.urlencoded({
 // static middleweare
 app.use('/images', express.static(path.join('backend/images')));
 
-app.use(express.static(__dirname + '/dist/<the-lottery-genie>'));
+app.use(express.static(__dirname + '/dist/<lottery-genie>'));
 app.get('/*', function(req,res) {
 res.sendFile(path.join(__dirname+
-'/dist/<the-lottery-genie>/index.html'));});
+'/dist/<lottery-genie>/index.html'));});
 
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin",
