@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 // static middleweare
-app.use('/images', express.static(path.join('backend/images')));
+// app.use('/images', express.static(path.join('backend/images')));
 
 app.use(express.static(__dirname + '/dist/the-lottery-djinni'));
 app.get('/*', function(req,res) {
