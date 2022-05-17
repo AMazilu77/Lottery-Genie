@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({
 // static middleweare
 // app.use('/images', express.static(path.join('backend/images')));
 
-app.use(express.static(__dirname + '/dist/the-lottery-djinni/index.html'));
+app.use(express.static(__dirname + '/dist/the-lottery-djinni'));
 app.get('/*', function(req,res) {
 res.sendFile(path.join(__dirname+
 '/dist/the-lottery-djinni/index.html'));});
