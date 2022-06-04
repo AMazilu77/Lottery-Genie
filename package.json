@@ -45,7 +45,7 @@
     "mongoose-unique-validator": "^3.0.0",
     "multer": "^1.4.4",
     "node": "^17.7.2",
-    "npm": "^8.6.0",
+    "npm": "^8.11.0",
     "path": "^0.12.7",
     "popper.js": "^1.16.1",
     "rxjs": "^7.5.5",
