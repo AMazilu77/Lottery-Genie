@@ -33,6 +33,8 @@ import { Pick3WinningNumbersComponent } from './winningNumber/winning-by-state/F
 import { LuckyMoneyRulesAndOddsComponent } from './games/state/Florida/fl-lucky-money-gen/lucky-money-rules-and-odds/lucky-money-rules-and-odds.component';
 
 import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLucky/create-lucky-number/create-lucky-number.component';
+import { MutliStateGamesComponent } from './winningNumber/mutli-state-games/mutli-state-games.component';
+
 // import { loginComponent } from './auth/login/login.component';
 // import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGaurd } from './auth/login/auth.guard';
@@ -69,13 +71,16 @@ const routes: Routes = [
   { path: 'FLPick3RulesOdds', component: Pick3RulesAndOddsComponent },
   { path: 'FLPick4RulesOdds', component: Pick4RulesAndOddsComponent },
   { path: 'FLPick5RulesOdds', component: Pick5RulesAndOddsComponent },
+
+  // Winning Numbers Section
   { path: 'winningNumbersStatePick', component: WinningNumbersMainComponent },
-  {
-    path: 'winningNumbersGamePick',
-    component: FloridaWinningNumbersGamePickComponent
-  },
+  { path: 'winningNumbersGamePick', component: FloridaWinningNumbersGamePickComponent},
+  { path: 'multiStateGames', component: MutliStateGamesComponent},
   { path: 'FLPick2Winners', component: Pick2WinningNumbersComponent },
   { path: 'FLPick3Winners', component: Pick3WinningNumbersComponent },
+
+
+
   { path: 'luckyMoneyInfo', component: LuckyMoneyRulesAndOddsComponent }
 ];
 
