@@ -85,6 +85,7 @@ import { ErrorComponent } from './error/error.component';
 import { PostsModule } from './posts.module';
 import { MutliStateGamesComponent } from './winningNumber/mutli-state-games/mutli-state-games.component';
 import { MegaMillionsWinnersComponent } from './winningNumber/mutli-state-games/mega-millions-winners/mega-millions-winners.component';
+import { PowerballWinnersComponent } from './winningNumber/mutli-state-games/powerball-winners/powerball-winners.component';
 // import { AuthModule } from './auth/auth.module';
 
 @NgModule({
@@ -152,7 +153,8 @@ import { MegaMillionsWinnersComponent } from './winningNumber/mutli-state-games/
     PowerBallGameTheoryComponent,
     ErrorComponent,
     MutliStateGamesComponent,
-    MegaMillionsWinnersComponent
+    MegaMillionsWinnersComponent,
+    PowerballWinnersComponent
      
 
   ],

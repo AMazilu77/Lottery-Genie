@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { GenieLampHomeComponent } from './genie-lamp-home/genie-lamp-home.component';
 import { MyAboutComponent } from './my-about/my-about.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
+
+// Random Number Generators
 import { LotteryNumberGenMainPageComponent } from './games/lottery-number-gen-main-page/lottery-number-gen-main-page.component';
 import { FLGamePickComponent } from './games/state/Florida/flgame-pick/flgame-pick.component';
 import { FLPick2GenComponent } from './games/state/Florida/flpick2-gen/flpick2-gen.component';
@@ -25,16 +27,15 @@ import { Pick4RulesAndOddsComponent } from './games/state/Florida/flpick4-gen/pi
 import { Pick5RulesAndOddsComponent } from './games/state/Florida/flpick5-gen/pick5-rules-and-odds/pick5-rules-and-odds.component';
 
 
-//  Winng Numbers Parts
+//  Winning Numbers 
 
 import { Pick2WinningNumbersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/pick2-winning-numbers/pick2-winning-numbers.component';
 import { Pick3WinningNumbersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/pick3-winning-numbers/pick3-winning-number.component';
-
+import { MegaMillionsWinnersComponent } from './winningNumber/mutli-state-games/mega-millions-winners/mega-millions-winners.component';
 import { LuckyMoneyRulesAndOddsComponent } from './games/state/Florida/fl-lucky-money-gen/lucky-money-rules-and-odds/lucky-money-rules-and-odds.component';
 
 import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLucky/create-lucky-number/create-lucky-number.component';
 import { MutliStateGamesComponent } from './winningNumber/mutli-state-games/mutli-state-games.component';
-
 // import { loginComponent } from './auth/login/login.component';
 // import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGaurd } from './auth/login/auth.guard';
@@ -78,9 +79,7 @@ const routes: Routes = [
   { path: 'multiStateGames', component: MutliStateGamesComponent},
   { path: 'FLPick2Winners', component: Pick2WinningNumbersComponent },
   { path: 'FLPick3Winners', component: Pick3WinningNumbersComponent },
-
-
-
+  { path: 'WinningMegaMellionsNumbers', component: MegaMillionsWinnersComponent },
   { path: 'luckyMoneyInfo', component: LuckyMoneyRulesAndOddsComponent }
 ];
 
