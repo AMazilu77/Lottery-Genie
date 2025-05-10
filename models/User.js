@@ -9,7 +9,7 @@ const uniqueValidator = require("mongoose-unique-validator");
     // lastName: { type: String, required: true },
     // userName: { type: String, unique: true, required: true },
     // use of unique here is for internal mongo optimization, not to act as a validator
-    email: { type: String, unique: true, required: true, unqiue: true},
+    email: { type: String, unique: true, required: true, unique: true},
     password: { type: String, required: true },
     // profileImg: { type: String, default: '' },
     // headerImg: { type: String, default: '' },
