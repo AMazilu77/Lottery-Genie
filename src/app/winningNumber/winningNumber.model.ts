@@ -10,6 +10,7 @@ export interface WinningPick2NumberModel {
     id: string;
     drawDate: Date;
     winningNumber: string;
+    fireball: {type: String, required: true}
     midDay: boolean;
     evening: boolean;
   }

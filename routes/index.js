@@ -18,6 +18,7 @@ const mongoose = require('mongoose');
         _id: new mongoose.Types.ObjectId(),
         drawDate: req.body.drawDate,
         winningNumber: req.body.winningNumber,
+        fireball: req.body.fireball,
         midDay: req.body.midDay,
         evening: req.body.evening
       });

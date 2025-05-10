@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: 'http://localhost:3000/api'
+  apiURL: 'mongodb://mongo:nsIMuRCaoVySCTaqIsDEXFykffbTINHT@mongodb.railway.internal:27017'
 };

@@ -10,11 +10,12 @@ const postsRoutes = require("../routes/posts");
 const userRoutes = require('../routes/user');
 const winningRoute = require('../routes/index');
 
-mongoose.connect('mongodb+srv://Alexander:zxc123@jinnrecords-dt5l3.mongodb.net/test' || process.env.AWSONLINE, {
+mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
   useNewUrlParser: true
- }).then(() => {
-  console.log("Djinn has connected to the AWS database, Express server listening on port");
+})
+ .then(() => {
+  console.log(chalk.magenta('Djinn has connected to the railway database'));
 }).catch((err) => {
   console.log(err, 'No Connection!!  Mongo database failed!')
 });
