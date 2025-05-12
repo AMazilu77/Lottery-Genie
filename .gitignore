@@ -57,3 +57,4 @@ dist/
 .out/
 build/
 .tmp/
+dist/

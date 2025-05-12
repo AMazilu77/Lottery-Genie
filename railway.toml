@@ -1,5 +1,11 @@
+# railway.toml
 [build]
-command = "echo 'Skipping build step'"
+# Tell Railway to use the StaticFile builder
+builder = "staticfile"
 
-[static]
+# No build step on Railway — you build locally
+command = "echo 'skipping build on Railway'"
+
+[staticfile]
+# point this at your locally built Angular output
 directory = "dist/The-Lottery-Djinni"
