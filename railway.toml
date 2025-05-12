@@ -1,5 +1,5 @@
 [build]
-command = "npm install -g @angular/cli && npm install && ng build --configuration production"
+command = "echo 'Skipping build step as assets are pre-built'"
 
 [static]
 directory = "dist/The-Lottery-Djinni"
