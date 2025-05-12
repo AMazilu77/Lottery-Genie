@@ -1,7 +1,9 @@
 {
-  "build": {
-    "builder": "static",
-    "buildCommand": "npm run build -- --configuration production",
-    "outputPath": "dist/The-Lottery-Djinni"
+  "services": {
+    "frontend": {
+      "buildCommand": "npm run build -- --configuration production",
+      "outputDirectory": "dist/The-Lottery-Djinni",
+      "static": true
+    }
   }
 }
