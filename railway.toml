@@ -1,13 +1,5 @@
 [build]
-builder = "static"
-buildCommand = "npm install -g @angular/cli && npm install && ng build --configuration production"
-publishDir = "dist/The-Lottery-Djinni"
-
-
-[deploy]
-startCommand = ""
-healthcheckPath = "/"
-restartPolicyType = "never"
+command = "npm install -g @angular/cli && npm install && ng build --configuration production"
 
 [static]
 directory = "dist/The-Lottery-Djinni"
