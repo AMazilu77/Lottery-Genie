@@ -1,5 +1,8 @@
 [build]
-command = "ng build --configuration production"
+builder = "static"
+buildCommand = "npm install -g @angular/cli && npm install && ng build --configuration production"
+publishDir = "dist/The-Lottery-Djinni"
+
 
 [deploy]
 startCommand = ""
