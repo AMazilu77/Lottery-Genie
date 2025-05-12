@@ -59,3 +59,11 @@ build/
 .tmp/
 dist/
 dist/
+.angular/cache
+
+node_modules/
+dist/
+.angular/
+tmp/
+*.log
+*.tmp
