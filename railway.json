@@ -1,7 +1,7 @@
 {
     "build": {
-      "builder": "static",
-      "buildCommand": "ng build --configuration production",
-      "outputPath": "dist/The-Lottery-Djinni"
+      "command": "ng build --configuration production",
+      "directory": "dist/The-Lottery-Djinni"
     }
   }
+  
