@@ -1,5 +1,5 @@
 [build]
-command = "echo 'Skipping build step as assets are pre-built'"
+command = "echo 'Skipping build step'"
 
 [static]
 directory = "dist/The-Lottery-Djinni"

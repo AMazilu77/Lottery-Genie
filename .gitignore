@@ -51,3 +51,9 @@ Thumbs.db
 
 # ignore images for github
 /backend/images
+
+d
+dist/
+.out/
+build/
+.tmp/
