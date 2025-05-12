@@ -28,6 +28,8 @@ constructor(private http: HttpClient, private router: Router) {}
     )}
 
     getPick3Winners() {
-        return this.http.get<WinningPick3NumberModel[]>(BACKEND_URL_PICK3);
+        return this.http.get(BACKEND_URL_PICK3).pipe(
+            tap(data => console.log('raw pick3 responses', data))
+        );
     }
  }

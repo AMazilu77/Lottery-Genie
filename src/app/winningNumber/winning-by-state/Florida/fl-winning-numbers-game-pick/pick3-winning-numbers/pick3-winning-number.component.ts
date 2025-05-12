@@ -20,7 +20,7 @@ export class Pick3WinningNumbersComponent implements OnInit {
   middayResults: WinningPick3NumberModel[] = [];
   eveningResults: WinningPick3NumberModel[] = [];
   ngOnInit() {
-    this.WinningService.getPick3Winners().subscribe((data) => {
+    this.WinningService.getPick3Winners().subscribe((data: WinningPick3NumberModel[]) => {
       this.middayResults = data.filter(entry => entry.midDay);
       this.eveningResults = data.filter(entry => entry.evening);
     })
