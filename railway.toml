@@ -1,11 +1,12 @@
-# railway.toml
 [build]
-# Tell Railway to use the StaticFile builder
-builder = "staticfile"
+builder = "static"
+buildCommand = "npm install -g @angular/cli && npm install && ng build --configuration production"
+publishDir = "dist/The-Lottery-Djinni"
 
-# No build step on Railway — you build locally
-command = "echo 'skipping build on Railway'"
+[deploy]
+startCommand = ""
+healthcheckPath = "/"
+restartPolicyType = "never"
 
-[staticfile]
-# point this at your locally built Angular output
+[static]
 directory = "dist/The-Lottery-Djinni"
