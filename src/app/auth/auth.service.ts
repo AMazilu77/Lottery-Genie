@@ -5,7 +5,7 @@ import { AuthData } from './auth-data.model';
 import { Subject } from 'rxjs';
 import { environment } from '../../environments/environment'
 
-const BACKEND_URL = environment.apiURL + '/user/'
+const BACKEND_URL = environment.apiUrl + '/user/'
 @Injectable({ providedIn: "root"})
 export class AuthService {
     private isAuthenticated = false;

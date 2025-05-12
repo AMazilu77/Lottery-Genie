@@ -1,9 +1,0 @@
-{
-  "services": {
-    "frontend": {
-      "buildCommand": "npm run build -- --configuration production",
-      "outputDirectory": "dist/The-Lottery-Djinni",
-      "static": true
-    }
-  }
-}
