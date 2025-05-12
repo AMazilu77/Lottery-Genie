@@ -165,7 +165,6 @@ import { PowerballWinnersComponent } from './winningNumber/mutli-state-games/pow
             AngularMaterialModule,
             HttpClientModule,
             BrowserAnimationsModule,
-                 
           ],
             providers: [
               {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

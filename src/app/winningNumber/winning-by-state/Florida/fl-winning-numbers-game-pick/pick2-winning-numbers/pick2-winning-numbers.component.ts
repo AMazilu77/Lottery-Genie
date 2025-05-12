@@ -21,7 +21,7 @@ export class Pick2WinningNumbersComponent implements OnInit {
   
 
   ngOnInit() {
-    this.WinningService.getPick2Winners().subscribe((data) => {
+    this.WinningService.getPick2Winners().subscribe((data: any[]) => {
       this.middayResults = data.filter(entry => entry.midDay);
       this.eveningResults = data.filter(entry => entry.evening);
     });
