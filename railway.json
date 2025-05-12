@@ -1,0 +1,8 @@
+{
+    "build": "ng build --configuration production",
+    "start": "npx serve dist/The-Lottery-Djinni -s",
+    "static": {
+      "public": "dist/The-Lottery-Djinni"
+    }
+  }
+  
