@@ -1,0 +1,10 @@
+[build]
+command = "ng build --configuration production"
+
+[deploy]
+startCommand = ""
+healthcheckPath = "/"
+restartPolicyType = "never"
+
+[static]
+directory = "dist/The-Lottery-Djinni"
