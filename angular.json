@@ -100,7 +100,8 @@
             "scripts": [],
             "assets": [
               "favicon.png",
-              "src/assets"
+              "src/assets",
+              "src/_redirects"
             ]
           }
         }
