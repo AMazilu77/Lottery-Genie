@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 
 
-const BACKEND_URL_PICK2 = environment.apiUrl + 'api/winning/FLpick2winners';
-const BACKEND_URL_PICK3 = environment.apiUrl + 'api/winning/FLpick3winners';
+const BACKEND_URL_PICK2 = environment.apiUrl + '/winning/FLpick2winners';
+const BACKEND_URL_PICK3 = environment.apiUrl + '/winning/FLpick3winners';
 
 //Decorator that marks a class as available to be provided and injected as a dependency. This is the Winning Number Service class
 @Injectable({ providedIn: 'root' })
