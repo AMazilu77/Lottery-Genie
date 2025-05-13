@@ -18,6 +18,12 @@ private winningFLPick3List: WinningPick3NumberModel[] = [];
 
 constructor(private http: HttpClient, private router: Router) {}
 
+ngOnInit() {
+    this.http.get(`${environment.apiUrl}/winning/FLPick3`).subscribe(
+      data => console.log('🎯 Received FLPick3 data:', data),
+      err => console.error('❌ API call failed:', err)
+    );
+  }
     // getPick2Winners() {
     //     return this.http.get<WinningPick2NumberModel[]>(BACKEND_URL_PICK2) 
     // }
