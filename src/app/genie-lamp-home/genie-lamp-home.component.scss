@@ -1,0 +1,10 @@
+@media (max-width: 768px) {
+  .lamp-touch-hint::after {
+    content: "Touch me!";
+    position: absolute;
+    bottom: -20px;
+    font-size: 1rem;
+    color: #fff;
+    animation: bounce 2s infinite;
+  }
+}
