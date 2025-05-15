@@ -1,15 +1,20 @@
-<div class="ui segment" id="LampPage" style="text-align:center">
-  <h1>
-    Welcome to {{ title }}
-  </h1>
-  <p> An ancient Djinni has been bound to your device! It is safely trapped inside the digital realm. </p>
-    <h4> Touch the Lamp to begin!</h4>
-  <button (click)="goToAbout()"> Tell me about the Genie </button>
+<div class="landing-wrapper">
+  <div class="landing-overlay">
+    <h1 class="landing-title">Welcome to {{ title }}</h1>
+    <p class="landing-subtitle">
+      An ancient Djinni has been bound to your device! It is safely trapped inside the digital realm.
+    </p>
+    <h4>Touch the Lamp to begin!</h4>
+    <button class="genie-btn" (click)="goToAbout()">Tell me about the Genie</button>
+  </div>
 
+  <img
+    src="../../assets/public/images/landing_page_lamp.png"
+    alt="Lamp"
+    class="lamp-background"
+    (click)="goToDash()" />
 
-  <!-- <div class="item" style="background-image: url('../images/genie-magic-lamp-6-4531.jpg');"></div> -->
-  <img src="/assets/public/images/genie-medium.jpg" alt="Lamp" (click)="goToDash()">
-  <p>PS: It was very difficult to catch. Please Do not set it free. Play Responsibly.</p>
+  <p class="disclaimer">
+    PS: It was very difficult to catch. Please do not set it free. Play responsibly.
+  </p>
 </div>
-<!-- <div class="pagination justify-content-center"> <img id="genie-dashboard-render"
-  src="../assets/public/genie-medium.jpg"></div> -->

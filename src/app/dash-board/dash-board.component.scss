@@ -1,39 +1,44 @@
+/* Fullscreen background image */
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/public/images/newBG-2.jpeg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+/* Translucent top overlay with title and buttons */
+.overlay {
+  position: relative;
+  background: rgba(0, 0, 0, 0.6); /* Dark transparent layer */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+/* Button layout container */
 .button-container {
+  margin-top: 1rem;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  align-items: center;
-
-
-}
-
-.genietext {
-  display: flex;
+  gap: 10px;
   justify-content: center;
-  align-items: center;
-
-
 }
 
-#genie-dashboard-render{
-  height: auto;
-  width: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
-.btn {
-  padding: 1%;
-  margin: 1%;
-  border: 1%;
-  border-style: solid;
-  border-color: black;
-}
-
-p {
+/* Optional: style for the phrase/quote */
+.phrase {
+  margin-top: 2rem;
   font-style: italic;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-size: 1.2rem;
+  color: #ddd;
+  text-align: center;
+}
+
+/* Make sure buttons have a consistent size */
+button.btn {
+  min-width: 160px;
 }
