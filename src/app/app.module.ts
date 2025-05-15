@@ -87,6 +87,7 @@ import { MutliStateGamesComponent } from './winningNumber/mutli-state-games/mutl
 import { MegaMillionsWinnersComponent } from './winningNumber/mutli-state-games/mega-millions-winners/mega-millions-winners.component';
 import { PowerballWinnersComponent } from './winningNumber/mutli-state-games/powerball-winners/powerball-winners.component';
 import { DraggableDirective } from './directives/draggable.directive';
+import { RulesModalComponent } from './shared/rules-modal/rules-modal.component';
 // import { AuthModule } from './auth/auth.module';
 
 @NgModule({
@@ -157,7 +158,8 @@ import { DraggableDirective } from './directives/draggable.directive';
     MutliStateGamesComponent,
     MegaMillionsWinnersComponent,
     PowerballWinnersComponent,
-    DraggableDirective
+    DraggableDirective,
+    RulesModalComponent
      
 
   ],

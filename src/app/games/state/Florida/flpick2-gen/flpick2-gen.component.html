@@ -14,7 +14,7 @@
       <p>
         Save numbers to your profile to track performance. After buying a ticket, click "Post it" to register the play.
       </p>
-      <button class="btn btn-outline-info" (click)="FLPick2RulesOdds()">I wish to know more</button>
+      <button class="btn btn-outline-info" (click)="showRules = true">I wish to know more</button>
     </div>
 
     <div class="number-cards">
@@ -45,8 +45,9 @@
       <button class="btn btn-outline-info">
         Show me numbers that have won
       </button>
-    </div>
 
+    
+    </div>
     <div class="saved-section">
       <h3>Saved Numbers</h3>
       <div class="saved-card">
@@ -57,4 +58,43 @@
     </div>
 
   </div>
+
+  <app-rules-modal
+  *ngIf="showRules"
+  [gameTitle]="'Florida Pick 2'"
+  [quote]="'What arcane knowledge dost thou seek, mortal?'"
+  (closed)="showRules = false">
+
+  <div rules>
+ <p> <b>1.</b> Select the amount you want to play <b>(Pick two numbers between 0-9)</b>: 50 cents or $1 (all
+      Straight/Box and 1-OFF plays cost $1). </p>
+   
+   <p><b>2.</b> There are two drawings per day seven days per week, at approximately <b>1:30 p.m. and 9:45 p.m. ET.</b>
+      Tickets for
+      each drawing can be purchased up to 13 minutes prior to the applicable drawing – 1:17 p.m. ET for the midday
+      drawings and 9:32 p.m. ET for the evening drawings.</p>    
+       <p><b>3.</b> Select the draw time. Select MID for the midday drawing (1:30
+      p.m. ET), EVE for the evening drawing (9:45p.m. ET) draw, or BOTH for both the midday and evening drawings. If no
+      draw time is marked, the terminal will
+      automatically print a ticket for the next available draw. If BOTH is selected, two separate tickets will print –
+      one for the midday drawing and one for the evening drawing.</p>
+
+    <p>You can win a top prize of <b>$50 </b>with a $1 Straight play, or increase your chances of winning with a Box,
+      Straight/Box, Front/Back Number or 1-OFF play.</p>
+
+    <p><b>Reminder: Prizes must be claimed within 180 days of the draw date.</b>
+      All PICK 2 prizes may be claimed at any authorized Florida Lottery retailer.</p>
+
+
+  </div>
+
+  <div odds>
+    <p>The odds of winning on a straight Pick 2 ticket are 1 in 100. Boxed odds are slightly better depending on format.</p>
+  </div>
+
+  <div theory>
+    <p>This game has low variance and fast feedback. You can apply frequency tracking, trailing digit avoidance, and rolling analysis across day/night draws.</p>
+  </div>
+
+</app-rules-modal>
 </div>

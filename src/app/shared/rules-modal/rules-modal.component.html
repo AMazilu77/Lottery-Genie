@@ -1,0 +1,23 @@
+<div class="rules-modal glass" appDraggable>
+  <button class="close-btn" (click)="close()">✖</button>
+  <h3>{{ gameTitle }}: Rules & Strategy</h3>
+  <p class="quote"><i>{{ quote }}</i></p>
+
+  <div class="btn-group">
+    <button class="btn btn-outline-info" (click)="setView('rules')">Rules</button>
+    <button class="btn btn-outline-info" (click)="setView('odds')">Odds</button>
+    <button class="btn btn-outline-info" (click)="setView('theory')">Game Theory</button>
+  </div>
+
+  <div class="content-view">
+    <ng-container *ngIf="view === 'rules'">
+      <ng-content select="[rules]"></ng-content>
+    </ng-container>
+    <ng-container *ngIf="view === 'odds'">
+      <ng-content select="[odds]"></ng-content>
+    </ng-container>
+    <ng-container *ngIf="view === 'theory'">
+      <ng-content select="[theory]"></ng-content>
+    </ng-container>
+  </div>
+</div>

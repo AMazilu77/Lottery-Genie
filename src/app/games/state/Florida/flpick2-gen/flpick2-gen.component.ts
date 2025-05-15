@@ -47,6 +47,8 @@ export class FLPick2GenComponent implements OnInit {
     this.router.navigate(['/FLPick2RulesOdds']);
   }
 
+  showRules = false; // modal visibility toggle
+
 
 }
 
