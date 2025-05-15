@@ -1,92 +1,60 @@
-<button class='btn btn-outline-primary' type="button" (click)="back()"> back </button>
-<h2 class="pagination justify-content-center" layout-align="center center">Florida Pick 2</h2>
-<hr>
-<div class="pagination justify-content-center" layout-align="center center">
+<div class="pick2-background">
+  <!-- DRAGGABLE WRAPPER -->
+  <div class="pick2-container glass" appDraggable>
 
-</div>
+    <!-- Back button ON the panel -->
+    <button class="btn btn-outline-primary back-btn-panel" type="button" (click)="back()">Back</button>
 
+    <h2 class="title">Florida Pick 2</h2>
 
-
-<body id="theBody" class="pagination justify-content-center" layout-align="center center">
-
-
-
-  <div id="Number-Gen-Total-Container">
-
-
-
-    <script src='/javascripts/script.js'></script>
-    <div class="">
+    <div class="rules-section">
       <h3>Pick-2 Number Generator</h3>
-
+      <h4>Rules</h4>
+      <p>1. Select two numbers from 0 through 9.</p>
+      <p>
+        Save numbers to your profile to track performance. After buying a ticket, click "Post it" to register the play.
+      </p>
+      <button class="btn btn-outline-info" (click)="FLPick2RulesOdds()">I wish to know more</button>
     </div>
 
-
-    <div class="" id="rules">
-      <h4>Rules </h4>
-      <p>1. Select two numbers from 0 through 9 </p>
-      <p> Click the save number button save the numbers you wish to play to your profile to gain statistical DATA on
-        how your numbers perform. Save number button will save a list of numbers you wish you save, then click post
-        once you've bought a ticket. </p>
-      <button class="btn btn-outline-info" (click)="FLPick2RulesOdds()"> I wish to know more</button>
-    </div>
-
-
-
-
-
-    <div class="pagination justify-content-center" id="CardContainer">
-
-      <div id="NumberCard1">
-        <h1 class="generatedNumber" id="firstNumber"> {{numberGenService.Pick2GeneratedNumber1}} </h1>
+    <div class="number-cards">
+      <div class="number-card">
+        <h1>{{ numberGenService.Pick2GeneratedNumber1 }}</h1>
       </div>
-      <div id="NumberCard2">
-        <h1 class="generatedNumber" id="2ndNumber"> {{numberGenService.Pick2GeneratedNumber2}} </h1>
+      <div class="number-card">
+        <h1>{{ numberGenService.Pick2GeneratedNumber2 }}</h1>
       </div>
-
-
-
     </div>
-    <br>
-    <br>
-    <div class="pagination justify-content-center " id="genieDiv">
-      <br>
-      <img class="pagination justify-content-center" id="Genie" src='./assets/public/images/MainGenie.jpg'>
-      <br>
 
-
+    <div class="genie-section">
+      <p><i>{{ numberGenService.Phrase }}</i></p>
     </div>
-    <div class="pagination justify-content-center">
-      <p><i>{{numberGenService.Phrase}}</i> </p>
-    </div>
-    <hr>
 
-    <h2>Click save numbers to save a list</h2>
-    <div class="pagination justify-content-center" id='gameArea'>
+    <div class="btn-group">
       <button class="btn btn-outline-primary"
-        (click)="numberGenService.pick2randomGenMaster();numberGenService.randomPhraseGen()"> Give me a number!
+        (click)="numberGenService.pick2randomGenMaster(); numberGenService.randomPhraseGen()">
+        Give me a number!
       </button>
-      <button class="btn btn-outline-success" (click)="saveNumber()"> I will play this Number, save it
+      <button class="btn btn-outline-success" (click)="saveNumber()">
+        I will play this number, save it
       </button>
       <button class="btn btn-outline-danger"
-        (click)="numberGenService.pick2randomGenMaster();numberGenService.randomPhraseGen()"> I don't like this
-        number</button>
-      <button class="btn btn-outline-info"> Show me numbers that have won </button>
+        (click)="numberGenService.pick2randomGenMaster(); numberGenService.randomPhraseGen()">
+        I don't like this number
+      </button>
+      <button class="btn btn-outline-info">
+        Show me numbers that have won
+      </button>
     </div>
 
-    <h2> Saved Numbers</h2>
-
-    <div class="pagination justify-content-center" id='SavedNumbers'>
-
-     <h4>[ {{numberGenService.Pick2GeneratedNumber1}}, {{numberGenService.Pick2GeneratedNumber2}} ] ----</h4>
-     <ol>   {{pick2SavedNumbers}}</ol>
+    <div class="saved-section">
+      <h3>Saved Numbers</h3>
+      <div class="saved-card">
+        <p>[ {{ numberGenService.Pick2GeneratedNumber1 }}, {{ numberGenService.Pick2GeneratedNumber2 }} ]</p>
+        <ol>{{ pick2SavedNumbers }}</ol>
+      </div>
+      <button class="btn btn-outline-primary" type="submit">Post it</button>
     </div>
-    <button class="btn btn-outline-primary" type="submit" method="POST">Post it</button>
-
-
-
-
 
   </div>
-
-</body>
+</div>

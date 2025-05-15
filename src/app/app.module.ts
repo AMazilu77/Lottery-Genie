@@ -86,11 +86,13 @@ import { PostsModule } from './posts.module';
 import { MutliStateGamesComponent } from './winningNumber/mutli-state-games/mutli-state-games.component';
 import { MegaMillionsWinnersComponent } from './winningNumber/mutli-state-games/mega-millions-winners/mega-millions-winners.component';
 import { PowerballWinnersComponent } from './winningNumber/mutli-state-games/powerball-winners/powerball-winners.component';
+import { DraggableDirective } from './directives/draggable.directive';
 // import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DraggableDirective,
     GenieLampHomeComponent,
     MyAboutComponent,
     DashBoardComponent,
@@ -154,7 +156,8 @@ import { PowerballWinnersComponent } from './winningNumber/mutli-state-games/pow
     ErrorComponent,
     MutliStateGamesComponent,
     MegaMillionsWinnersComponent,
-    PowerballWinnersComponent
+    PowerballWinnersComponent,
+    DraggableDirective
      
 
   ],
