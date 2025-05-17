@@ -1,0 +1,137 @@
+
+/* ==================== */
+/* 🎨 Background Styling */
+/* ==================== */
+.backGround {
+  background-image: url('../../../../../assets/public/images/genie-summoned.png'); // Adjust if needed
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===================== */
+/*  Draggable Glass Panel */
+/* ===================== */
+.glassContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); // <-- this centers it
+  max-width: 900px;
+  width: 90%;
+  padding: 2.5rem;
+  border-radius: 16px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  cursor: move;
+  user-select: none;
+  z-index: 10;
+  overflow-y: auto;
+  max-height: 85vh;
+}
+
+
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* ===================== */
+/*  Back Button Styling */
+/* ===================== */
+.btn.back-btn-panel {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 50px;
+  min-width: unset;
+  max-width: unset;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+/* Button Core */
+.btn {
+  
+  min-width: 100px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  color: white;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.btn.back-btn-panel {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 80px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  background-color: #007bff;  /* solid blue */
+  border-color: #007bff;
+  color: white;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+
+.btn:hover {
+   transform: scale(1.03);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6); /* glow effect */
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Force 2 columns */
+  gap: 1.25rem 2rem;
+  justify-items: center;
+  align-items: center;
+  margin-top: 2rem;
+  overflow-y: auto;
+  max-height: 70vh;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.game-grid a {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+}
+
+.game-grid a img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.game-grid a img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6); /* Highlight glow */
+}
