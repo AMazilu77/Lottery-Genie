@@ -9,7 +9,8 @@ import { NumberGenService } from '../../../../services/number-gen.service';
 })
 export class Flpick3GenComponent implements OnInit {
 
-
+ ngOnInit() {
+  }
 
   back() {
     this.router.navigate(['/FLGamePick']);
@@ -32,7 +33,8 @@ export class Flpick3GenComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-  }
+ 
+
+  showRules = false; // modal visibility toggle
 
 }
