@@ -11,10 +11,13 @@ export class FlLottoGenComponent implements OnInit {
 
   FL_LottoSavedNumbers = [];
 
+   ngOnInit() {
+  }
+
   back() {
     this.router.navigate(['/FLGamePick']);
   }
-  GenerateFL_Lotto() {
+  FL_LottoRandomGenMaster() {
     console.log(this.numberGenService.FL_LottoRandomGenMaster());
 
   }
@@ -32,7 +35,7 @@ export class FlLottoGenComponent implements OnInit {
 
   constructor(public numberGenService: NumberGenService, private router: Router) { }
 
-  ngOnInit() {
-  }
+ 
+  showRules = false;
 
 }

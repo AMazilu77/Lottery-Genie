@@ -32,5 +32,6 @@ export class FLFantasy5GenComponent implements OnInit {
   constructor(public numberGenService: NumberGenService, private router: Router) { }
   ngOnInit() {
   }
+  showRules = false;
 
 }

@@ -28,4 +28,7 @@ export class FlLuckyMoneyGenComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
+
+    showRules = false;
+
 }

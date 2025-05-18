@@ -35,4 +35,7 @@ export class PowerBallGenComponent implements OnInit {
   ngOnInit() {
   }
 
+        showRules = false;
+
+
 }

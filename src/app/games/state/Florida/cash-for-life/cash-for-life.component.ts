@@ -34,4 +34,6 @@ export class CashForLifeComponent implements OnInit {
   ngOnInit() {
   }
 
+    showRules = false;
+
 }

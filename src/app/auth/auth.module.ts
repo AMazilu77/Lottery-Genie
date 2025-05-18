@@ -11,7 +11,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 @NgModule({
     declarations: [
         loginComponent,
-        SignupComponent,
+        SignupComponent
     ],
     imports: [
         AngularMaterialModule,

@@ -10,6 +10,10 @@ import { NumberGenService } from '../../../../services/number-gen.service';
 export class Flpick5GenComponent implements OnInit {
   pick5SavedNumbers = [];
 
+  ngOnInit() {
+  }
+
+
   back() {
     this.router.navigate(['/FLGamePick']);
   }
@@ -34,7 +38,7 @@ export class Flpick5GenComponent implements OnInit {
 
   constructor(public numberGenService: NumberGenService, private router: Router) { }
 
-  ngOnInit() {
-  }
+  showRules = false;
+
 
 }

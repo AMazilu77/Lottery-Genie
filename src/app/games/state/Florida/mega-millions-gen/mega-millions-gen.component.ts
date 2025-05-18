@@ -36,4 +36,7 @@ export class MegaMillionsGenComponent implements OnInit {
   ngOnInit() {
   }
 
+      showRules = false;
+
+
 }
