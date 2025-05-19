@@ -9,6 +9,7 @@ import { Observable, tap } from 'rxjs';
 
 const BACKEND_URL_PICK2 = environment.apiUrl + '/winning/FLpick2winners';
 const BACKEND_URL_PICK3 = environment.apiUrl + '/winning/FLpick3winners';
+const BACKEND_MEGA_MILLIONS = environment.apiUrl + '/winning/megaMillions';
 
 //Decorator that marks a class as available to be provided and injected as a dependency. This is the Winning Number Service class
 @Injectable({ providedIn: 'root' })
@@ -24,9 +25,6 @@ ngOnInit() {
       err => console.error('❌ API call failed:', err)
     );
   }
-    // getPick2Winners() {
-    //     return this.http.get<WinningPick2NumberModel[]>(BACKEND_URL_PICK2) 
-    // }
 
     getPick2Winners(){
         return this.http.get(BACKEND_URL_PICK2).pipe(
@@ -40,6 +38,9 @@ ngOnInit() {
     }
 
     getMegaMillionsResults(): Observable<WinningMegaMellionsNumbersModel[]> {
-  return this.http.get<WinningMegaMellionsNumbersModel[]>('/api/winning/megamillions');
+    return this.http.get<WinningMegaMellionsNumbersModel[]>(
+    `${environment.apiUrl}/winning/megamillions`
+  );
 }
+
  }
