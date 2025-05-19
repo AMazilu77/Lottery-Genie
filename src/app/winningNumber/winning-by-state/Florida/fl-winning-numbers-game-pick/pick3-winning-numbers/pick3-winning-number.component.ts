@@ -9,6 +9,7 @@ import { WinningPick3NumberModel } from '../../../../winningNumber.model';
   styleUrls: ['./pick3-winning-numbers.component.scss']
 })
 export class Pick3WinningNumbersComponent implements OnInit {
+    title = 'Pick 3'; 
   isLoading = false;
   winningPick3Numbers:WinningPick3NumberModel[] = [];
   // totalPosts = 0;

@@ -39,6 +39,7 @@ import { MutliStateGamesComponent } from './winningNumber/mutli-state-games/mutl
 // import { loginComponent } from './auth/login/login.component';
 // import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGaurd } from './auth/login/auth.guard';
+import { StateGamePickComponent } from './winningNumber/state-game-pick/state-game-pick.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -64,7 +65,7 @@ const routes: Routes = [
   { path: 'fantasy5', component: FLFantasy5GenComponent },
   { path: 'cashForLife', component: CashForLifeComponent },
   { path: 'floridaLotto', component: FlLottoGenComponent },
-  { path: 'megaMillions', component: MegaMillionsGenComponent },
+  { path: 'WinningMegaMillionsNumbers', component: MegaMillionsWinnersComponent },
   { path: 'powerBall', component: PowerBallGenComponent },
 
   // rules and odds pages
@@ -79,8 +80,12 @@ const routes: Routes = [
   { path: 'multiStateGames', component: MutliStateGamesComponent},
   { path: 'FLPick2Winners', component: Pick2WinningNumbersComponent },
   { path: 'FLPick3Winners', component: Pick3WinningNumbersComponent },
-  { path: 'WinningMegaMellionsNumbers', component: MegaMillionsWinnersComponent },
-  { path: 'luckyMoneyInfo', component: LuckyMoneyRulesAndOddsComponent }
+  { path: 'WinningMegaMillionsNumbers', component: MegaMillionsWinnersComponent },
+  { path: 'luckyMoneyInfo', component: LuckyMoneyRulesAndOddsComponent },
+  { path: 'state-game-pick/:state', component: StateGamePickComponent},
+  { path: 'winning/:gameId', component: WinningNumbersMainComponent},
+  { path: 'megaMillions/:state', component: MegaMillionsWinnersComponent }
+
 ];
 
 @NgModule({

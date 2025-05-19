@@ -17,10 +17,12 @@ export interface WinningPick2NumberModel {
 
 
   export interface WinningMegaMellionsNumbersModel {
-    id: string;
-    drawDate: Date;
-    winningNumber: string;
-    multiplier: string;
+    _id?: string;
+    drawDate: Date | string;
+    numbers: number[];
+    megaBall: number;
+    multiplier?: string;
+    implementationYear?: number;
   }
 
   export interface WinningPowerballNumbersModel {

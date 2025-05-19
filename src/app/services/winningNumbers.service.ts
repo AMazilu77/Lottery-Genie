@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment'
-import { WinningPick2NumberModel } from '../winningNumber/winningNumber.model';
+import { WinningMegaMellionsNumbersModel, WinningPick2NumberModel } from '../winningNumber/winningNumber.model';
 import { WinningPick3NumberModel } from '../winningNumber/winningNumber.model';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 
 const BACKEND_URL_PICK2 = environment.apiUrl + '/winning/FLpick2winners';
@@ -38,4 +38,8 @@ ngOnInit() {
             tap(data => console.log('raw pick3 responses', data))
         );
     }
+
+    getMegaMillionsResults(): Observable<WinningMegaMellionsNumbersModel[]> {
+  return this.http.get<WinningMegaMellionsNumbersModel[]>('/api/winning/megamillions');
+}
  }

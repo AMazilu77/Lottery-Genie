@@ -1,0 +1,13 @@
+<div class="backGround">
+  <div class="glassContainer glass larger-panel" appDraggable>
+    <button class="btn back-btn-panel" (click)="back()">Back</button>
+    <h2 class="glass-header">{{ stateCode }} Winning Numbers</h2>
+    <p class="subtext">Select a game:</p>
+
+    <div class="game-links">
+      <a [routerLink]="['/WinningMegaMillionsNumbers']" class="game-link">
+        <img src="./assets/public/images/megaMill-game-pg-banner.jpg" alt="Mega Millions">
+      </a>
+    </div>
+  </div>
+</div>

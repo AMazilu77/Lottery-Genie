@@ -1,30 +1,26 @@
-<button class="btn btn-outline-primary" (click)="back()"> Back </button>
-<hr>
-<div>
-<h1> History of Pick-3 Winning Numbers</h1>
-</div>
-<br>
-<div id='totalContainer' class="container">
+<div class="backGround">
+  <div class="glassContainer glass larger-panel" appDraggable>
+    <button class="btn back-btn-panel" (click)="back()">Back</button>
+    <h1 class="glass-header">{{ title }} Winning Numbers</h1>
+    <hr />
 
-  <div class="row">
-
-    <div class="col">
-      <h4> Mid Day Drawing</h4>
-      <h6> Draw Date - Winning Numbers</h6> 
-      <ul>
-        <li *ngFor='let result of middayResults'> <strong> {{result.drawDate}}</strong> - Number: <strong>{{result.winningNumber}} </strong>- Fireball: <span> {{result.fireball}} </span> </li>
+    <div class="scrollContainer">
+      <ul class="winning-list">
+        <li *ngFor="let result of middayResults">
+          <strong>{{ result.drawDate | date:'MMM d, y' }}</strong> — 
+          <span class="number-balls">
+  <ng-container *ngFor="let digit of result.winningNumber.split('')">
+    <span class="ball">{{ digit }}</span>
+  </ng-container>
+</span>
+          
+          <span *ngIf="result.fireball" class="fireball-label">
+            | Fireball: <span class="ball fireball">{{ result.fireball }}</span>
+          </span>
+          <span *ngIf="result.midDay"> — Midday</span>
+          <span *ngIf="result.evening"> — Evening</span>
+        </li>
       </ul>
     </div>
-
-    <div class="col">
-      <h4> Evening Drawing</h4>
-      <h6> Draw Date - Winning Numbers</h6> 
-      <ul>
-        <li *ngFor='let result of eveningResults'>  <strong>{{result.drawDate}}</strong> - Number: <strong>{{result.winningNumber}}</strong> - Fireball: <span> {{result.fireball}} </span> </li>
-      </ul>
-    </div>
-
   </div>
-
 </div>
-

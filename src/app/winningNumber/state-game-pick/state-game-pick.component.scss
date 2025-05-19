@@ -1,0 +1,39 @@
+.larger-panel {
+  width: 700px;
+  max-height: 85vh;
+  padding: 20px;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.glass-header {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.subtext {
+  font-size: 1.2rem;
+  color: #ddd;
+  margin-bottom: 20px;
+}
+
+.game-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.game-link img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.game-link img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.4);
+}

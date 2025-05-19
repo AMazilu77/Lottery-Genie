@@ -1,25 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { winningNumbersServiceClass } from '../../../services/winningNumbers.service';
 import { WinningMegaMellionsNumbersModel } from '../../winningNumber.model';
-
 
 @Component({
   selector: 'app-mega-millions-winners',
   templateUrl: './mega-millions-winners.component.html',
-  styleUrls: ['./mega-millions-winners.component.sass']
+  styleUrls: ['./mega-millions-winners.component.scss']
 })
 export class MegaMillionsWinnersComponent implements OnInit {
-  WinningMegaMellionsNumbers:WinningMegaMellionsNumbersModel[] = [];
+  results: any[] = [];
 
-  constructor(private theRouter: Router,  public WinningService: winningNumbersServiceClass) { }
+  constructor(private http: HttpClient, public winningNumbersServiceClass: winningNumbersServiceClass
+) {}
 
+ngOnInit(): void {
+  this.winningNumbersServiceClass.getMegaMillionsResults()
+    .subscribe((data: WinningMegaMellionsNumbersModel[]) => {
+      this.results = data;
+    });
+}
 
-  ngOnInit(): void {
+  back(): void {
+    window.history.back();
   }
-
-  back() {
-    this.theRouter.navigate(['/dashBoard']);
-  }
-
 }
