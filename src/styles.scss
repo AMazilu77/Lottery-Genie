@@ -1,7 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this fil=e, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Global reset to fix vertical clipping and background edge */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: transparent;
+}
+
+
+body {
+  background-color: transparent !important;
+}
+
+app-root {
+  display: block;
+  height: 100%;
+}
+
+app-root {
+  display: block;
+  height: 100%;
+}
+
 
 /* ==================== */
 /* 🎨 Background Styling */

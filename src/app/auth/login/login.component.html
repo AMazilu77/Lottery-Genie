@@ -1,25 +1,52 @@
-<div class="backGround">
-  <div class="glassContainer glass" appDraggable>
 
-    <mat-card>
-      <button mat-button color='primary' (click)='back()' type="submit"> Back </button>
 
-        <mat-spinner *ngIf="isLoading"></mat-spinner>
-        <form class='log' (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">   
-            <mat-form-field>
-              <input matInput name='email' ngModel type='email' placeholder="E-mail" color= "" #emailInput="ngModel" required email>
-                <mat-error *ngIf='emailInput.invalid'> Please enter a valid email. </mat-error>
-            </mat-form-field>
-        
-            <mat-form-field>
-            <input type="password"  name='password' ngModel matInput placeholder="Password" #passwordInput="ngModel" required> 
-                <mat-error *ngIf="passwordInput.invalid">Please enter correct password. </mat-error>
-            </mat-form-field>
-            <button mat-button color='primary' type="submit"> Login </button>
-            <button mat-button color='primary' routerLink='/auth/signup'> Register New Account </button>
-          </form>
-        
-    </mat-card>
-  </div>
+<div class="login-page">
+  <mat-card class="auth-card">
+
+    <button mat-button class="back-button" (click)="back()">Back</button>
+    <h1 class="auth-header">Login</h1>
+    <p class="auth-subtitle">Welcome back, Mortal</p>
+
+    <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm" class="auth-form">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          name="email"
+          ngModel
+          required
+          email
+          #emailInput="ngModel"
+        />
+        <mat-error *ngIf="emailInput.invalid && emailInput.touched">
+          Please enter a valid email.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          name="password"
+          ngModel
+          required
+          #passwordInput="ngModel"
+        />
+        <mat-error *ngIf="passwordInput.invalid && passwordInput.touched">
+          Password is required.
+        </mat-error>
+      </mat-form-field>
+
+      <div class="action-buttons">
+        <button mat-raised-button color="primary" type="submit">Login</button>
+        <button mat-button type="button" routerLink="/auth/signup">Register New Account</button>
+      </div>
+
+    </form>
+
+  </mat-card>
+
 </div>
-    

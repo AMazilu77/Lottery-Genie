@@ -5,7 +5,7 @@ import { AuthData } from './auth-data.model';
 import { Subject } from 'rxjs';
 import { environment } from '../../environments/environment'
 
-const BACKEND_URL = environment.apiUrl + '/user/'
+const BACKEND_URL = environment.apiUrl + '/user'
 @Injectable({ providedIn: "root"})
 export class AuthService {
     private isAuthenticated = false;
@@ -32,18 +32,23 @@ export class AuthService {
         return this.userId;
     }
 
-    createUser(email: string, password: string) {
-        const authData: AuthData = {email: email, password: password};
-        this.http.post(BACKEND_URL + "/signup", authData)
-        .subscribe(response => {
-            console.log(response);
+ createUser(email: string, password: string) {
+    const authData: AuthData = { email, password };
+
+    this.http.post(`${BACKEND_URL}/signup`, authData)
+        .subscribe({
+            next: (response) => {
+                console.log("✅ Signup success:", response);
+                this.router.navigate(['/auth/login']);  // ✅ MOVE inside 'next'
+            },
+            error: (err) => {
+                console.error("❌ Signup error:", err);
+            }
         });
-        this.router.navigate(['/auth/login'])
-    }
-    
+}
     login(email: string, password: string) {
         const authData: AuthData = {email: email, password: password};
-        this.http.post<{token: string, expiresIn: number, userId: string; }>(BACKEND_URL+ "login", authData)
+        this.http.post<{token: string, expiresIn: number, userId: string; }>(BACKEND_URL+ "/login", authData)
         .subscribe(response => {
             const token = response.token;
             this.token = token;
@@ -100,13 +105,13 @@ export class AuthService {
 
     // store data to local storange so you dont have to log in every time the page refreshes
     private saveAuthData(token: string, expirationDate: Date, userId: string) {
-        localStorage.setItem('token', token),
-        localStorage.setItem('expiration', expirationDate.toISOString())
+        localStorage.setItem('token', token);
+        localStorage.setItem('expiration', expirationDate.toISOString());
         localStorage.setItem('userId', userId);
     }
 
     private clearAuthData() {
-        localStorage.removeItem('token'),
+        localStorage.removeItem('token');
         localStorage.removeItem('expiration');
         localStorage.removeItem('userId');
     }

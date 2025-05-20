@@ -14,12 +14,16 @@ export class SignupComponent {
    
  
 
-    onSignup(form: NgForm) {
-        if (form.invalid) {
-            return;
-        }
-        this.authService.createUser(form.value.email, form.value.password);
-    }
+onSignup(form: NgForm) {
+  console.log("🧪 SIGNUP FORM SUBMITTED:", form.value);
+
+  if (form.invalid) {
+    console.warn("⚠️ Form is invalid");
+    return;
+  }
+
+  this.authService.createUser(form.value.email, form.value.password);
+}
 
     back() {
         this.router.navigate(['/dashBoard']);
