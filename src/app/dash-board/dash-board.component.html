@@ -6,6 +6,7 @@
   <div class="button-container">
     <button type="button" class="btn btn-outline-primary" (click)="gotoGenerator()">Give me numbers</button>
     <button type="button" class="btn btn-outline-primary" (click)="gotoWinningNums()">Show numbers that have won</button>
+    <button class="btn btn-outline-primary" (click)="goToAbout()">Tell me about the Genie</button>
     <button *ngIf="userIsAuthentic" type="button" class="btn btn-outline-primary" (click)="gotoProfile()">My profile</button>
     <button *ngIf="userIsAuthentic" type="button" class="btn btn-outline-danger" (click)="onLogout()">Logout</button>
     <button *ngIf="!userIsAuthentic" class="btn btn-outline-primary" routerLink="/auth/login" routerLinkActive="mat-accent">

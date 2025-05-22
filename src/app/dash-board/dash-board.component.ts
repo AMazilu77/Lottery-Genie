@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
 
@@ -93,6 +93,10 @@ export class DashBoardComponent implements OnInit, OnDestroy {
     if (this.phraseNumber === 16) { this.Phrase = this.randomPhrase[15]; }
    
     console.log(this.Phrase)
+  }
+
+    goToAbout() {
+    this.theRouter.navigate(['/about']);
   }
 
 

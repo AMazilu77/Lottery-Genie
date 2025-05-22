@@ -1,0 +1,116 @@
+// .backGround {
+//   background: linear-gradient(160deg, #0f2027, #203a43, #2c5364);
+//   min-height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 40px 20px;
+// }
+
+.backGround {
+  background-image: url('../../assets/public/images/newBG-2.jpeg');
+}
+
+.glassContainer {
+  position: relative; // Ensure internal positioning context
+  background: rgba(255, 255, 255, 0.16); // More translucence
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 850px;
+  width: 90%;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.3), 0 8px 40px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  text-align: center;
+  position: absolute;
+  cursor: grab;
+  color: #f4f4f4; // Brighter text
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #f8f8f8;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #ffd369;
+  margin-top: 30px;
+}
+
+p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-top: 12px;
+  color: #e6e6e6; // Light gray for better readability
+}
+
+.lamp-container {
+  margin: 30px 0;
+}
+
+.lamp-container img {
+  max-width: 160px;
+  filter: drop-shadow(0 0 12px #ffd369);
+}
+
+.glassContainer {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+// @keyframes fadeInUp {
+//   from {
+//     opacity: 0;
+//     transform: translateY(20px);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
+
+.btn-back-panel {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 80px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  background-color: #007bff;  /* solid blue */
+  border-color: #007bff;
+  color: white;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+   transform: scale(1.03);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6); /* glow effect */
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+/* Button Core */
+.btn {
+  
+  min-width: 100px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  color: white;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}

@@ -1,5 +1,49 @@
-main {
+.profile-statistics,
+.profile-form {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  text-align: left;
+  box-shadow: 0 0 12px rgba(155, 89, 255, 0.2);
+}
+
+.profile-form input,
+.profile-form textarea {
+  width: 100%;
+  margin: 0.5rem 0 1rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  font-size: 1rem;
+}
+
+.profile-form input::placeholder,
+.profile-form textarea::placeholder {
+  color: #ccc;
+}
+
+.profile-form button {
   margin-top: 1rem;
-  width: 50%;
-  margin: auto;
+}
+
+h2 {
+  color: #ffd369;
+  margin-top: 1rem;
+}
+.glass {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  /* ✨ Refined purple glow */
+  box-shadow:
+    0 0 20px 8px rgba(155, 89, 255, 0.4),
+    0 0 40px 16px rgba(155, 89, 255, 0.25),
+    0 8px 24px rgba(0, 0, 0, 0.3);
 }

@@ -3,96 +3,17 @@
 }
 
 
-// #theBody {
-//   display: flex;
-//   margin: 1%;
-//   padding: 1%;
+#megaBall,
+.mega-ball {
+  background: linear-gradient(to bottom right, #ffe259, #f6b700); // warm golden yellow
+  border: 2px solid #f5b800;
+  color: black;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.5), 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease-in-out;
+}
 
-// }
-
-// #CardContainer{
-//   display: flex;
-//   justify-content: center;
-//   padding: 1%;
-//   margin: 1%;
-
-
-// }
-
-// #genieDiv{
-//   display: flex;
-//   justify-content: center;
-
-// }
-
-
-
-// #NumberCard1{
-//   background-color: rgb(200, 226, 255);
-//   border: 1%;
-//   border-style: solid;
-//   border-color: black;
-//   padding: 1%;
-//   margin: 1%
-
-// }
-
-// #NumberCard2 {
-//   background-color: rgb(200, 226, 255);
-//   border: 1%;
-//   border-style: solid;
-//   border-color: black;
-//   padding: 1%;
-//   margin: 1%
-// }
-// #NumberCard3 {
-//   background-color: rgb(200, 226, 255);
-//   border: 1%;
-//   border-style: solid;
-//   border-color: black;
-//   padding: 1%;
-//   margin: 1%
-// }
-// #NumberCard4 {
-//   background-color: rgb(200, 226, 255);
-//   border: 1%;
-//   border-style: solid;
-//   border-color: black;
-//   padding: 1%;
-//   margin: 1%
-// }
-
-// #NumberCard5 {
-//   background-color: rgb(200, 226, 255);
-//   border: 1%;
-//   border-style: solid;
-//   border-color: black;
-//   padding: 1%;
-//   margin: 1%
-// }
-// #NumberCard6 {
-//   background-color: rgb(200, 255, 209);
-//   border: 1%;
-//   border-style: solid;
-//   border-color: black;
-//   padding: 1%;
-//   margin: 1%
-// }
-
-// h1 {
-//   font-size: 400%;
-// }
-
-// .btn {
-//   margin: 1%;
-//   padding: 1%;
-//   border: 1%;
-//   border-style: solid;
-//   border-color: black;
-// }
-
-// #SavedNumbers{
-//   border: 1px;
-//   border-style: solid;
-//   border-color: black;
-// }
+#megaBall:hover,
+.mega-ball:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7), 0 6px 14px rgba(0, 0, 0, 0.3);
+}

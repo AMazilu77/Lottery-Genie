@@ -1,5 +1,34 @@
-<h2> Your Profile </h2>
-<button class="btn btn-outline-primary"  (click)="back()"> Back </button>
+<div class="backGround">
+  <div class="glassContainer glass" appDraggable>
+    <button class="btn back-btn-panel" (click)="back()">Back</button>
+
+    <h1 class="title">Your Profile</h1>
+
+    <div class="profile-statistics">
+      <h2>Statistics</h2>
+      <p>Keep track of your lottery game statistics</p>
+      <p><strong>Most played Game:</strong></p>
+      <p><strong>Total Winnings:</strong></p>
+      <p><strong>Total Spent:</strong></p>
+    </div>
+
+    <div class="profile-form">
+      <h2>Save Lucky Number Post</h2>
+      <p>Save your lucky numbers, or pictures of the numbers you want to play later.</p>
+
+      <form>
+        <input type="text" placeholder="Enter only Numbers here *" />
+        <input type="file" />
+        <textarea placeholder="What is the significance of this number?"></textarea>
+        <button class="btn btn-outline-primary" type="submit">Save</button>
+      </form>
+    </div>
+
+    <h2>Saved Lucky Numbers Posts</h2>
+    <p *ngIf="">No lucky numbers saved yet!</p>
+  </div>
+</div>
+
 
 <main>
   <app-player-stats></app-player-stats>

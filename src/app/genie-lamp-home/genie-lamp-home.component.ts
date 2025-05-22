@@ -13,9 +13,7 @@ export class GenieLampHomeComponent implements OnInit {
   ngOnInit() {
 
   }
-  goToAbout() {
-    this.router.navigate(['/about']);
-  }
+
 
   // goToLogin() {
   //   this.router.navigate(['/login']);
