@@ -32,14 +32,18 @@ import { Pick5RulesAndOddsComponent } from './games/state/Florida/flpick5-gen/pi
 import { Pick2WinningNumbersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/pick2-winning-numbers/pick2-winning-numbers.component';
 import { Pick3WinningNumbersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/pick3-winning-numbers/pick3-winning-number.component';
 import { MegaMillionsWinnersComponent } from './winningNumber/mutli-state-games/mega-millions-winners/mega-millions-winners.component';
+
 import { LuckyMoneyRulesAndOddsComponent } from './games/state/Florida/fl-lucky-money-gen/lucky-money-rules-and-odds/lucky-money-rules-and-odds.component';
 
 import { CreateLuckyNumberComponent } from './my-profile/LuckyNumbers/CreateLucky/create-lucky-number/create-lucky-number.component';
 import { MutliStateGamesComponent } from './winningNumber/mutli-state-games/mutli-state-games.component';
 // import { loginComponent } from './auth/login/login.component';
 // import { SignupComponent } from './auth/signup/signup.component';
+
+
 import { AuthGaurd } from './auth/login/auth.guard';
 import { StateGamePickComponent } from './winningNumber/state-game-pick/state-game-pick.component';
+import { PowerballWinnersComponent } from './winningNumber/mutli-state-games/powerball-winners/powerball-winners.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -81,6 +85,7 @@ const routes: Routes = [
   { path: 'FLPick2Winners', component: Pick2WinningNumbersComponent },
   { path: 'FLPick3Winners', component: Pick3WinningNumbersComponent },
   { path: 'WinningMegaMillionsNumbers', component: MegaMillionsWinnersComponent },
+  { path: 'WinningPowerballNumbers', component: PowerballWinnersComponent },
   { path: 'luckyMoneyInfo', component: LuckyMoneyRulesAndOddsComponent },
   { path: 'state-game-pick/:state', component: StateGamePickComponent},
   { path: 'winning/:gameId', component: WinningNumbersMainComponent},

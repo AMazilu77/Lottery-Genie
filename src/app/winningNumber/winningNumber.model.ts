@@ -34,6 +34,8 @@ export interface WinningPick2NumberModel {
     winningNumber4: number;
     winningNumber5: number;
     winningNumber6: number;
-    multiplier: number;
-    powerBall: number
+    powerBall: number;
+    multiplier: number | null;
+    gameVersion: string;
+
   }

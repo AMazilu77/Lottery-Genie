@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment'
-import { WinningMegaMellionsNumbersModel, WinningPick2NumberModel } from '../winningNumber/winningNumber.model';
+import { WinningMegaMellionsNumbersModel, WinningPick2NumberModel, WinningPowerballNumbersModel } from '../winningNumber/winningNumber.model';
 import { WinningPick3NumberModel } from '../winningNumber/winningNumber.model';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -40,6 +40,12 @@ ngOnInit() {
     getMegaMillionsResults(): Observable<WinningMegaMellionsNumbersModel[]> {
     return this.http.get<WinningMegaMellionsNumbersModel[]>(
     `${environment.apiUrl}/winning/megamillions`
+  );
+}
+
+   getPowerballResults(): Observable<WinningPowerballNumbersModel[]> {
+    return this.http.get<WinningPowerballNumbersModel[]>(
+    `${environment.apiUrl}/winning/powerball`
   );
 }
 
