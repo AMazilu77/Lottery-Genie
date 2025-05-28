@@ -14,7 +14,28 @@ export interface WinningPick2NumberModel {
     midDay: boolean;
     evening: boolean;
   }
+  export interface WinningPick4NumberModel {
+    id: string;
+    drawDate: Date;
+    winningNumber: string;
+    fireball: {type: String, required: true}
+    midDay: boolean;
+    evening: boolean;
+  }
 
+  export interface WinningPick5NumberModel {
+  drawDate: string;
+  winningNumber: string;
+  fireball: string;
+  midDay: boolean;
+  evening: boolean;
+}
+
+export interface FloridaLottoModel {
+  drawDate: string;
+  numbers: number[];
+  gameType: string;
+}
 
   export interface WinningMegaMellionsNumbersModel {
     _id?: string;

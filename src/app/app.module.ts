@@ -89,6 +89,9 @@ import { PowerballWinnersComponent } from './winningNumber/mutli-state-games/pow
 import { DraggableDirective } from './directives/draggable.directive';
 import { RulesModalComponent } from './shared/rules-modal/rules-modal.component';
 import { StateGamePickComponent } from './winningNumber/state-game-pick/state-game-pick.component';
+import { Pick4WinningNumbersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/pick4-winning-numbers/pick4-winning-numbers.component';
+import { Pick5WinningNumbersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/pick5-winning-numbers/pick5-winning-numbers.component';
+import { FlLottoWinningNumbersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/fl-lotto-winning-numbers/fl-lotto-winning-numbers.component';
 // import { AuthModule } from './auth/auth.module';
 
 @NgModule({
@@ -161,7 +164,10 @@ import { StateGamePickComponent } from './winningNumber/state-game-pick/state-ga
     PowerballWinnersComponent,
     DraggableDirective,
     RulesModalComponent,
-    StateGamePickComponent
+    StateGamePickComponent,
+    Pick4WinningNumbersComponent,
+    Pick5WinningNumbersComponent,
+    FlLottoWinningNumbersComponent
   ],
   imports: [
             BrowserModule,

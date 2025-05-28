@@ -17,7 +17,9 @@
         <span class="ball">{{ result.winningNumber5 }}</span>
         </span>
         | <span class="power-label">Power Ball:</span>
-        <span class="ball red-ball">{{ result.powerBall }}</span>    
+        <span class="ball red-ball">{{ result.powerBall }}</span>
+        <span *ngIf="result.multiplier" class="multiplier-tag"> x {{ result.multiplier }}</span>
+    
 
         </li>
       </ul>

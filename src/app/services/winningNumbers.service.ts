@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment'
-import { WinningMegaMellionsNumbersModel, WinningPick2NumberModel, WinningPowerballNumbersModel } from '../winningNumber/winningNumber.model';
+import { FloridaLottoModel, WinningMegaMellionsNumbersModel, WinningPick2NumberModel, WinningPick4NumberModel, WinningPick5NumberModel, WinningPowerballNumbersModel } from '../winningNumber/winningNumber.model';
 import { WinningPick3NumberModel } from '../winningNumber/winningNumber.model';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -9,7 +9,6 @@ import { Observable, tap } from 'rxjs';
 
 const BACKEND_URL_PICK2 = environment.apiUrl + '/winning/FLpick2winners';
 const BACKEND_URL_PICK3 = environment.apiUrl + '/winning/FLpick3winners';
-const BACKEND_MEGA_MILLIONS = environment.apiUrl + '/winning/megaMillions';
 
 //Decorator that marks a class as available to be provided and injected as a dependency. This is the Winning Number Service class
 @Injectable({ providedIn: 'root' })
@@ -36,6 +35,25 @@ ngOnInit() {
             tap(data => console.log('raw pick3 responses', data))
         );
     }
+    getPick4Results(): Observable<WinningPick4NumberModel[]> {
+        return this.http.get<WinningPick4NumberModel[]>(
+        `${environment.apiUrl}/winning/pick4`
+  );
+}
+
+getPick5Results(): Observable<WinningPick5NumberModel[]> {
+  return this.http.get<WinningPick5NumberModel[]>(
+    `${environment.apiUrl}/winning/pick5`
+  );
+}
+
+getFloridaLottoResults(): Observable<FloridaLottoModel[]> {
+  return this.http.get<FloridaLottoModel[]>(
+    `${environment.apiUrl}/winning/florida-lotto`
+  );
+}
+
+
 
     getMegaMillionsResults(): Observable<WinningMegaMellionsNumbersModel[]> {
     return this.http.get<WinningMegaMellionsNumbersModel[]>(
