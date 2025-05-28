@@ -1,0 +1,25 @@
+<div class="backGround">
+  <div class="glassContainer glass" appDraggable>
+    <button class="btn back-btn-panel" (click)="back()">Back</button>
+    <h1 class="glass-header">Florida Pick 5 Winning Numbers</h1>
+    <hr />
+
+    <div class="scrollContainer">
+      <ul class="winning-list">
+        <li *ngFor="let result of results">
+          <strong>{{ result.drawDate | date:'MMM d, y' }}</strong> – 
+          <span class="number-balls">
+            <span *ngFor="let digit of result.winningNumber.split('')" class="ball white-ball">
+              {{ digit }}
+            </span>
+          </span>
+          <span class="fireball-label">Fireball:</span>
+          <span class="ball red-ball">{{ result.fireball }}</span>
+
+          <span *ngIf="result.midDay" class="session">🕑 Midday</span>
+          <span *ngIf="result.evening" class="session">🌆 Evening</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

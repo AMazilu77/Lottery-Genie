@@ -1,0 +1,21 @@
+<div class="backGround">
+  <div class="glassContainer glass" appDraggable>
+    <button class="btn back-btn-panel" (click)="back()">Back</button>
+    <h1 class="glass-header">Florida Lotto Winning Numbers</h1>
+    <hr />
+
+    <div class="scrollContainer">
+      <ul class="winning-list">
+        <li *ngFor="let result of results">
+          <strong>{{ result.drawDate | date:'MMM d, y' }}</strong> –
+          <span class="game-label">{{ result.gameType }}</span>
+          <span class="number-balls">
+            <span *ngFor="let num of result.numbers" class="ball white-ball">
+              {{ num }}
+            </span>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
