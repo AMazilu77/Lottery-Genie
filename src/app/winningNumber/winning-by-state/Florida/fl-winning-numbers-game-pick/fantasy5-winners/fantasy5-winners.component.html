@@ -1,0 +1,19 @@
+<div class="backGround">
+  <div class="glassContainer glass" appDraggable>
+    <button class="btn back-btn-panel" (click)="back()">Back</button>
+    <h1 class="glass-header">Fantasy 5 Winning Numbers</h1>
+    <hr />
+
+    <div class="scrollContainer">
+      <ul class="winning-list">
+<li *ngFor="let result of results">
+  <div class="draw-date"><b>{{ result.drawDate | date: 'MMM d, y' }} </b></div>
+  <div class="number-balls-center">
+    <span *ngFor="let num of result.numbers" class="ball">{{ num }}</span>
+  </div>
+  <span class="draw-type">{{ result.drawType }}</span>
+</li>
+      </ul>
+    </div>
+  </div>
+</div>
