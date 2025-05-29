@@ -37,6 +37,19 @@ export interface FloridaLottoModel {
   gameType: string;
 }
 
+export interface Fantasy5Model {
+  drawDate: string;
+  drawType: 'MIDDAY' | 'EVENING';
+  numbers: number[];
+}
+
+
+export interface CashForLifeModel {
+  drawDate: string;
+  numbers: number[];
+  cashBall: number;
+}
+
   export interface WinningMegaMellionsNumbersModel {
     _id?: string;
     drawDate: Date | string;

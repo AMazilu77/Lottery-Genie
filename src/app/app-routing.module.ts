@@ -47,6 +47,8 @@ import { PowerballWinnersComponent } from './winningNumber/mutli-state-games/pow
 import { Pick4WinningNumbersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/pick4-winning-numbers/pick4-winning-numbers.component';
 import { Pick5WinningNumbersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/pick5-winning-numbers/pick5-winning-numbers.component';
 import { FlLottoWinningNumbersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/fl-lotto-winning-numbers/fl-lotto-winning-numbers.component';
+import { CashForLifeWinnersComponent } from './winningNumber/mutli-state-games/cash-for-life-winners/cash-for-life-winners.component';
+import { Fantasy5WinnersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/fantasy5-winners/fantasy5-winners.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -89,9 +91,11 @@ const routes: Routes = [
   { path: 'FLPick3Winners', component: Pick3WinningNumbersComponent },
   { path: 'FLPick4Winners', component: Pick4WinningNumbersComponent },
   { path: 'FLPick5Winners', component: Pick5WinningNumbersComponent },
+  { path: 'CashForLifeWinners', component: CashForLifeWinnersComponent },
   { path: 'WinningMegaMillionsNumbers', component: MegaMillionsWinnersComponent },
   { path: 'WinningPowerballNumbers', component: PowerballWinnersComponent },
   { path: 'WinningFL_Lotto', component: FlLottoWinningNumbersComponent },
+  { path: 'WinningFantasy5', component: Fantasy5WinnersComponent },
   { path: 'luckyMoneyInfo', component: LuckyMoneyRulesAndOddsComponent },
   { path: 'state-game-pick/:state', component: StateGamePickComponent},
   { path: 'winning/:gameId', component: WinningNumbersMainComponent},

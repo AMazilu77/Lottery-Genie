@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment'
-import { FloridaLottoModel, WinningMegaMellionsNumbersModel, WinningPick2NumberModel, WinningPick4NumberModel, WinningPick5NumberModel, WinningPowerballNumbersModel } from '../winningNumber/winningNumber.model';
+import { CashForLifeModel, Fantasy5Model, FloridaLottoModel, WinningMegaMellionsNumbersModel, WinningPick2NumberModel, WinningPick4NumberModel, WinningPick5NumberModel, WinningPowerballNumbersModel } from '../winningNumber/winningNumber.model';
 import { WinningPick3NumberModel } from '../winningNumber/winningNumber.model';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -50,6 +50,18 @@ getPick5Results(): Observable<WinningPick5NumberModel[]> {
 getFloridaLottoResults(): Observable<FloridaLottoModel[]> {
   return this.http.get<FloridaLottoModel[]>(
     `${environment.apiUrl}/winning/florida-lotto`
+  );
+}
+getFantasy5Results(): Observable<Fantasy5Model[]> {
+  return this.http.get<Fantasy5Model[]>(
+    `${environment.apiUrl}/winning/fantasy5`
+  );
+}
+
+
+getCashForLifeResults(): Observable<CashForLifeModel[]> {
+  return this.http.get<CashForLifeModel[]>(
+    `${environment.apiUrl}/winning/cash-for-life`
   );
 }
 

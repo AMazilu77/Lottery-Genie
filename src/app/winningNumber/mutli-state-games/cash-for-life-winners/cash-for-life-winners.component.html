@@ -1,0 +1,21 @@
+<div class="backGround">
+  <div class="glassContainer glass" appDraggable>
+    <button class="btn back-btn-panel" (click)="back()">Back</button>
+    <h1 class="glass-header">Cash4Life Winning Numbers</h1>
+    <hr />
+
+    <div class="scrollContainer">
+      <ul class="winning-list">
+        <li *ngFor="let result of results">
+          <strong>{{ result.drawDate | date: 'MMM d, y' }}</strong> – 
+          Numbers: 
+          <span class="number-balls">
+            <span *ngFor="let num of result.mainNumbers" class="ball">{{ num }}</span>
+          </span>
+          | <b>Cash Ball:</b> <span class="cash-ball">{{ result.cashBall }}</span>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
