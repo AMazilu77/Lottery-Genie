@@ -12,7 +12,7 @@ import { FLPick2GenComponent } from './games/state/Florida/flpick2-gen/flpick2-g
 import { Flpick3GenComponent } from './games/state/Florida/flpick3-gen/flpick3-gen.component';
 import { Flpick4GenComponent } from './games/state/Florida/flpick4-gen/flpick4-gen.component';
 import { Flpick5GenComponent } from './games/state/Florida/flpick5-gen/flpick5-gen.component';
-import { FlLuckyMoneyGenComponent } from './games/state/Florida/fl-lucky-money-gen/fl-lucky-money-gen.component';
+// import { FlLuckyMoneyGenComponent } from './games/state/Florida/fl-lucky-money-gen/fl-lucky-money-gen.component';
 import { FLFantasy5GenComponent } from './games/state/Florida/flfantasy5-gen/flfantasy5-gen.component';
 import { CashForLifeComponent } from './games/state/Florida/cash-for-life/cash-for-life.component';
 import { FlLottoGenComponent } from './games/state/Florida/fl-lotto-gen/fl-lotto-gen.component';
@@ -49,6 +49,7 @@ import { Pick5WinningNumbersComponent } from './winningNumber/winning-by-state/F
 import { FlLottoWinningNumbersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/fl-lotto-winning-numbers/fl-lotto-winning-numbers.component';
 import { CashForLifeWinnersComponent } from './winningNumber/mutli-state-games/cash-for-life-winners/cash-for-life-winners.component';
 import { Fantasy5WinnersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/fantasy5-winners/fantasy5-winners.component';
+import { JackpotTriplePlayGenComponent } from './games/state/Florida/jackpot-tripple-play-gen/jackpot-tripple-play-gen.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -70,7 +71,7 @@ const routes: Routes = [
   { path: 'FLPick3Gen', component: Flpick3GenComponent },
   { path: 'FLPick4Gen', component: Flpick4GenComponent },
   { path: 'FLPick5Gen', component: Flpick5GenComponent },
-  { path: 'luckyMoneyGen', component: FlLuckyMoneyGenComponent },
+  // { path: 'luckyMoneyGen', component: FlLuckyMoneyGenComponent },
   { path: 'fantasy5Gen', component: FLFantasy5GenComponent },
   { path: 'cashForLifeGen', component: CashForLifeComponent },
   { path: 'floridaLottoGen', component: FlLottoGenComponent },
@@ -92,6 +93,7 @@ const routes: Routes = [
   { path: 'FLPick4Winners', component: Pick4WinningNumbersComponent },
   { path: 'FLPick5Winners', component: Pick5WinningNumbersComponent },
   { path: 'CashForLifeWinners', component: CashForLifeWinnersComponent },
+  { path: 'jackpot-generator', component: JackpotTriplePlayGenComponent },
   { path: 'WinningMegaMillionsNumbers', component: MegaMillionsWinnersComponent },
   { path: 'WinningPowerballNumbers', component: PowerballWinnersComponent },
   { path: 'WinningFL_Lotto', component: FlLottoWinningNumbersComponent },

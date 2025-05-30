@@ -131,6 +131,21 @@ export class NumberGenService {
   powerBallGeneratedNumber5;
   powerBallGeneratedNumber6POWERBALL;
 
+// jackpot tripple play service
+jackpotNum1;
+jackpotNum2;
+jackpotNum3;
+jackpotNum4;
+jackpotNum5;
+jackpotNum6;
+
+jackpotGeneratedNumber1;
+jackpotGeneratedNumber2;
+jackpotGeneratedNumber3;
+jackpotGeneratedNumber4;
+jackpotGeneratedNumber5;
+jackpotGeneratedNumber6;
+
   // number Generator saved lists.
 
   pick3SavedList = [];
@@ -343,6 +358,38 @@ export class NumberGenService {
       this.powerBallGeneratedNumber5,
       this.powerBallGeneratedNumber6POWERBALL);
   }
+
+  jackpotTriplePlayRandomGenMaster() {
+  const uniqueNumbers = new Set<number>();
+  while (uniqueNumbers.size < 6) {
+    uniqueNumbers.add(Math.floor(Math.random() * 46) + 1);
+  }
+  const sorted = Array.from(uniqueNumbers).sort((a, b) => a - b);
+
+  this.jackpotNum1 = sorted[0];
+  this.jackpotNum2 = sorted[1];
+  this.jackpotNum3 = sorted[2];
+  this.jackpotNum4 = sorted[3];
+  this.jackpotNum5 = sorted[4];
+  this.jackpotNum6 = sorted[5];
+
+  this.jackpotGeneratedNumber1 = this.jackpotNum1;
+  this.jackpotGeneratedNumber2 = this.jackpotNum2;
+  this.jackpotGeneratedNumber3 = this.jackpotNum3;
+  this.jackpotGeneratedNumber4 = this.jackpotNum4;
+  this.jackpotGeneratedNumber5 = this.jackpotNum5;
+  this.jackpotGeneratedNumber6 = this.jackpotNum6;
+
+  console.log(
+    this.jackpotGeneratedNumber1,
+    this.jackpotGeneratedNumber2,
+    this.jackpotGeneratedNumber3,
+    this.jackpotGeneratedNumber4,
+    this.jackpotGeneratedNumber5,
+    this.jackpotGeneratedNumber6
+  );
+}
+
 
 
   // save number for pick5

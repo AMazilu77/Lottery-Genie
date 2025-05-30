@@ -1,0 +1,70 @@
+<div class="backGround">
+  <div class="glassContainer glass" appDraggable>
+
+    <button class="btn back-btn-panel" type="button" (click)="back()">Back</button>
+    <h2 class="title">Jackpot Triple Play</h2>
+
+    <div class="rules-section">
+      <h3>Jackpot Triple Play Number Generator</h3>
+      <h4>Rules</h4>
+      <p>1. Select six numbers from 1 through 46.</p>
+      <p>
+        Save numbers to your profile to track performance. After buying a ticket, click "Post it" to register the play.
+      </p>
+      <button class="btn btn-outline-info" (click)="showRules = true">I wish to know more</button>
+    </div>
+
+    <div class="number-cards">
+      <div class="number-card"><h1>{{ numberGenService.jackpotGeneratedNumber1 }}</h1></div>
+      <div class="number-card"><h1>{{ numberGenService.jackpotGeneratedNumber2 }}</h1></div>
+      <div class="number-card"><h1>{{ numberGenService.jackpotGeneratedNumber3 }}</h1></div>
+      <div class="number-card"><h1>{{ numberGenService.jackpotGeneratedNumber4 }}</h1></div>
+      <div class="number-card"><h1>{{ numberGenService.jackpotGeneratedNumber5 }}</h1></div>
+      <div class="number-card"><h1>{{ numberGenService.jackpotGeneratedNumber6 }}</h1></div>
+    </div>
+
+    <div class="genie-section">
+      <p><i>{{ numberGenService.Phrase }}</i></p>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-outline-primary" (click)="GenerateJackpot()">Give me a number!</button>
+      <button class="btn btn-outline-success" (click)="saveJackpot()">I will play this number, save it</button>
+      <button class="btn btn-outline-danger" (click)="GenerateJackpot()">I don't like this number</button>
+      <button class="btn btn-outline-info">Show me numbers that have won</button>
+    </div>
+
+    <div class="saved-section">
+      <h3>Saved Numbers</h3>
+      <div class="saved-card" *ngFor="let set of jackpotSavedNumbers">
+        <p>[ {{ set.join(', ') }} ]</p>
+      </div>
+      <button class="btn btn-outline-primary" type="submit">Post it</button>
+    </div>
+
+  </div>
+
+  <app-rules-modal
+    *ngIf="showRules"
+    [gameTitle]="'Jackpot Triple Play'"
+    [quote]="'What arcane secrets dost thou seek, mortal?'"
+    (closed)="showRules = false"
+  >
+    <div rules>
+      <p><b>1.</b> Select six numbers from 1 to 46. This is your base play.</p>
+      <p><b>2.</b> One ticket gives you three sets of numbers. The first set you pick; the other two are quick picks.</p>
+      <p><b>3.</b> Drawings take place every Tuesday and Friday at 11:15 p.m. ET.</p>
+      <p><b>4.</b> Match all six numbers in any set to win the jackpot.</p>
+      <p><b>5.</b> The COMBO option increases your chances of winning non-jackpot prizes.</p>
+    </div>
+
+    <div odds>
+      <p><b>Odds of winning the jackpot:</b> 1 in 3,122,273</p>
+      <p><b>Odds of winning any prize:</b> approx. 1 in 15.24</p>
+    </div>
+
+    <div theory>
+      <p>This is a low-frequency, moderate-jackpot game with unique combo matching rules. Try tracking number spreads or avoiding tightly clustered ranges for fun.</p>
+    </div>
+  </app-rules-modal>
+</div>

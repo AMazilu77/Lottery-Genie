@@ -94,6 +94,7 @@ import { Pick5WinningNumbersComponent } from './winningNumber/winning-by-state/F
 import { FlLottoWinningNumbersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/fl-lotto-winning-numbers/fl-lotto-winning-numbers.component';
 import { CashForLifeWinnersComponent } from './winningNumber/mutli-state-games/cash-for-life-winners/cash-for-life-winners.component';
 import { Fantasy5WinnersComponent } from './winningNumber/winning-by-state/Florida/fl-winning-numbers-game-pick/fantasy5-winners/fantasy5-winners.component';
+import { JackpotTriplePlayGenComponent } from './games/state/Florida/jackpot-tripple-play-gen/jackpot-tripple-play-gen.component';
 // import { AuthModule } from './auth/auth.module';
 
 @NgModule({
@@ -171,7 +172,8 @@ import { Fantasy5WinnersComponent } from './winningNumber/winning-by-state/Flori
     Pick5WinningNumbersComponent,
     FlLottoWinningNumbersComponent,
     CashForLifeWinnersComponent,
-    Fantasy5WinnersComponent
+    Fantasy5WinnersComponent,
+    JackpotTriplePlayGenComponent
   ],
   imports: [
             BrowserModule,
