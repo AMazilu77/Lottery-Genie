@@ -36,6 +36,10 @@ export interface FloridaLottoModel {
   numbers: number[];
   gameType: string;
 }
+export interface FLJackpotModel {
+  drawDate: string;
+  numbers: number[];
+}
 
 export interface Fantasy5Model {
   drawDate: string;

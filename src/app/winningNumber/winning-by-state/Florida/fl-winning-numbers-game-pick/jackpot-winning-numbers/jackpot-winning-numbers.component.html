@@ -1,0 +1,46 @@
+<div class="backGround">
+  <div class="glassContainer glass" appDraggable>
+
+    <button class="btn back-btn-panel" (click)="back()">Back</button>
+    <h1 class="glass-header">Jackpot Triple Play Winning Numbers</h1>
+    <hr />
+
+    <button class="btn btn-outline-info" (click)="showRules = true">View Rules & Odds</button>
+
+    <div class="scrollContainer">
+      <ul class="winning-list">
+        <li *ngFor="let result of results">
+          <strong>{{ result.drawDate | date:'MMM d, y' }}</strong> –
+          Numbers:
+          <span class="number-balls">
+            <span *ngFor="let num of result.numbers" class="ball">{{ num }}</span>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <app-rules-modal
+    *ngIf="showRules"
+    [gameTitle]="'Jackpot Triple Play'"
+    [quote]="'Wouldst thou gaze upon thine odds, seeker of treasure?'"
+    (closed)="showRules = false">
+
+    <div rules>
+      <p><b>1.</b> Select six numbers from 1 to 46. Three sets are played on a single ticket.</p>
+      <p><b>2.</b> Drawings are held Tuesday and Friday at 11:15 p.m. ET.</p>
+      <p><b>3.</b> Match 2 or more numbers in any set to win a prize. Match all 6 in any set to win the jackpot.</p>
+    </div>
+
+    <div odds>
+      <p><b>Jackpot odds:</b> 1 in 3,122,273</p>
+      <p><b>Overall odds of winning:</b> 1 in 15.24</p>
+    </div>
+
+    <div theory>
+      <p>This is a medium-frequency game with modest jackpots and better overall odds than most large lotteries. Track hot/cold numbers, but randomness dominates.</p>
+    </div>
+
+  </app-rules-modal>
+</div>
