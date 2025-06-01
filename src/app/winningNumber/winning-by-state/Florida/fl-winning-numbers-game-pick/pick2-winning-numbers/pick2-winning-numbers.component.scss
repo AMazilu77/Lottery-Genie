@@ -1,59 +1,79 @@
-.larger-panel {
-  width: 600px;
-  max-height: 80vh;
-  overflow-y: auto;
+.pick2-container {
+  max-width: 720px;
+  margin: 0 auto;
 }
 
-.glass-header {
+.pick2-header {
   text-align: center;
   font-size: 1.8em;
   margin-top: 10px;
   color: #fff;
 }
 
-.scrollContainer {
+.pick2-scroll {
   max-height: 500px;
   overflow-y: auto;
   padding: 10px;
 }
 
-.winning-list {
+.pick2-list {
   list-style: none;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
 }
 
-.winning-list li {
+.pick2-list li {
   margin-bottom: 12px;
   font-size: 1rem;
   color: #f3f3f3;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
 }
 
-.ball {
-  background: #222;
-  color: #fff;
+.pick2-balls {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 0.6rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.pick2-ball {
+  width: 2.4rem;
+  height: 2.4rem;
+  background-color: white;
+  color: black;
   border-radius: 50%;
-  padding: 10px 14px;
-  margin: 0 6px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease-in-out;
+  flex-shrink: 0;
 }
 
-.ball:hover {
+.pick2-ball:hover {
   transform: scale(1.1);
 }
 
-
-.fireball {
-  background: linear-gradient(145deg, #ffa500, #ff4500);
+.pick2-fireball {
+  background: radial-gradient(circle at top left, #ff6a00, #d40000);
   color: #fff;
-  font-weight: bold;
-  border: 2px solid #fff;
+  border: 2px solid #ff4500;
+  box-shadow: 0 0 12px rgba(255, 69, 0, 0.5), 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
-.glassContainer {
-  transition: all 0.3s ease-in-out;
+.pick2-time {
+  padding: 3px 8px;
+  margin-left: 8px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
 }
-

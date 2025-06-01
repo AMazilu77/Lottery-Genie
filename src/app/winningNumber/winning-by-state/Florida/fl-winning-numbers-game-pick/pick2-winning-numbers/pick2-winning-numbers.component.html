@@ -4,23 +4,24 @@
     <h1 class="glass-header">{{ title }} Winning Numbers</h1>
     <hr />
 
-    <div class="scrollContainer">
-      <ul class="winning-list">
-        <li *ngFor="let result of middayResults">
-          <strong>{{ result.drawDate | date:'MMM d, y' }}</strong> — 
-          <span class="number-balls">
-  <ng-container *ngFor="let digit of result.winningNumber.split('')">
-    <span class="ball">{{ digit }}</span>
-  </ng-container>
-</span>
-          
-          <span *ngIf="result.fireball" class="fireball-label">
-            | Fireball: <span class="ball fireball">{{ result.fireball }}</span>
-          </span>
-          <span *ngIf="result.midDay"> — Midday</span>
-          <span *ngIf="result.evening"> — Evening</span>
-        </li>
-      </ul>
+          <div class="scrollContainer">
+    <ul class="winning-list">
+ <li *ngFor="let result of allResults">
+    <strong>{{ result.drawDate | date:'MMM d, y' }}</strong> —
+
+    <span class="number-balls">
+      <ng-container *ngFor="let digit of result.winningNumber.split('')">
+        <span class="ball">{{ digit }}</span>
+      </ng-container>
+
+      <span *ngIf="result.fireball" class="ball fireball">{{ result.fireball }}</span>
+    </span>
+
+  <span *ngIf="result.midDay" class="draw-time midday">Midday</span>
+<span *ngIf="result.evening" class="draw-time evening">Evening</span>
+  </li>
+</ul>
+
     </div>
   </div>
 </div>

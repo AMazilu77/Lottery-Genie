@@ -11,10 +11,11 @@
           Numbers: 
           <span class="number-balls">
             <span *ngFor="let num of result.numbers" class="ball">{{ num }}</span>
+            <span class="ball mega-ball"> {{ result.megaBall }}</span>
           </span>
-          | Mega Ball: <span class="ball mega">{{ result.megaBall }}</span>
         </li>
       </ul>
+
     </div>
   </div>
 </div>

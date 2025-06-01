@@ -1,7 +1,6 @@
-.larger-panel {
-  width: 600px;
-  max-height: 80vh;
-  overflow-y: auto;
+.wider-panel {
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .glass-header {
@@ -29,31 +28,63 @@
   color: #f3f3f3;
 }
 
+.number-balls {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 0.6rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .ball {
-  background: #222;
-  color: #fff;
+  width: 2.4rem;
+  height: 2.4rem;
+  background-color: white;
+  color: black;
   border-radius: 50%;
-  padding: 10px 14px;
-  margin: 0 6px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease-in-out;
+  flex-shrink: 0;
 }
 
 .ball:hover {
   transform: scale(1.1);
 }
 
-
 .fireball {
-  background: linear-gradient(145deg, #ffa500, #ff4500);
+  background: radial-gradient(circle at top left, #ff6a00, #d40000);
+  color: white;
+  border: 2px solid #ff4500;
+  box-shadow: 0 0 12px rgba(255, 69, 0, 0.5), 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.fireball:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 20px rgba(255, 69, 0, 0.7), 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.draw-time {
+  padding: 3px 8px;
+  margin-left: 8px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.draw-time.midday {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: #fff;
-  font-weight: bold;
-  border: 2px solid #fff;
 }
 
-.glassContainer {
-  transition: all 0.3s ease-in-out;
+.draw-time.evening {
+  background-color: rgba(0, 0, 255, 0.1);
+  border: 1px solid rgba(0, 0, 255, 0.2);
+  color: #c0d9ff;
 }
-
