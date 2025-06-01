@@ -5,17 +5,25 @@
     <hr />
 
     <div class="scrollContainer">
-      <ul class="winning-list">
-        <li *ngFor="let result of middayResults">
-          <strong>{{ result.drawDate | date:'MMM d, y' }}</strong> —
-          <span class="number-balls">
+      <ul class="pick-list">
+        <li *ngFor="let result of middayResults" class="pick-row">
+          
+          <div class="draw-info">
+            <div class="draw-date">{{ result.drawDate | date:'MMM d, y' }}</div>
+          </div>
+
+          <div class="pick-balls">
             <ng-container *ngFor="let digit of result.winningNumber.split('')">
-              <span class="ball">{{ digit }}</span>
+              <span class="ball white-ball">{{ digit }}</span>
             </ng-container>
-            <span *ngIf="result.fireball" class="ball fireball">{{ result.fireball }}</span>
-          </span>
-          <span *ngIf="result.midDay" class="draw-time midday">Midday</span>
-          <span *ngIf="result.evening" class="draw-time evening">Evening</span>
+            <span *ngIf="result.fireball" class="ball red-ball">{{ result.fireball }}</span>
+          </div>
+
+          <div class="draw-session">
+            <span *ngIf="result.midDay" class="session">🕑 Midday</span>
+            <span *ngIf="result.evening" class="session">🌆 Evening</span>
+          </div>
+
         </li>
       </ul>
     </div>
