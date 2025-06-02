@@ -21,20 +21,26 @@ export class JackpotTriplePlayGenComponent implements OnInit {
     this.router.navigate(['/FLGamePick']);
   }
 
-  GenerateJackpot(): void {
-    this.numberGenService.jackpotTriplePlayRandomGenMaster();
-    this.numberGenService.randomPhraseGen();
-  }
+saveJackpot() {
+  const numberSet = [
+    this.numberGenService.jackpotGeneratedNumber1,
+    this.numberGenService.jackpotGeneratedNumber2,
+    this.numberGenService.jackpotGeneratedNumber3,
+    this.numberGenService.jackpotGeneratedNumber4,
+    this.numberGenService.jackpotGeneratedNumber5,
+    this.numberGenService.jackpotGeneratedNumber6
+  ];
+  const success = this.numberGenService.saveNumber('jackpot', numberSet);
+  if (!success) alert('You’ve saved too many! Clear some before saving more.');
+}
 
-  saveJackpot(): void {
-    this.jackpotSavedNumbers.push([
-      this.numberGenService.jackpotGeneratedNumber1,
-      this.numberGenService.jackpotGeneratedNumber2,
-      this.numberGenService.jackpotGeneratedNumber3,
-      this.numberGenService.jackpotGeneratedNumber4,
-      this.numberGenService.jackpotGeneratedNumber5,
-      this.numberGenService.jackpotGeneratedNumber6
-    ]);
-    console.log(this.jackpotSavedNumbers);
-  }
+deleteSavedJackpot(index: number) {
+  this.numberGenService.removeSavedNumber('jackpot', index);
+}
+
+GenerateJackpot() {
+  this.numberGenService.jackpotTriplePlayRandomGenMaster();
+  this.numberGenService.randomPhraseGen();
+}
+
 }

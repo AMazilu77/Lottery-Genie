@@ -1,194 +1,48 @@
-// /* ==================== */
-// /* 🎨 Background Styling */
-// /* ==================== */
-// .pick2-background {
-//   background-image: url('../../../../../assets/public/images/genie-summoned.png'); // Adjust if needed
-//   background-size: cover;
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   min-height: 100vh;
-//   width: 100%;
-//   position: relative;
-//   overflow: hidden;
-// }
+.saved-scroll {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
 
-// /* ===================== */
-// /*  Draggable Glass Panel */
-// /* ===================== */
-// .pick2-container {
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%); // <-- this centers it
-//   max-width: 700px;
-//   width: 90%;
-//   padding: 2rem;
-//   border-radius: 16px;
-//   text-align: center;
-//   font-family: 'Segoe UI', sans-serif;
-//   cursor: move;
-//   user-select: none;
-//   z-index: 10;
-// }
+.saved-number-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
+.number-ball {
+  background: white;
+  color: black;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  border: 2px solid #ccc;
+  transition: transform 0.2s ease-in-out;
+}
 
-// .glass {
-//   background: rgba(255, 255, 255, 0.15);
-//   backdrop-filter: blur(16px);
-//   -webkit-backdrop-filter: blur(16px);
-//   border: 1px solid rgba(255, 255, 255, 0.2);
-//   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-// }
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #ff3b3b;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 10px;
+  transition: transform 0.2s ease-in-out;
+}
 
-// /* ===================== */
-// /*  Back Button Styling */
-// /* ===================== */
-// .btn.back-btn-panel {
-//   position: absolute;
-//   top: 15px;
-//   left: 15px;
-//   width: 100px;
-//   min-width: unset;
-//   max-width: unset;
-//   padding: 6px 12px;
-//   font-size: 0.9rem;
-//   white-space: nowrap;
-// }
-
-
-
-
-
-// /* ===================== */
-// /*  Title & Rules Block */
-// /* ===================== */
-// .title {
-//   font-size: 2.5rem;
-//   font-weight: bold;
-//   margin-bottom: 1rem;
-// }
-
-// .rules-section {
-//   background: rgba(240, 240, 255, 0.2);
-//   padding: 1.5rem;
-//   border-radius: 10px;
-//   margin-bottom: 2rem;
-// }
-
-// .rules-section h3 {
-//   font-size: 1.8rem;
-//   font-weight: 700;
-// }
-
-// .rules-section h4 {
-//   font-size: 1.2rem;
-//   font-weight: 500;
-// }
-
-// /* ===================== */
-// /* Number Card Styling */
-// /* ===================== */
-// .number-cards {
-//   display: flex;
-//   justify-content: center;
-//   gap: 2rem;
-//   margin: 2rem 0;
-// }
-
-// .number-card {
-//   background: linear-gradient(to bottom right, #dceeff, #b0d4ff);
-//   border: 2px solid #333;
-//   border-radius: 16px;
-//   width: 100px;
-//   height: 100px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-// }
-
-// .number-card h1 {
-//   font-size: 3.5rem;
-//   margin: 0;
-// }
-
-// /* ===================== */
-// /*  Genie Phrase Styling */
-// /* ===================== */
-// .genie-section {
-//   margin: 2rem 0;
-// }
-
-// .genie-section p {
-//   font-style: italic;
-//   color: #222;
-//   margin-top: 1rem;
-// }
-
-// /* ===================== */
-// /* 🧞 Button Group Styling */
-// /* ===================== */
-// .btn-group {
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-//   gap: 1rem;
-//   margin: 2rem 0;
-// }
-
-// /* Button Core */
-// .btn {
-//   min-width: 200px;
-//   font-weight: 600;
-//   padding: 10px 16px;
-//   border: 2px solid transparent;
-//   border-radius: 8px;
-//   transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-//   color: white;
-//   text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
-//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-// }
-
-// .btn-outline-primary {
-//   background: #007bff;
-//   border-color: #007bff;
-// }
-
-// .btn-outline-success {
-//   background: #28a745;
-//   border-color: #28a745;
-// }
-
-// .btn-outline-danger {
-//   background: #dc3545;
-//   border-color: #dc3545;
-// }
-
-// .btn-outline-info {
-//   background: #17a2b8;
-//   border-color: #17a2b8;
-// }
-
-// .btn:hover {
-//   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-// }
-
-// /* ===================== */
-// /*  Saved Numbers Block */
-// /* ===================== */
-// .saved-section {
-//   margin-top: 2rem;
-// }
-
-// .saved-section h3 {
-//   margin-bottom: 1rem;
-//   font-weight: 600;
-// }
-
-// .saved-card {
-//   background: rgba(255, 255, 255, 0.7);
-//   padding: 1rem;
-//   border-radius: 8px;
-//   border: 1px solid #bbb;
-//   font-size: 1.1rem;
-// }
+.delete-btn:hover {
+  transform: scale(1.3);
+  color: #ff0000;
+}

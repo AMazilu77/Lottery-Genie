@@ -1,13 +1,11 @@
 .rules-modal {
-  position: absolute;
-  top: 0;
-  margin-top: 60px;
-  left: calc(50% + 300px);
-  transform: translate(-50%, 0); /* ← Horizontal centering only */
+  position: fixed;
+  top: 60px;
+  left: 5vw;
   min-width: 450px;
-  max-width: 700px;
+  max-width: 650px;
   width: 100%;
-  padding: 2.5rem;
+  padding: 2rem;
   font-size: 1.05rem;
   border-radius: 16px;
   text-align: center;
@@ -18,8 +16,23 @@
   cursor: move;
   user-select: none;
   z-index: 999;
-  animation: fadeIn 0.4s ease-out;
+  animation: genieFadeSlide 0.4s ease-out forwards;
+  opacity: 0; /* Start invisible, fade in */
+  transform: translateX(-50px); /* Start slightly off-screen */
 }
+
+@keyframes genieFadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
 
 @keyframes fadeIn {
   from {

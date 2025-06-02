@@ -17,3 +17,59 @@
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.7), 0 6px 14px rgba(0, 0, 0, 0.3);
 }
+
+.saved-scroll {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.saved-number-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.number-ball {
+  background: white;
+  color: black;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  border: 2px solid #ccc;
+  transition: transform 0.2s ease-in-out;
+}
+
+.number-ball.mega-ball {
+  background: linear-gradient(to bottom right, #ffe259, #f6b700);
+  color: black;
+  border: 2px solid #f5b800;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.5), 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #ff3b3b;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 10px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.delete-btn:hover {
+  transform: scale(1.3);
+  color: #ff0000;
+}

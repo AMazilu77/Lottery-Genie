@@ -20,30 +20,46 @@
     </div>
 
     <div class="number-cards">
-      <div class="number-card">
+  <div class="number-ball" *ngFor="let num of [
+    numberGenService.powerBallGeneratedNumber1,
+    numberGenService.powerBallGeneratedNumber2,
+    numberGenService.powerBallGeneratedNumber3,
+    numberGenService.powerBallGeneratedNumber4,
+    numberGenService.powerBallGeneratedNumber5
+  ]">
+    {{ num }}
+  </div>
+
+  <div class="number-ball red">
+    {{ numberGenService.powerBallGeneratedNumber6POWERBALL }}
+  </div>
+</div>
+
+    <!-- <div class="number-cards">
+      <div class="number-ball">
         <h1>{{ numberGenService.powerBallGeneratedNumber1 }}</h1>
       </div>
 
-      <div class="number-card">
+      <div class="number-ball">
         <h1>{{ numberGenService.powerBallGeneratedNumber2 }}</h1>
       </div>
 
-        <div class="number-card">
+        <div class="number-ball">
         <h1>{{ numberGenService.powerBallGeneratedNumber3 }}</h1>
       </div>
 
-      <div class="number-card">
+      <div class="number-ball">
         <h1>{{ numberGenService.powerBallGeneratedNumber4 }}</h1>
       </div>
 
-         <div class="number-card">
+         <div class="number-ball">
         <h1>{{ numberGenService.powerBallGeneratedNumber5 }}</h1>
       </div>
 
-       <div class="number-card" id="powerBall">
+       <div class="number-ball" id="powerBall">
         <h1>{{ numberGenService.powerBallGeneratedNumber6POWERBALL }}</h1>
       </div>
-    </div>
+    </div> -->
 
     <div class="genie-section">
       <p><i>{{ numberGenService.Phrase }}</i></p>
@@ -54,7 +70,7 @@
         (click)="numberGenService.powerBallRandomGenMaster(); numberGenService.randomPhraseGen()">
         Give me a number!
       </button>
-      <button class="btn btn-outline-success">
+      <button class="btn btn-outline-success" (click)="savePowerBall()">
         I will play this number, save it
       </button>
       <button class="btn btn-outline-danger"
@@ -67,22 +83,32 @@
 
     
     </div>
-    <div class="saved-section">
-      <h3>Saved Numbers</h3>
-      <div class="saved-card">
-        <p>[ {{ numberGenService.powerBallGeneratedNumber1 }},
-           {{ numberGenService.powerBallGeneratedNumber2 }},
-            {{ numberGenService.powerBallGeneratedNumber3 }},
-             {{ numberGenService.powerBallGeneratedNumber4 }},
-              {{ numberGenService.powerBallGeneratedNumber5 }},
-           {{ numberGenService.powerBallGeneratedNumber6POWERBALL }}]</p> 
-             
-        <ol>{{ powerBall_SaveNumber }}</ol>
+
+
+
+<div class="saved-section">
+  <h3>Saved Numbers</h3>
+  <div class="saved-card saved-scroll">
+    <div
+      *ngFor="let set of numberGenService.getSavedNumbers('powerball'); let i = index"
+      class="saved-number-row"
+    >
+      <div class="number-ball" *ngFor="let num of set.slice(0, 5)">
+        {{ num }}
       </div>
-      <button class="btn btn-outline-primary" type="submit">Post it</button>
+      <div class="number-ball red">
+        {{ set[5] }}
+      </div>
+      <button class="delete-btn" (click)="deleteSavedPowerball(i)">×</button>
     </div>
+  </div>
+  <button class="btn btn-outline-primary" type="submit">Post it</button>
+</div>
+
+
 
   </div>
+  
 
   <app-rules-modal
   *ngIf="showRules"
@@ -115,9 +141,21 @@
   <br>
  </div>
 
-  <div theory>
-    <p>This game has low variance and fast feedback. You can apply frequency tracking, trailing digit avoidance, and rolling analysis across day/night draws.</p>
+ 
+<div theory>
+  <div class="scroll-theory">
+    <p><b>Expected Value:</b> Expected value (EV) tells you what a lottery ticket is worth on average over time. In Powerball, a $2 ticket typically returns about $0.40 in value, meaning you lose around $1.60 per play. Powerball EV is often around <b>$0.20–$0.40</b> for every $2 spent (and lower when jackpots are small). Statistically, you're losing money each play—but...</p>
+
+    <p><b>Jackpot Thresholds:</b> When the jackpot surpasses <b>$500 million</b>, the expected value (EV) rises and can exceed the $2 ticket cost—though the odds remain <b>1 in 292 million</b>.</p>
+
+    <p><b>Group Pools & Syndicates:</b> Smart players improve their EV by pooling with coworkers, clubs, or communities. While the win is shared, the risk is spread and more tickets increase coverage across number combinations.</p>
+
+    <p><b>Optimal Play Frequency:</b> If you must play, experts suggest focusing on <i>jackpot spikes</i> where EV improves. Playing 10 tickets during a $1.2B draw is more logical than playing 1 ticket every week forever.</p>
+
+    <p><b>Pro Tip:</b> Choosing rare number combinations (e.g., avoiding calendar dates) doesn't improve your odds of winning—but can reduce your odds of <b>splitting</b> a prize if you win.</p>
   </div>
+</div>
+
 
 </app-rules-modal>
 </div>

@@ -11,6 +11,11 @@ export class MegaMillionsGenComponent implements OnInit {
 
   megaMillions_SaveNumber = [];
 
+    ngOnInit() {
+  }
+
+      showRules = false;
+
   back() {
     this.router.navigate(['/FLGamePick']);
   }
@@ -20,23 +25,26 @@ export class MegaMillionsGenComponent implements OnInit {
   }
 
   saveMegaMillions() {
-    this.megaMillions_SaveNumber.push(
-      this.numberGenService.megaMillionsnum1,
-      this.numberGenService.megaMillionsnum2,
-      this.numberGenService.megaMillionsnum3,
-      this.numberGenService.megaMillionsnum4,
-      this.numberGenService.megaMillionsnum5,
-      this.numberGenService.megaMillionsMEGABALL);
-    console.log(this.megaMillions_SaveNumber);
+  const numSet = [
+  this.numberGenService.megaMillionsGeneratedNumber1,
+  this.numberGenService.megaMillionsGeneratedNumber2,
+  this.numberGenService.megaMillionsGeneratedNumber3,
+  this.numberGenService.megaMillionsGeneratedNumber4,
+  this.numberGenService.megaMillionsGeneratedNumber5,
+  this.numberGenService.megaMillionsGeneratedMEGABALL
+];
+
+this.numberGenService.saveNumber('megamillions', numSet);
+
   }
 
   constructor(public numberGenService: NumberGenService, private router: Router) { }
 
 
-  ngOnInit() {
-  }
 
-      showRules = false;
 
+deleteSavedMegaMillions(index: number) {
+  this.numberGenService.removeSavedNumber('megamillions', index);
+}
 
 }

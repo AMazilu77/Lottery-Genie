@@ -1,45 +1,29 @@
 <div class="backGround">
-  <!-- DRAGGABLE WRAPPER -->
   <div class="glassContainer glass" appDraggable>
 
-    <!-- Back button ON the panel -->
     <button class="btn back-btn-panel" type="button" (click)="back()">Back</button>
-
     <h2 class="title">Mega Millions Lottery</h2>
 
     <div class="rules-section">
       <h3>Mega Millions Lottery Number Generator</h3>
       <h4>Rules</h4>
-      <p>1. Select five numbers from 1 through 70 + one 'Gold Megaball' from 1 through 24. You win the jackpot by matching all six winning numbers in a</p>
-      <p>
-        Save numbers to your profile to track performance. After buying a ticket, click "Post it" to register the play.
-      </p>
+      <p>1. Select five numbers from 1 through 70 + one 'Gold Megaball' from 1 through 24. You win the jackpot by matching all six winning numbers.</p>
+      <p>Save numbers to your profile to track performance. After buying a ticket, click "Post it" to register the play.</p>
       <button class="btn btn-outline-info" (click)="showRules = true">I wish to know more</button>
     </div>
 
     <div class="number-cards">
-      <div class="number-card">
-        <h1>{{ numberGenService.megaMillionsGeneratedNumber1 }}</h1>
+      <div class="number-ball" *ngFor="let num of [
+        numberGenService.megaMillionsGeneratedNumber1,
+        numberGenService.megaMillionsGeneratedNumber2,
+        numberGenService.megaMillionsGeneratedNumber3,
+        numberGenService.megaMillionsGeneratedNumber4,
+        numberGenService.megaMillionsGeneratedNumber5
+      ]">
+        {{ num }}
       </div>
-
-      <div class="number-card">
-        <h1>{{ numberGenService.megaMillionsGeneratedNumber2 }}</h1>
-      </div>
-
-        <div class="number-card">
-        <h1>{{ numberGenService.megaMillionsGeneratedNumber3 }}</h1>
-      </div>
-
-      <div class="number-card">
-        <h1>{{ numberGenService.megaMillionsGeneratedNumber4 }}</h1>
-      </div>
-
-         <div class="number-card">
-        <h1>{{ numberGenService.megaMillionsGeneratedNumber5 }}</h1>
-      </div>
-
-       <div class="number-card" id="megaBall" >
-        <h1>{{ numberGenService.megaMillionsGeneratedMEGABALL }}</h1>
+      <div class="number-ball mega-ball">
+        {{ numberGenService.megaMillionsGeneratedMEGABALL }}
       </div>
     </div>
 
@@ -48,72 +32,63 @@
     </div>
 
     <div class="btn-group">
-      <button class="btn btn-outline-primary"
-        (click)="numberGenService.megaMillionsRandomGenMaster(); numberGenService.randomPhraseGen()">
+      <button class="btn btn-outline-primary" (click)="numberGenService.megaMillionsRandomGenMaster(); numberGenService.randomPhraseGen()">
         Give me a number!
       </button>
-      <button class="btn btn-outline-success">
+      <button class="btn btn-outline-success" (click)="saveMegaMillions()">
         I will play this number, save it
       </button>
-      <button class="btn btn-outline-danger"
-        (click)="numberGenService.megaMillionsRandomGenMaster(); numberGenService.randomPhraseGen()">
+      <button class="btn btn-outline-danger" (click)="numberGenService.megaMillionsRandomGenMaster(); numberGenService.randomPhraseGen()">
         I don't like this number
       </button>
       <button class="btn btn-outline-info" routerLink="/WinningMegaMillionsNumbers">
         Show me numbers that have won
       </button>
-
-    
     </div>
+
     <div class="saved-section">
       <h3>Saved Numbers</h3>
-      <div class="saved-card">
-        <p>[ {{ numberGenService.megaMillionsGeneratedNumber1 }},
-           {{ numberGenService.megaMillionsGeneratedNumber2 }},
-            {{ numberGenService.megaMillionsGeneratedNumber3 }},
-             {{ numberGenService.megaMillionsGeneratedNumber4 }},
-              {{ numberGenService.megaMillionsGeneratedNumber5 }},
-           {{ numberGenService.megaMillionsGeneratedMEGABALL }}]</p> 
-             
-        <ol>{{ megaMillions_SaveNumber }}</ol>
+      <div class="saved-card saved-scroll">
+        <div *ngFor="let set of numberGenService.getSavedNumbers('megamillions'); let i = index" class="saved-number-row">
+          <div class="number-ball" *ngFor="let num of set.slice(0, 5)">
+            {{ num }}
+          </div>
+          <div class="number-ball mega-ball">
+            {{ set[5] }}
+          </div>
+          <button class="delete-btn" (click)="deleteSavedMegaMillions(i)">×</button>
+        </div>
       </div>
       <button class="btn btn-outline-primary" type="submit">Post it</button>
     </div>
 
   </div>
 
-  <app-rules-modal
-  *ngIf="showRules"
-  [gameTitle]="'Florida Lottery'"
-  [quote]="'What arcane knowledge dost thou seek, mortal?'"
-  (closed)="showRules = false">
+  <app-rules-modal *ngIf="showRules" [gameTitle]="'Florida Lottery'" [quote]="'What arcane knowledge dost thou seek, mortal?'" (closed)="showRules = false">
 
-  <div rules>
- <p> <b>1.</b> To play Mega Millions <b>Pick five numbers between 1-70 + one 'Gold Megaball' from 1 through 24</b></p>
-   
-   <p><b>2.</b> There are two drawings per day seven days per week, at approximately <b>1:30 p.m. and 9:45 p.m. ET.</b>
-      Tickets for each drawing can be purchased up to 13 minutes prior to the applicable drawing – 1:17 p.m. ET for the midday
-      drawings and 9:32 p.m. ET for the evening drawings.</p>    
-       <p><b>3.</b> Select the draw time. Select MID for the midday drawing (1:30 p.m. ET), EVE for the evening drawing (9:45p.m. ET) draw, or BOTH for both the midday and evening drawings. If no
-      draw time is marked, the terminal will automatically print a ticket for the next available draw. If BOTH is selected, two separate tickets will print –
-      one for the midday drawing and one for the evening drawing.</p>
+    <div rules>
+      <p><b>1.</b> To play Mega Millions <b>Pick five numbers between 1-70 + one 'Gold Megaball' from 1 through 24</b></p>
+      <p><b>2.</b> There are two drawings per day seven days per week, at approximately <b>1:30 p.m. and 9:45 p.m. ET.</b></p>
+      <p><b>3.</b> Select the draw time. Select MID for the midday drawing (1:30 p.m. ET), EVE for the evening drawing (9:45p.m. ET) draw, or BOTH for both the midday and evening drawings. If BOTH is selected, two separate tickets will print – one for each draw.</p>
+      <p><b>Reminder: Prizes must be claimed within 180 days of the draw date.</b></p>
+    </div>
 
-    <p>You can win a top prize of <b>$500 </b>with a $1 Straight play, or increase your chances of winning with a Box, Straight/Box, Front/Back Number or 1-OFF play.</p>
-
-    <p><b>Reminder: Prizes must be claimed within 180 days of the draw date.</b>
-      All PICK 2 prizes may be claimed at any authorized Florida Lottery retailer.</p>
-
-
- </div>
-  <div odds>
-    <p> <b>1.</b> Strait Jackpot odds are 1 in 290,472,336 </p>
-
-  <br>
- </div>
+    <div odds>
+      <p><b>1.</b> Straight Jackpot odds are 1 in 290,472,336</p>
+    </div>
 
   <div theory>
-    <p>This game has low variance and fast feedback. You can apply frequency tracking, trailing digit avoidance, and rolling analysis across day/night draws.</p>
-  </div>
+  <p><b>🧞‍♂️ Game Theory: Wagering with the Fates</b></p>
 
-</app-rules-modal>
+  <p><b>Expected Value:</b> Even in games of destiny, the math whispers its prophecy. Each Mega Millions ticket costs $2, but on average returns <b>just $0.30 to $0.50</b> — a loss of <b>$1.50 per play</b>, unless the stars align. EV (expected value) tells you what a ticket is truly worth across infinite timelines. The odds of winning the grand prize? A cosmic <b>1 in 302 million</b>.</p>
+
+  <p><b>When Jackpots Swell, So Does the Magic:</b> As the jackpot climbs past <b>$600 million</b>, something curious happens — <b>even lower-tier prizes</b> (like matching 4 numbers, or 3 + the Megaball) begin to <b>increase in value</b> due to the Power Play multiplier and prize scaling. Though the odds remain unforgiving, your expected return inches closer to balance during such surges.</p>
+
+  <p><b>Syndicates & Shared Wishes:</b> Genies grant fewer wishes to the lone wanderer. Join a pool or syndicate and your lamp glows brighter — more combinations, more chances. Yes, your winnings are split, but so is your burden. <b>Strength in numbers, quite literally.</b></p>
+
+  <p><b>Avoid the Crowds:</b> Choosing rare number combinations won't increase your chance of winning, but it may <b>increase your share</b> if fate smiles upon you. Many choose birthdays and patterns; you, wise one, should choose numbers others ignore.</p>
+</div>
+
+
+  </app-rules-modal>
 </div>

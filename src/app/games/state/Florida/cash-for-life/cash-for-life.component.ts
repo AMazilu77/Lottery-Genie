@@ -36,4 +36,25 @@ export class CashForLifeComponent implements OnInit {
 
     showRules = false;
 
+
+    saveCashForLife() {
+  const set = [
+    this.numberGenService.cashForLifeGeneratedNumber1,
+    this.numberGenService.cashForLifeGeneratedNumber2,
+    this.numberGenService.cashForLifeGeneratedNumber3,
+    this.numberGenService.cashForLifeGeneratedNumber4,
+    this.numberGenService.cashForLifeGeneratedNumber5,
+    this.numberGenService.cashForLifeCashBall
+  ];
+
+  const success = this.numberGenService.saveNumber('cash4life', set);
+  if (!success) {
+    alert('Too many saved sets! Post or clear some before saving more.');
+  }
+}
+
+deleteSavedCashForLife(index: number) {
+  this.numberGenService.removeSavedNumber('cash4life', index);
+}
+
 }

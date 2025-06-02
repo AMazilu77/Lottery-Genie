@@ -8,39 +8,47 @@ import { NumberGenService } from '../../../../services/number-gen.service';
   styleUrls: ['./flpick4-gen.component.scss']
 })
 export class Flpick4GenComponent implements OnInit {
-  pick4SavedNumbers = [];
+  pick4SavedNumbers: number[][] = [];
 
+  showRules = false;
+
+  constructor(
+    public numberGenService: NumberGenService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
+    this.pick4SavedNumbers = this.numberGenService.getSavedNumbers('pick4');
   }
 
   back() {
     this.router.navigate(['/FLGamePick']);
   }
-  GeneratePick4() {
-    console.log(this.numberGenService.pick4randomGenMaster());
-
-  }
 
   savePick4Number() {
+    const set = [
+      this.numberGenService.Pick4GeneratedNumber1,
+      this.numberGenService.Pick4GeneratedNumber2,
+      this.numberGenService.Pick4GeneratedNumber3,
+      this.numberGenService.Pick4GeneratedNumber4,
+    ];
 
-    this.pick4SavedNumbers.push(
-      this.numberGenService.pick4num1,
-      this.numberGenService.pick4num2,
-      this.numberGenService.pick4num3,
-      this.numberGenService.pick4num4);
+    const isDefault = set.every(num => num === 0 || num == null);
+    if (isDefault) {
+      alert("Generate a number first!");
+      return;
+    }
 
-    console.log(this.pick4SavedNumbers);
+    const success = this.numberGenService.saveNumber('pick4', set);
+    if (success) {
+      this.pick4SavedNumbers = this.numberGenService.getSavedNumbers('pick4');
+    } else {
+      alert("Maximum of 10 saved sets reached.");
+    }
   }
 
-  FLPick4RulesOdds() {
-    this.router.navigate(['/FLPick4RulesOdds']);
+  deleteSavedPick4(index: number) {
+    this.numberGenService.removeSavedNumber('pick4', index);
+    this.pick4SavedNumbers = this.numberGenService.getSavedNumbers('pick4');
   }
-
-  constructor(public numberGenService: NumberGenService, private router: Router) { }
-
-
-    showRules = false; // modal visibility toggle
-
-
 }

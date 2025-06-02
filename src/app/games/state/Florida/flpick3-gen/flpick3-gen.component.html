@@ -18,14 +18,14 @@
     </div>
 
     <div class="number-cards">
-      <div class="number-card">
-        <h1>{{ numberGenService.Pick3GeneratedNumber1 }}</h1>
+      <div class="number-ball">
+      {{ numberGenService.Pick3GeneratedNumber1 }}
       </div>
-      <div class="number-card">
-        <h1>{{ numberGenService.Pick3GeneratedNumber2 }}</h1>
+      <div class="number-ball">
+      {{ numberGenService.Pick3GeneratedNumber2 }}
       </div>
-         <div class="number-card">
-        <h1>{{ numberGenService.Pick3GeneratedNumber3 }}</h1>
+         <div class="number-ball">
+      {{ numberGenService.Pick3GeneratedNumber3 }}
       </div>
     </div>
 
@@ -51,18 +51,29 @@
 
     
     </div>
-    <div class="saved-section">
-      <h3>Saved Numbers</h3>
-      <div class="saved-card">
-        <p>[ {{ numberGenService.Pick3GeneratedNumber1 }}, {{ numberGenService.Pick3GeneratedNumber2 }}, {{ numberGenService.Pick3GeneratedNumber3 }} ]</p>
-        <ol>{{ pick3SavedNumbers }}</ol>
+
+  <!-- Saved Numbers Section -->
+<div class="saved-section">
+  <h3>Saved Numbers</h3>
+  <div class="saved-scroll">
+    <div
+      *ngFor="let set of pick3SavedNumbers; let i = index"
+      class="saved-number-row"
+    >
+      <div class="number-ball" *ngFor="let num of set">
+        {{ num }}
       </div>
-      <button class="btn btn-outline-primary" type="submit">Post it</button>
+      <button class="delete-btn" (click)="deleteSavedPick3(i)">×</button>
     </div>
-
   </div>
+  <button class="btn btn-outline-primary" type="submit" (click)="saveNumberPick3()">
+    Post it
+  </button>
+</div>
 
-  <app-rules-modal
+</div>
+
+<app-rules-modal
   *ngIf="showRules"
   [gameTitle]="'Florida Pick 2'"
   [quote]="'What arcane knowledge dost thou seek, mortal?'"
@@ -98,8 +109,23 @@
   </div>
 
   <div theory>
-    <p>This game has low variance and fast feedback. You can apply frequency tracking, trailing digit avoidance, and rolling analysis across day/night draws.</p>
-  </div>
+  <p>
+    <b>Pick 3</b> is a fast, low-variance game offering multiple ways to win. You can play a 
+    <b>Straight</b> to match the exact number order, or use a <b>Box</b> play to win with any order.
+  </p>
 
-</app-rules-modal>
+  <p>
+    For players seeking more frequent wins, consider the <b>Fireball</b> add-on. It gives you extra number combinations 
+    by replacing one digit in the draw—but at a lower payout.
+  </p>
+
+  <p>
+    For casual players, combining <b>Straight/Box</b> offers a good balance of odds and payout potential.
+    For number chasers, it can be fun to track patterns or avoid common sequences like 1-2-3.
+  </p>
+
+  <p>
+    This game rewards experimentation—fast results, small wagers, and multiple strategies make it ideal for short-term play.
+  </p>
 </div>
+</app-rules-modal>

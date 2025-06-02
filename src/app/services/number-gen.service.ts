@@ -146,13 +146,6 @@ jackpotGeneratedNumber4;
 jackpotGeneratedNumber5;
 jackpotGeneratedNumber6;
 
-  // number Generator saved lists.
-
-  pick3SavedList = [];
-  pick4SavedList = [];
-  pick5SavedList = [];
-
-
   //  picj 2 random number generator
   pick2randomGenMaster() {
     this.pick2num1 = Math.floor(Math.random() * 10);
@@ -440,6 +433,65 @@ jackpotGeneratedNumber6;
     if (this.phraseNumber === 15) { this.Phrase = this.randomPhrase[14]; }
     if (this.phraseNumber === 16) { this.Phrase = this.randomPhrase[15]; }
   }
+
+
+// ─────────────────────────────────────────────
+// 💾 LOCAL SAVED NUMBER LISTS FOR EACH GAME
+// ─────────────────────────────────────────────
+
+pick2SavedList: number[][] = [];
+pick3SavedList: number[][] = [];
+pick4SavedList: number[][] = [];
+pick5SavedList: number[][] = [];
+luckyMoneySavedList: number[][] = [];
+fantasy5SavedList: number[][] = [];
+cashForLifeSavedList: number[][] = [];
+flLottoSavedList: number[][] = [];
+megaMillionsSavedList: number[][] = [];
+powerBallSavedList: number[][] = [];
+jackpotTriplePlaySavedList: number[][] = [];
+
+private readonly maxSaves = 10;
+
+saveNumber(game: string, numberSet: number[]): boolean {
+  const list = this.getListByGame(game);
+  if (list.length >= this.maxSaves) return false;
+  list.push([...numberSet]); // shallow copy to prevent reference issues
+  return true;
+}
+
+getSavedNumbers(game: string): number[][] {
+  return this.getListByGame(game);
+}
+
+clearSavedNumbers(game: string) {
+  const list = this.getListByGame(game);
+  list.length = 0;
+}
+
+removeSavedNumber(game: string, index: number) {
+  const list = this.getListByGame(game);
+  if (index >= 0 && index < list.length) {
+    list.splice(index, 1);
+  }
+}
+
+private getListByGame(game: string): number[][] {
+  switch (game) {
+    case 'pick2': return this.pick2SavedList;
+    case 'pick3': return this.pick3SavedList;
+    case 'pick4': return this.pick4SavedList;
+    case 'pick5': return this.pick5SavedList;
+    case 'luckymoney': return this.luckyMoneySavedList;
+    case 'fantasy5': return this.fantasy5SavedList;
+    case 'cash4life': return this.cashForLifeSavedList;
+    case 'fllotto': return this.flLottoSavedList;
+    case 'megamillions': return this.megaMillionsSavedList;
+    case 'powerball': return this.powerBallSavedList;
+    case 'jackpot': return this.jackpotTriplePlaySavedList;
+    default: throw new Error(`Unknown game type: ${game}`);
+  }
+}
 
 
 }

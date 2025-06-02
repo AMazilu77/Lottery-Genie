@@ -1,85 +1,46 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
-// import { NumberGenService } from '../../../../services/number-gen.service'
-// import { concat } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { BrowserModule } from '@angular/platform-browser';
-// import { HttpModule } from '@angular/http';
-// import { Timestamp } from 'rxjs/internal/operators/timestamp';
 import { NumberGenService } from '../../../../services/number-gen.service';
+
 @Component({
   selector: 'app-flpick2-gen',
   templateUrl: './flpick2-gen.component.html',
   styleUrls: ['./flpick2-gen.component.scss'],
-
 })
 export class FLPick2GenComponent implements OnInit {
+  pick2SavedNumbers: number[][] = [];
+  showRules = false;
 
-  constructor(public numberGenService: NumberGenService, private router: Router) { }
-  // NumberGenService: NumberGenService
-  ngOnInit() { }
+  constructor(public numberGenService: NumberGenService, private router: Router) {}
 
-  // The random numbers that get generated and defining empty lists to store multiple values in.
-// tslint:disable-next-line: member-ordering
-  pick2SavedNumbers: any = [];
-
-
-  generatePick2() {
-    console.log(this.numberGenService.pick2randomGenMaster());
+  ngOnInit() {
+    this.pick2SavedNumbers = this.numberGenService.getSavedNumbers('pick2');
   }
-
-
-  saveNumber() {
-
-    this.pick2SavedNumbers.push(this.numberGenService.pick2num1, this.numberGenService.pick2num2);
-    console.log(this.pick2SavedNumbers);
-    // this.pick2NumberSet = [this.pick2num1, this.pick2num2]
-  }
-
-  // addNumbers() {
-  //   // this.NumberSaver.numbersPlayed()
-  // }
 
   back() {
     this.router.navigate(['/FLGamePick']);
   }
 
-  FLPick2RulesOdds() {
-    this.router.navigate(['/FLPick2RulesOdds']);
+  saveNumber() {
+    const set = [
+      this.numberGenService.Pick2GeneratedNumber1,
+      this.numberGenService.Pick2GeneratedNumber2
+    ];
+    const isDefault = set.every(num => num === 0 || num == null);
+    if (isDefault) {
+      alert("Generate a number first!");
+      return;
+    }
+    const success = this.numberGenService.saveNumber('pick2', set);
+    if (success) {
+      this.pick2SavedNumbers = this.numberGenService.getSavedNumbers('pick2');
+    } else {
+      alert("Maximum of 10 saved sets reached.");
+    }
   }
 
-  showRules = false; // modal visibility toggle
-
-
+  deleteSavedPick2(index: number) {
+    this.numberGenService.removeSavedNumber('pick2', index);
+    this.pick2SavedNumbers = this.numberGenService.getSavedNumbers('pick2');
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// }
-
-// const pic2PostIt = function () { }
-
-
-
-
-

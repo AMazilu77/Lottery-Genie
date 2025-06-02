@@ -8,9 +8,9 @@
     <h2 class="title">Florida Pick 5</h2>
 
     <div class="rules-section">
-      <h3>Pick-4 Number Generator</h3>
+      <h3>Pick-5 Number Generator</h3>
       <h4>Rules</h4>
-      <p>1. Select four numbers from 0 through 9.</p>
+      <p>1. Select five numbers from 0 through 9.</p>
       <p>
         Save numbers to your profile to track performance. After buying a ticket, click "Post it" to register the play.
       </p>
@@ -44,7 +44,7 @@
         (click)="numberGenService.pick5randomGenMaster(); numberGenService.randomPhraseGen()">
         Give me a number!
       </button>
-      <button class="btn btn-outline-success">
+      <button class="btn btn-outline-success" (click)="savePick5()">
         I will play this number, save it
       </button>
       <button class="btn btn-outline-danger"
@@ -57,54 +57,56 @@
 
     
     </div>
-    <div class="saved-section">
-      <h3>Saved Numbers</h3>
-      <div class="saved-card">
-        <p>[ {{ numberGenService.Pick5GeneratedNumber1 }}, {{ numberGenService.Pick5GeneratedNumber2 }}, {{ numberGenService.Pick5GeneratedNumber3 }}, {{ numberGenService.Pick5GeneratedNumber4 }}, {{ numberGenService.Pick5GeneratedNumber4 }} ]</p>
-        <ol>{{ pick5SavedNumbers }}</ol>
-      </div>
-      <button class="btn btn-outline-primary" type="submit">Post it</button>
-    </div>
 
+    
+<!-- Saved Numbers Section -->
+<div class="saved-section">
+  <h3>Saved Numbers</h3>
+  <div class="saved-scroll">
+    <div
+  *ngFor="let set of pick5SavedNumbers; let i = index"
+  class="saved-number-row"
+>
+  <div class="number-ball" *ngFor="let num of set">
+    {{ num }}
   </div>
+  <button class="delete-btn" (click)="deleteSavedPick5(i)">×</button>
+</div>
+  </div>
+  <button class="btn btn-outline-primary" type="submit" (click)="savePick5()">
+    Post it
+  </button>
+</div>
 
-  <app-rules-modal
+
+</div>
+<!-- Rules Modal -->
+<app-rules-modal
   *ngIf="showRules"
   [gameTitle]="'Florida Pick 5'"
   [quote]="'What arcane knowledge dost thou seek, mortal?'"
   (closed)="showRules = false">
 
   <div rules>
- <p> <b>1.</b> Select the amount you want to play <b>(Pick five numbers between 0-9)</b></p>
-   
-   <p><b>2.</b> There are two drawings per day seven days per week, at approximately <b>1:30 p.m. and 9:45 p.m. ET.</b>
-      Tickets for each drawing can be purchased up to 13 minutes prior to the applicable drawing – 1:17 p.m. ET for the midday
-      drawings and 9:32 p.m. ET for the evening drawings.</p>    
-       <p><b>3.</b> Select the draw time. Select MID for the midday drawing (1:30 p.m. ET), EVE for the evening drawing (9:45p.m. ET) draw, or BOTH for both the midday and evening drawings. If no
-      draw time is marked, the terminal will automatically print a ticket for the next available draw. If BOTH is selected, two separate tickets will print –
-      one for the midday drawing and one for the evening drawing.</p>
-
-    <p>You can win a top prize of <b>$500 </b>with a $1 Straight play, or increase your chances of winning with a Box, Straight/Box, Front/Back Number or 1-OFF play.</p>
-
-    <p><b>Reminder: Prizes must be claimed within 180 days of the draw date.</b>
-      All PICK 2 prizes may be claimed at any authorized Florida Lottery retailer.</p>
-
-
+    <p><b>1.</b> Choose <b>five digits</b>, each between 0–9. Order matters for most prize types.</p>
+    <p><b>2.</b> Drawings take place twice daily: <b>1:30 PM</b> and <b>9:45 PM ET</b>.</p>
+    <p><b>3.</b> Mark "MID", "EVE", or "BOTH" to choose draw times. Tickets for each draw close ~13 minutes before.</p>
+    <p><b>4.</b> You can play different bet types: <b>Straight, Box, Straight/Box, Front Pair, Back Pair, or 1-OFF</b>.</p>
+    <p><b>Reminder:</b> All prizes must be claimed within 180 days of the draw.</p>
   </div>
 
   <div odds>
-    <p> <b>1.</b> Strait: Match numbers in exact order. 1$ strait play pays off $500.00 with odds of 1 : 1000 </p>
-
-  <br>
-
-  <p> The odds of winning a lottery game like this is the <b>"1:1000"</b> odds. It
-    means that if you played the game 1000 times, you should expect, on average to win once. This ratio of <b>"1:1000"</b>
-    can also be expressed as <b>1/1000</b> or <b>1 out of 1000</b></p>
+    <p><b>Straight (Exact Match):</b> 1 in 100,000 — Prize: up to <b>$50,000</b></p>
+    <p><b>Box (Any Order):</b> Varies by number of repeating digits — 1 in 20,000 to 1 in 41,667</p>
+    <p><b>Straight/Box:</b> Pays partial for any order, full for exact — splits your $1 ticket</p>
+    <p><b>1-OFF:</b> Match numbers one digit higher/lower — lower odds, smaller prize</p>
   </div>
 
   <div theory>
-    <p>This game has low variance and fast feedback. You can apply frequency tracking, trailing digit avoidance, and rolling analysis across day/night draws.</p>
+    <p><b>Genie’s Insight:</b> Pick 5 offers high payouts for a low buy-in, but has extreme variance.</p>
+    <p><b>Strategic Tip:</b> Because the odds are steep, it’s a “long-shot” game—best for rare plays, not daily grinding.</p>
+    <p><b>Recommended:</b> Try <i>Straight/Box</i> or <i>1-OFF</i> for a better chance at partial wins without needing exact order.</p>
   </div>
 
 </app-rules-modal>
-</div>
+

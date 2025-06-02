@@ -22,17 +22,25 @@ export class FlLottoGenComponent implements OnInit {
 
   }
 
-  saveFL_Lotto() {
-    this.FL_LottoSavedNumbers.push(
-      this.numberGenService.FL_Lottonum1,
-      this.numberGenService.FL_Lottonum2,
-      this.numberGenService.FL_Lottonum3,
-      this.numberGenService.FL_Lottonum4,
-      this.numberGenService.FL_Lottonum5,
-      this.numberGenService.FL_Lottonum6);
-    console.log(this.FL_LottoSavedNumbers);
-  }
+ get savedFLLottoNumbers(): number[][] {
+  return this.numberGenService.getSavedNumbers('fllotto');
+}
 
+saveFLLotto() {
+  const currentSet = [
+    this.numberGenService.FL_LottoGeneratedNumber1,
+    this.numberGenService.FL_LottoGeneratedNumber2,
+    this.numberGenService.FL_LottoGeneratedNumber3,
+    this.numberGenService.FL_LottoGeneratedNumber4,
+    this.numberGenService.FL_LottoGeneratedNumber5,
+    this.numberGenService.FL_LottoGeneratedNumber6
+  ];
+  this.numberGenService.saveNumber('fllotto', currentSet);
+}
+
+deleteSavedFLLotto(index: number) {
+  this.numberGenService.removeSavedNumber('fllotto', index);
+}
   constructor(public numberGenService: NumberGenService, private router: Router) { }
 
  

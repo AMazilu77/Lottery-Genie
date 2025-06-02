@@ -1,100 +1,102 @@
 <div class="backGround">
-  <!-- DRAGGABLE WRAPPER -->
-  <div class="glassContainer glass" appDraggable>
+    <!-- DRAGGABLE WRAPPER -->
+    <div class="glassContainer glass" appDraggable>
 
-    <!-- Back button ON the panel -->
-    <button class="btn back-btn-panel" type="button" (click)="back()">Back</button>
+      <!-- Back button ON the panel -->
+      <button class="btn back-btn-panel" type="button" (click)="back()">Back</button>
 
-    <h2 class="title">Florida Lotto</h2>
+      <h2 class="title">Florida Lotto</h2>
 
-    <div class="rules-section">
-      <h3>Florida Lotto Number Generator</h3>
-      <h4>Rules</h4>
-      <p>1. Select six numbers ranging from 1 through 53.</p>
-      <p>
-        Save numbers to your profile to track performance. After buying a ticket, click "Post it" to register the play.
-      </p>
-      <button class="btn btn-outline-info" (click)="showRules = true">I wish to know more</button>
-    </div>
-
-    <div class="number-cards">
-      <div class="number-card">
-        <h1>{{ numberGenService.FL_LottoGeneratedNumber1 }}</h1>
+      <div class="rules-section">
+        <h3>Florida Lotto Number Generator</h3>
+        <h4>Rules</h4>
+        <p>1. Select six numbers ranging from 1 through 53.</p>
+        <p>
+          Save numbers to your profile to track performance. After buying a ticket, click "Post it" to register the play.
+        </p>
+        <button class="btn btn-outline-info" (click)="showRules = true">I wish to know more</button>
       </div>
-      <div class="number-card">
-        <h1>{{ numberGenService.FL_LottoGeneratedNumber2 }}</h1>
-      </div>
-        <div class="number-card">
-        <h1>{{ numberGenService.FL_LottoGeneratedNumber3 }}</h1>
-      </div>
-      <div class="number-card">
-        <h1>{{ numberGenService.FL_LottoGeneratedNumber4 }}</h1>
-      </div>
-         <div class="number-card">
-        <h1>{{ numberGenService.FL_LottoGeneratedNumber5 }}</h1>
-      </div>
-    </div>
 
-    <div class="genie-section">
-      <p><i>{{ numberGenService.Phrase }}</i></p>
-    </div>
+            
+        <div class="number-cards">
+          <div class="number-ball" *ngFor="let num of [
+            numberGenService.FL_LottoGeneratedNumber1,
+            numberGenService.FL_LottoGeneratedNumber2,
+            numberGenService.FL_LottoGeneratedNumber3,
+            numberGenService.FL_LottoGeneratedNumber4,
+            numberGenService.FL_LottoGeneratedNumber5,
+            numberGenService.FL_LottoGeneratedNumber6
+          ]">
+            {{ num }}
+          </div>
+        </div>
 
-    <div class="btn-group">
-      <button class="btn btn-outline-primary"
-        (click)="numberGenService.FL_LottoRandomGenMaster(); numberGenService.randomPhraseGen()">
-        Give me a number!
-      </button>
-      <button class="btn btn-outline-success">
-        I will play this number, save it
-      </button>
-      <button class="btn btn-outline-danger"
-        (click)="numberGenService.FL_LottoRandomGenMaster; numberGenService.randomPhraseGen()">
-        I don't like this number
-      </button>
-      <button class="btn btn-outline-info" routerLink="/WinningFL_Lotto">
-        Show me numbers that have won
-      </button>
+      <div class="genie-section">
+        <p><i>{{ numberGenService.Phrase }}</i></p>
+      </div>
 
-    
-    </div>
+      <div class="btn-group">
+        <button class="btn btn-outline-primary"
+          (click)="numberGenService.FL_LottoRandomGenMaster(); numberGenService.randomPhraseGen()">
+          Give me a number!
+        </button>
+        <button class="btn btn-outline-success" (click)="saveFLLotto()">
+          I will play this number, save it
+        </button>
+        <button class="btn btn-outline-danger"
+          (click)="numberGenService.FL_LottoRandomGenMaster; numberGenService.randomPhraseGen()">
+          I don't like this number
+        </button>
+        <button class="btn btn-outline-info" routerLink="/WinningFL_Lotto">
+          Show me numbers that have won
+        </button>
+
+      
+      </div>
     <div class="saved-section">
-      <h3>Saved Numbers</h3>
-      <div class="saved-card">
-        <p>[ {{ numberGenService.FL_LottoGeneratedNumber1 }}, {{ numberGenService.FL_LottoGeneratedNumber2 }}, {{ numberGenService.FL_LottoGeneratedNumber3 }}, {{ numberGenService.FL_LottoGeneratedNumber4 }}, {{ numberGenService.FL_LottoGeneratedNumber5 }} ]</p>
-        <ol>{{ FL_LottoSavedNumbers }}</ol>
+    <h3>Saved Numbers</h3>
+    <div class="saved-scroll">
+      <div
+        *ngFor="let set of numberGenService.getSavedNumbers('fllotto'); let i = index"
+        class="saved-number-row"
+      >
+        <div class="number-ball" *ngFor="let num of set">
+          {{ num }}
+        </div>
+        <button class="delete-btn" (click)="deleteSavedFLLotto(i)">×</button>
       </div>
-      <button class="btn btn-outline-primary" type="submit">Post it</button>
     </div>
-
+    <button class="btn btn-outline-primary" type="submit">
+      Post it
+    </button>
   </div>
 
-  <app-rules-modal
+ 
+</div>
+ <app-rules-modal
   *ngIf="showRules"
   [gameTitle]="'Florida Lottery'"
   [quote]="'What arcane knowledge dost thou seek, mortal?'"
   (closed)="showRules = false">
 
-  <div rules>
- <p> <b>1.</b> Select the amount you want to play <b>(Pick six numbers between 1-53)</b></p>
-   
-   <p><b>2.</b> Drawings are Wednesday and Saturday 11:15 pm with a last chance to buy tickets at 10:55 pm.
+ <div rules>
+  <p><b>1.</b> Choose six numbers from <b>1 through 53</b>. Match all six to win the jackpot.</p>
+  <p><b>2.</b> Drawings take place on <b>Wednesdays and Saturdays at 11:15 PM ET</b>, with ticket sales closing at 10:55 PM.</p>
+  <p><b>3.</b> Base tickets cost <b>$2</b>. You can add features like <b>Double Play</b> or <b>EZmatch</b> for additional chances to win.</p>
+  <p><b>Reminder:</b> Prizes must be claimed within 180 days of the draw date.</p>
+</div>
 
-    <p>You can win a top prize of <b>$500 </b>with a $1 Straight play, or increase your chances of winning with a Box, Straight/Box, Front/Back Number or 1-OFF play.</p>
+<div odds>
+  <p><b>Match 6 Numbers:</b> 1 in 22,957,480 — <b>Jackpot</b></p>
+  <p><b>Match 5 Numbers:</b> 1 in 81,409 — approx. $5,000</p>
+  <p><b>Match 4 Numbers:</b> 1 in 1,415 — approx. $50</p>
+  <p><b>Match 3 Numbers:</b> 1 in 70 — approx. $5</p>
+</div>
 
-    <p><b>Reminder: Prizes must be claimed within 180 days of the draw date.</b>
-      All PICK 2 prizes may be claimed at any authorized Florida Lottery retailer.</p>
-
-
-  </div>
-
-  <div odds>
-    <p> <b>1.</b> Strait match 6 numbers: 1 : 22,957,4800 </p>
-  <br>
-  </div>
-
-  <div theory>
-    <p>This game has low variance and fast feedback. You can apply frequency tracking, trailing digit avoidance, and rolling analysis across day/night draws.</p>
-  </div>
+<div theory>
+  <p><b>Expected Value:</b> While the odds are better than Powerball or MegaMillions, the Florida Lotto often offers a lower jackpot. A $2 ticket tends to return around <b>$0.30–$0.50</b> in value.</p>
+  <p><b>EV Improves</b> when the jackpot crosses <b>$20 million</b>, particularly if there are rollovers.</p>
+  <p><b>Genie’s Wisdom:</b> This game favors those who enjoy better odds at a lower ceiling. It’s a strategic game for players looking for slightly better chances without the massive crowds of Powerball.</p>
+</div>
 
 </app-rules-modal>
-</div>

@@ -15,12 +15,16 @@
     </div>
 
     <div class="number-cards">
-      <div class="number-card"><h1>{{ numberGenService.jackpotGeneratedNumber1 }}</h1></div>
-      <div class="number-card"><h1>{{ numberGenService.jackpotGeneratedNumber2 }}</h1></div>
-      <div class="number-card"><h1>{{ numberGenService.jackpotGeneratedNumber3 }}</h1></div>
-      <div class="number-card"><h1>{{ numberGenService.jackpotGeneratedNumber4 }}</h1></div>
-      <div class="number-card"><h1>{{ numberGenService.jackpotGeneratedNumber5 }}</h1></div>
-      <div class="number-card"><h1>{{ numberGenService.jackpotGeneratedNumber6 }}</h1></div>
+      <div class="number-ball" *ngFor="let num of [
+        numberGenService.jackpotGeneratedNumber1,
+        numberGenService.jackpotGeneratedNumber2,
+        numberGenService.jackpotGeneratedNumber3,
+        numberGenService.jackpotGeneratedNumber4,
+        numberGenService.jackpotGeneratedNumber5,
+        numberGenService.jackpotGeneratedNumber6
+      ]">
+        {{ num }}
+      </div>
     </div>
 
     <div class="genie-section">
@@ -36,12 +40,17 @@
 
     <div class="saved-section">
       <h3>Saved Numbers</h3>
-      <div class="saved-card" *ngFor="let set of jackpotSavedNumbers">
-        <p>[ {{ set.join(', ') }} ]</p>
+      <div class="saved-scroll">
+        <div
+          *ngFor="let set of numberGenService.getSavedNumbers('jackpot'); let i = index"
+          class="saved-number-row"
+        >
+          <div class="number-ball" *ngFor="let num of set">{{ num }}</div>
+          <button class="delete-btn" (click)="deleteSavedJackpot(i)">×</button>
+        </div>
       </div>
       <button class="btn btn-outline-primary" type="submit">Post it</button>
     </div>
-
   </div>
 
   <app-rules-modal
@@ -53,18 +62,19 @@
     <div rules>
       <p><b>1.</b> Select six numbers from 1 to 46. This is your base play.</p>
       <p><b>2.</b> One ticket gives you three sets of numbers. The first set you pick; the other two are quick picks.</p>
-      <p><b>3.</b> Drawings take place every Tuesday and Friday at 11:15 p.m. ET.</p>
+      <p><b>3.</b> Drawings take place every <b>Tuesday and Friday at 11:15 PM ET</b>.</p>
       <p><b>4.</b> Match all six numbers in any set to win the jackpot.</p>
       <p><b>5.</b> The COMBO option increases your chances of winning non-jackpot prizes.</p>
     </div>
 
     <div odds>
-      <p><b>Odds of winning the jackpot:</b> 1 in 3,122,273</p>
-      <p><b>Odds of winning any prize:</b> approx. 1 in 15.24</p>
+      <p><b>Jackpot (Match 6):</b> 1 in 3,122,273</p>
+      <p><b>Any prize:</b> approx. 1 in 15.24</p>
     </div>
 
     <div theory>
-      <p>This is a low-frequency, moderate-jackpot game with unique combo matching rules. Try tracking number spreads or avoiding tightly clustered ranges for fun.</p>
+      <p><b>Expected Value:</b> Triple Play adds layers—three chances per ticket. While the jackpot is modest, your odds are substantially better than Powerball or Mega Millions.</p>
+      <p><b>Genie’s Tip:</b> Focus on number diversity. Avoid consecutive clusters and favor wider spreads across your picks. Bonus: COMBO add-on helps you hit more side prizes!</p>
     </div>
   </app-rules-modal>
 </div>

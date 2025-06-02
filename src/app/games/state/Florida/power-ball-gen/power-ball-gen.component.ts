@@ -8,34 +8,44 @@ import { NumberGenService } from '../../../../services/number-gen.service';
   styleUrls: ['./power-ball-gen.component.scss']
 })
 export class PowerBallGenComponent implements OnInit {
-
+  constructor(public numberGenService: NumberGenService, private router: Router) { }
+  
+  showRules = false;
   powerBall_SaveNumber = [];
+
+   ngOnInit() {
+  }
 
   back() {
     this.router.navigate(['/FLGamePick']);
   }
+
   GeneratePowerBall() {
     console.log(this.numberGenService.powerBallRandomGenMaster());
 
   }
 
-  savePowerBall() {
-    this.powerBall_SaveNumber.push(
-      this.numberGenService.powerBallnum1,
-      this.numberGenService.powerBallnum2,
-      this.numberGenService.powerBallnum3,
-      this.numberGenService.powerBallnum4,
-      this.numberGenService.powerBallnum5,
-      this.numberGenService.powerBallnum6POWERBALL);
-    console.log(this.powerBall_SaveNumber);
+
+savePowerBall() {
+  const numSet = [
+    this.numberGenService.powerBallGeneratedNumber1,
+    this.numberGenService.powerBallGeneratedNumber2,
+    this.numberGenService.powerBallGeneratedNumber3,
+    this.numberGenService.powerBallGeneratedNumber4,
+    this.numberGenService.powerBallGeneratedNumber5,
+    this.numberGenService.powerBallGeneratedNumber6POWERBALL
+  ];
+
+  const success = this.numberGenService.saveNumber('powerball', numSet);
+
+  if (!success) {
+    alert('You’ve saved too many! Post or clear before adding more.');
+  } else {
+    console.log('Saved PowerBall numbers:', numSet);
   }
+}
 
-  constructor(public numberGenService: NumberGenService, private router: Router) { }
-
-  ngOnInit() {
+  deleteSavedPowerball(index: number) {
+    this.numberGenService.removeSavedNumber('powerball', index);
   }
-
-        showRules = false;
-
-
 }

@@ -18,17 +18,17 @@
     </div>
 
     <div class="number-cards">
-      <div class="number-card">
-        <h1>{{ numberGenService.Pick4GeneratedNumber1 }}</h1>
+      <div class="number-ball">
+        {{ numberGenService.Pick4GeneratedNumber1 }}
       </div>
-      <div class="number-card">
-        <h1>{{ numberGenService.Pick4GeneratedNumber2 }}</h1>
+      <div class="number-ball">
+        {{ numberGenService.Pick4GeneratedNumber2 }}
       </div>
-        <div class="number-card">
-        <h1>{{ numberGenService.Pick4GeneratedNumber3 }}</h1>
+        <div class="number-ball">
+        {{ numberGenService.Pick4GeneratedNumber3 }}
       </div>
-      <div class="number-card">
-        <h1>{{ numberGenService.Pick4GeneratedNumber4 }}</h1>
+      <div class="number-ball">
+        {{ numberGenService.Pick4GeneratedNumber4 }}
       </div>
     </div>
 
@@ -41,7 +41,7 @@
         (click)="numberGenService.pick4randomGenMaster(); numberGenService.randomPhraseGen()">
         Give me a number!
       </button>
-      <button class="btn btn-outline-success">
+      <button class="btn btn-outline-success" (click)="savePick4Number()" >
         I will play this number, save it
       </button>
       <button class="btn btn-outline-danger"
@@ -54,14 +54,27 @@
 
     
     </div>
-    <div class="saved-section">
-      <h3>Saved Numbers</h3>
-      <div class="saved-card">
-        <p>[ {{ numberGenService.Pick4GeneratedNumber1 }}, {{ numberGenService.Pick4GeneratedNumber2 }}, {{ numberGenService.Pick4GeneratedNumber3 }}, {{ numberGenService.Pick4GeneratedNumber4 }} ]</p>
-        <ol>{{ pick4SavedNumbers }}</ol>
+
+<!-- Saved Numbers Section -->
+<div class="saved-section">
+  <h3>Saved Numbers</h3>
+  <div class="saved-scroll">
+    <div
+      *ngFor="let set of pick4SavedNumbers; let i = index"
+      class="saved-number-row"
+    >
+      <div class="number-ball" *ngFor="let num of set">
+        {{ num }}
       </div>
-      <button class="btn btn-outline-primary" type="submit">Post it</button>
+      <button class="delete-btn" (click)="deleteSavedPick4(i)">×</button>
     </div>
+  </div>
+  <button class="btn btn-outline-primary" type="submit" (click)="savePick4Number()">
+    Post it
+  </button>
+</div>
+
+
 
   </div>
 
